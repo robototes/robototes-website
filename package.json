@@ -1,0 +1,37 @@
+{
+    "name": "robototes-website",
+    "version": "0.0.0",
+    "description": "Official Robototes team website",
+    "main": "cluster.js",
+    "repository": "https://github.com/robototes/robototes-website.git",
+    "license": "",
+    "author": "dannytech <dhellstern@outlook.com>",
+    "scripts": {
+        "start": "echo Use \\\"npm run start-server\\\" instead",
+        "start-server": "npm run tests && NODE_ENV=production PORT=8080 naught start --worker-count 8 --ipc-file server/naught.ipc --pid-file server/naught.pid --log server/naught.log --stdout server/stdout.log --stderr server/stderr.log start.js",
+        "start-server-dev": "NODE_ENV=development PORT=8081 naught start --worker-count 2 --ipc-file server/dev/naught.ipc --pid-file server/dev/naught.pid --log server/dev/naught.log --stdout server/dev/stdout.log --stderr server/dev/stderr.log start.js",
+        "status": "naught status server/naught.ipc",
+        "status-dev": "naught status server/dev/naught.ipc",
+        "deploy": "npm run tests && NODE_ENV=production PORT=8080 naught deploy server/naught.ipc",
+        "deploy-dev": "NODE_ENV=development PORT=8081 naught deploy server/dev/naught.ipc",
+        "abort-deploy": "naught deploy-abort server/naught.ipc",
+        "abort-deploy-dev": "naught deploy-abort server/dev/naught.ipc",
+        "stop": "naught stop server/naught.ipc",
+        "stop-dev": "naught stop server/dev/naught.ipc",
+        "test": "echo Use \\\"npm run tests\\\" instead",
+        "tests": "mocha code/tests"
+    },
+    "dependencies": {
+        "async": "^0.2.10",
+        "chai": "^3.5.0",
+        "colors": "^1.1.2",
+        "express": "^4.14.0",
+        "express-minify": "^0.2.0",
+        "mocha": "^3.0.2",
+        "naught": "^1.6.0",
+        "node-sri": "^1.1.1",
+        "rxjs": "^5.0.0-beta.11",
+        "supertest": "^2.0.0",
+        "zone.js": "^0.6.17"
+    }
+}

@@ -7,7 +7,7 @@
     "license": "",
     "author": "dannytech <dhellstern@outlook.com>",
     "scripts": {
-        "start": "echo Use \\\"npm run start-server\\\" instead",
+        "start": "echo Use \\\"npm run start-server\\\" or \\\"npm run start-server-dev\\\" instead (see README.md for more info)",
         "start-server": "npm run tests && NODE_ENV=production PORT=8080 naught start --worker-count 8 --ipc-file server/naught.ipc --pid-file server/naught.pid --log server/naught.log --stdout server/stdout.log --stderr server/stderr.log start.js",
         "start-server-dev": "NODE_ENV=development PORT=8081 naught start --worker-count 2 --ipc-file server/dev/naught.ipc --pid-file server/dev/naught.pid --log server/dev/naught.log --stdout server/dev/stdout.log --stderr server/dev/stderr.log start.js",
         "status": "naught status server/naught.ipc",
@@ -19,19 +19,22 @@
         "stop": "naught stop server/naught.ipc",
         "stop-dev": "naught stop server/dev/naught.ipc",
         "test": "echo Use \\\"npm run tests\\\" instead",
-        "tests": "mocha code/tests"
+        "tests": "mocha code/tests && nsp check --output checkstyle && retire"
     },
     "dependencies": {
         "async": "^0.2.10",
-        "chai": "^3.5.0",
         "colors": "^1.1.2",
         "express": "^4.14.0",
         "express-minify": "^0.2.0",
-        "mocha": "^3.0.2",
+        "helmet": "^2.1.2",
         "naught": "^1.6.0",
-        "node-sri": "^1.1.1",
-        "rxjs": "^5.0.0-beta.11",
+        "node-sri": "^1.1.1"
+    },
+    "devDependencies": {
+        "mocha": "^3.0.2",
+        "chai": "^3.5.0",
         "supertest": "^2.0.0",
-        "zone.js": "^0.6.17"
+        "nsp": "^2.6.1",
+        "retire": "^1.2.9"
     }
 }

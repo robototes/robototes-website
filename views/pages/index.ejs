@@ -1,0 +1,35 @@
+<!--
+Copyright (C) 2016 Sammamish Robotics <robototes2412@gmail.com> All rights reserved
+
+This file is part of the robototes-website project.
+
+Any copying and/or distributing and/or use in commercial or non-commercial environments
+via any medium without the express permission of Robotics Leadership is strictly prohibited
+-->
+<!DOCTYPE html>
+<html>
+    <head>
+        <% include ../partials/head.ejs %>
+        <script type="text/javascript"
+            src="//<%= classes.constants.subdomains.CDN; %>.<%= classes.constants.domain; %>/js/angular/angular-pages.js"></script>
+    </head>
+    <body ng-app="robototes-homepage" ng-controller="homeController">
+        <% include ../partials/header.ejs %>
+        <content id="main">
+            <div class="carousel slide" id"welcome-carousel" data-ride="carousel">
+                <div class="carousel-inner" role="listbox">
+                    <div class="item"></div>
+                </div>
+                <a class="left carousel-control" href="#welcome-carousel" role="button" data-slide="prev">
+                    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                    <span class="sr-only">Previous</span>
+                </a>
+                <a class="right carousel-control" href="#welcome-carousel" role="button" data-slide="next">
+                    <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                    <span class="sr-only">Next</span>
+                </a>
+            </div>
+        </content>
+        <% include ../partials/footer.ejs %>
+    </body>
+</html>

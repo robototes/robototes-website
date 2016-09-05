@@ -4,23 +4,47 @@ The official Node.js website for the Robototes 2412 team.
 
 ### <a id="setup">Setting up the server</a>
 
+##### Installing the environment
+
 Before downloading the server code, ensure your server environment is prepared by installing the following
 
 * ```node.js``` version 6.5.0
 * ```npm``` version 3.10.6 (installed with node)
 * ```nvm``` version 0.31.0 (installed with node)
 
+##### Preparing the server
+
 After the above dependencies are installed, download the server code and test it
 
 * ```git clone -b production git@github.com:robototes/robototes-website.git --depth 1```
 * ```cd robototes-website```
 * ```npm install```
-* [```mocha code/tests/module_tests.js```](#runningtests)
+* [```mocha code/tests/module_tests```](#runningtests)
 * ```npm install``` the missing modules as described by failed tests
 
 (If the ```mocha``` command is not found, run ```NODE_ENV=development``` and ```npm install``` again)
 
-After running the commands, follow the instructions in [Starting the server](#startserver).
+A list of modules that must be included can be found below.
+
+##### Required node modules
+
+These modules should be auto-installed by ```npm install```, but make sure to run [```mocha code/tests/module_tests```](#runningtests)
+and check that all the modules are there and match the below table. All of these modules are readily available on [npm](//www.npmjs.com)
+
+| Library                                                               | License                                                           | Reason                                                                                                        |
+|-----------------------------------------------------------------------|-------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------|
+| [ExpressJS](//expressjs.com/)                                         | [MIT](//github.com/expressjs/express/blob/master/LICENSE)         | Simple HTTP routing                                                                                           |
+| [cookie-parser middleware](//github.com/expressjs/cookie-parser)      | [MIT](//github.com/expressjs/cookie-parser/blob/master/LICENSE)   | Enables us to interact with browser cookies                                                                   |
+| [express-minify middleware](//github.com/SummerWish/express-minify)   | [MIT](//github.com/SummerWish/express-minify/blob/master/LICENSE) | Decreases file size by removing unnecessary whitespace and obfuscating variables, decreasing page load time   |
+| [helmetjs middleware](//github.com/helmetjs/helmet)                   | [MIT](//github.com/helmetjs/helmet/blob/master/LICENSE)           | Security library with features such as CSP, noSniff, and frameguard                                           |
+| [naught](//github.com/andrewrk/naught)                                | [MIT](//github.com/andrewrk/naught/blob/master/LICENSE)           | Enables zero-downtime deployment solutions and multi-worker server setups                                     |
+| [mochajs](//mochajs.org/)                                             | [MIT](//github.com/mochajs/mocha/blob/master/LICENSE)             | Complete Unit testing library that allows us to test our code in various situations, reducing bug density     |
+| [chaijs](//chaijs.com/)                                               | [MIT](//github.com/chaijs/chai#license)                           | Testing assertion library                                                                                     |
+| [supertest](//github.com/visionmedia/supertest)                       | [MIT](//github.com/andrewrk/naught/blob/master/LICENSE)           | Run simple HTTP requests                                                                                      |
+| [nsp](//github.com/nodesecurity/nsp)                                  | [Apache 2.0](//www.apache.org/licenses/LICENSE-2.0)               | Scans node modules for vulnerabilities                                                                        |
+| [retire.js](//github.com/RetireJS/retire.js)                          | [Apache 2.0](//www.apache.org/licenses/LICENSE-2.0)               | Identifying code security vulnerabilities.                                                                    |
+
+After running the commands and installing the required modules, follow the instructions in [Starting the server](#startserver).
 
 ### <a id="startserver">Starting the server</a>
 
@@ -30,7 +54,7 @@ After running the commands, follow the instructions in [Starting the server](#st
 npm run start-server // Runs the server on 8 workers
 ```
 
-This will run several automated tests, and start the server if they succeed. The server uses [naught](https://www.npmjs.com/package/naught) for zero-downtime deployment, and as such
+This will run several automated tests, and start the server if they succeed. The server uses [naught](//www.npmjs.com/package/naught) for zero-downtime deployment, and as such
 the server runs on a daemon and logs are not printed to the console. Instead, you can find ```stdout.log``` and ```stderr.log``` files inside the ```server``` and ```server/dev```
 folders, depending on how you are running the server.
 
@@ -39,6 +63,8 @@ folders, depending on how you are running the server.
 ```javascript
 npm run start-server-dev // Runs the server in development mode
 ```
+
+
 
 It is recommended that you run the server in developer mode before running it in production, to ensure the code is stable. It is also recommended that you run client-side unit tests
 in all major browsers ([Internet Explorer/Edge](//www.microsoft.com/en-us/download/internet-explorer.aspx), [Chrome](//www.google.com/chrome/browser/desktop/), and [Firefox](//mozilla.org)) before deploying
@@ -61,7 +87,7 @@ The production server runs on port 8080, while the development server runs on 80
 npm run tests
 ```
 
-We use [mocha](https://www.npmjs.com/package/mocha) and [chai](https://www.npmjs.com/package/chai) to unit test on both the server and the client. At the moment,
+We use [mocha](//www.npmjs.com/package/mocha) and [chai](//www.npmjs.com/package/chai) to unit test on both the server and the client. At the moment,
 the above code runs all server tests in ```code/tests``` and prints the results. This command is also run by [```npm run start-server```](#startserver) and will only start the
 server if all tests pass.
 
@@ -123,3 +149,10 @@ redeploy
     * Have at least one experienced programmer review your changes
     * Commit to the git repository with a detailed commit message
     * Once a feature is stable and production-ready, push it to the git repo on the ```production``` branch
+
+### License
+
+Copyright (C) 2016 Sammamish Robotics <robototes2412@gmail.com> All rights reserved
+
+Any copying and/or distributing and/or use in commercial or non-commercial environments
+via any medium of this project without the express permission of Robotics Leadership is strictly prohibited

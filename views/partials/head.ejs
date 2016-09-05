@@ -1,0 +1,57 @@
+<!--
+Copyright (C) 2016 Sammamish Robotics <robototes2412@gmail.com> All rights reserved
+
+This file is part of the robototes-website project.
+
+Any copying and/or distributing and/or use in commercial or non-commercial environments
+via any medium without the express permission of Robotics Leadership is strictly prohibited
+-->
+<!--Normalizes CSS-->
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/normalize/4.2.0/normalize.min.css"
+    integrity="sha256-K3Njjl2oe0gjRteXwX01fQD5fkk9JFFBdUHy/h38ggY="
+    crossorigin="anonymous"/>
+
+<!--JQuery-->
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js"
+    integrity="sha256-cCueBR6CsyA4/9szpPfrX3s49M9vUU5BgtiJj06wt/s="
+    crossorigin="anonymous"></script>
+
+<!--FontAwesome-->
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css"
+    integrity="sha256-AIodEDkC8V/bHBkfyxzolUMw57jeQ9CauwhVW6YJ9CA="
+    crossorigin="anonymous"/>
+
+<!--Bootstrap-->
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/bootswatch/3.3.7/united/bootstrap.min.css"
+    integrity="sha256-IYGI0ovdtvTnw19p8rG6jZjmlX+5x+4rw9uAhk+5OC4="
+    crossorigin="anonymous"/>
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha/js/bootstrap.min.js"
+    integrity="sha256-+h0g0j7qusP72OZaLPCSZ5wjZLnoUUicoxbvrl14WxM="
+    crossorigin="anonymous"></script>
+
+<!--AngularJS-->
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.8/angular.min.js"
+    integrity="sha256-6Sr0HqNgUf/p88g6vsl87CrAnNqiOWhjlY6LS8jeWHA="
+    crossorigin="anonymous"></script>
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.8/angular-cookies.min.js"
+    integrity="sha256-9536q7QX97d3RYokZjxQdd0eVgJuIFeKDXRWizx2I3U="
+    crossorigin="anonymous"></script>
+<script type="text/javascript"
+    src="//<%= classes.constants.subdomains.CDN; %>.<%= classes.constants.domain; %>:<%= port; %>/js/angular/angular-pages.js"></script>
+
+<link rel="stylesheet" href="//<%= classes.constants.subdomains.CDN %>.<%= classes.constants.domain; %>:<%= port; %>/css/public.css">
+
+<% if(process.env.NODE_ENV == "development") { %>
+<!--Unit testing libraries-->
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/mocha/3.0.2/mocha.min.js"
+    integrity="sha256-nDwBevNLGaqRExf5rHKA59C9WBi365Ezg3Bv+sAyxrw="
+    crossorigin="anonymous"></script>
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/mocha/3.0.2/mocha.min.css"
+    integrity="sha256-1ePRFUobB5Zd3kgc+DLyOjFdCr70d5903V6n7PDH/XQ="
+    crossorigin="anonymous"/>
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/chai/3.5.0/chai.min.js"
+    integrity="sha256-BKU3X97p6yXHn1wgJmMJQ0CNhqCdxVGjBf0EwjSzi3c="
+    crossorigin="anonymous"></script>
+
+<script type="text/javascript" src="//<%= classes.constants.subdomains.CDN %>.<%= classes.constants.domain %>:<%= port; %>/js/tests/client_tests.js"></script>
+<% } %>

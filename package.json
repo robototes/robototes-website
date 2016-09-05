@@ -4,7 +4,7 @@
     "description": "Official Robototes team website",
     "main": "cluster.js",
     "repository": "https://github.com/robototes/robototes-website.git",
-    "license": "",
+    "license": "SEE LICENSE IN LICENSE",
     "author": "dannytech <dhellstern@outlook.com>",
     "scripts": {
         "start": "echo Use \\\"npm run start-server\\\" or \\\"npm run start-server-dev\\\" instead (see README.md for more info)",
@@ -22,13 +22,11 @@
         "tests": "mocha code/tests && nsp check --output checkstyle && retire"
     },
     "dependencies": {
-        "async": "^0.2.10",
-        "colors": "^1.1.2",
+        "cookie-parser": "^1.4.3",
         "express": "^4.14.0",
         "express-minify": "^0.2.0",
         "helmet": "^2.1.2",
-        "naught": "^1.6.0",
-        "node-sri": "^1.1.1"
+        "naught": "^1.6.0"
     },
     "devDependencies": {
         "mocha": "^3.0.2",

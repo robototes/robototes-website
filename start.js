@@ -7,7 +7,7 @@ Any copying and/or distributing and/or use in commercial or non-commercial envir
 via any medium without the express permission of Robotics Leadership is strictly prohibited
  */
 var server = require("./code/server");
-server.http.listen(server.app.get("port"), server.app.get("ip"), function() {
+server.http.listen(server.app.get("port"), function() {
     if(process.send) process.send("online");
 });
 

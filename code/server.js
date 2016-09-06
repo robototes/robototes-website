@@ -23,8 +23,8 @@ module.exports = {
     createServer: server
 };
 
-app.set("ip", process.env.IP || "0.0.0.0")
-    .set("port", process.env.PORT || 8080);
+app.set("env", process.env.NODE_ENV)
+    .set("port", classes.constants.ports[app.get("env").toUpperCase()] || process.env.PORT || 8080);
 app.locals = {
     classes: classes,
     port: app.get("port")
@@ -66,14 +66,10 @@ app.use(helmet.contentSecurityPolicy({
 
 app.use(function(req, res, next) {
         res.errorPage = function(code) {
-            this.render(path.join(__dirname, "/../../views/pages/error.ejs", { code: code }));
+            this.render(path.join(__dirname, "/../views/pages/error.ejs"), { code: code });
             this.end();
         };
-        for(var sub in classes.constants.subdomains) {
-            if(classes.constants.subdomains.hasOwnProperty(sub) && req.cookies["subdomain-" + sub.toLowerCase()] == null)
-                res.cookie("subdomain-" + sub.toLowerCase(), classes.constants.subdomains[sub]);
-        }
-        if(req.cookies.domain == null) res.cookie("domain", classes.constants.domain);
+        
         next();
     })
     .use(subdomain(classes.constants.subdomains.CDN, require("./routes/cdn-routes")))

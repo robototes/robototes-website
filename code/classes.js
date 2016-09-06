@@ -9,8 +9,14 @@ via any medium without the express permission of Robotics Leadership is strictly
 module.exports = {
     constants: {
         subdomains: {
+            STATUS: "status.robototes-website-dannytech",
             PUBLIC: "www.robototes-website-dannytech",
-            CDN: "cdn.robototes-website-dannytech"
+            CDN: "cdn.robototes-website-dannytech",
+            NONE: "robototes-website-dannytech"
+        },
+        ports: {
+            PRODUCTION: 8080,
+            DEVELOPMENT: 8081
         },
         domain: "c9users.io"
     }

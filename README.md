@@ -16,13 +16,13 @@ Before downloading the server code, ensure your server environment is prepared b
 
 After the above dependencies are installed, download the server code and test it
 
-* ```git clone -b production git@github.com:robototes/robototes-website.git --depth 1```
-* ```cd robototes-website```
-* ```npm install```
-* [```mocha code/tests/module_tests```](#runningtests)
+* ```git clone -b production git@github.com:robototes/robototes-website.git --depth 1``` to clone the latest production release
+* ```cd robototes-website``` to enter the server code
+* ```npm install``` to install all dependencies as described in ```package.json```
+* [```mocha code/tests/module_tests```](#runningtests) to ensure the modules are installed and up to date
 * ```npm install``` the missing modules as described by failed tests
 
-(If the ```mocha``` command is not found, run ```NODE_ENV=development``` and ```npm install``` again)
+(If the ```mocha``` command is not found, run ```npm install --dev```)
 
 A list of modules that must be included can be found below.
 
@@ -140,6 +140,7 @@ redeploy
 
 * Comment your code so that future programmers know what your code is supposed to do
 * Update this README as necessary so that programmers that come after you can easily start developing
+* Triage and assign bugs
 * Follow the Test-Driven-Development workflow:
     * Create a git branch with a descriptive name for what you are planning on creating
     * Write tests for the results you want from your code (as many as needed, for as many situations as possible, no matter how unlikely)
@@ -148,7 +149,7 @@ redeploy
     * Optimize the code
     * Have at least one experienced programmer review your changes
     * Commit to the git repository with a detailed commit message
-    * Once a feature is stable and production-ready, push it to the git repo on the ```production``` branch
+    * Once a feature is stable and production-ready, triage it and push it to the git repo on the ```production``` branch
 
 ### License
 

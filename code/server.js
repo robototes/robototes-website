@@ -66,6 +66,7 @@ app.use(helmet.contentSecurityPolicy({
 
 app.use(function(req, res, next) {
         res.errorPage = function(code) {
+            this.status(code);
             this.render(path.join(__dirname, "/../views/pages/error.ejs"), { code: code });
             this.end();
         };

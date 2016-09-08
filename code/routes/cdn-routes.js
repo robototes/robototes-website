@@ -21,7 +21,9 @@ var options = {
 if(process.env.NODE_ENV === "development") delete options.maxAge;
 
 module.exports = express.Router()
-    .use(minify())
+    .use(function(req, res, next) {
+        if(req.app.get("env") == "production") minify();
+    })
     .use("/media/slideshow", function(req, res) {
         fs.readdir(path.join(__dirname, "/../../views/cdn/media/slideshow"), function(err, files) {
             if(err) return res.errorPage(500);

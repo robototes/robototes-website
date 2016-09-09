@@ -81,4 +81,9 @@ app.use(function(req, res, next) {
     }))
     .use(function(req, res) {
         res.errorPage(404);
+    })
+    .use(function(err, req, res, next){
+        // Handles server errors gracefully
+        console.error(err);
+        res.errorPage(500);
     });

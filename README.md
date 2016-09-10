@@ -20,7 +20,7 @@ After the above dependencies are installed, download the server code and test it
 * ```cd robototes-website``` to enter the server code
 * ```npm install``` to install all dependencies as described in ```package.json```
 * [```mocha code/tests/module_tests```](#runningtests) to ensure the modules are installed and up to date
-* ```npm install``` the missing modules as described by failed tests
+* ```npm install``` the missing or out of date modules as described by failed tests
 
 (If the ```mocha``` command is not found, run ```npm install --dev```)
 

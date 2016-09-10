@@ -1,0 +1,4 @@
+.eslintrc
+server/*.*
+server/dev/*.*
+node_modules

@@ -22,6 +22,7 @@
         "tests": "mocha code/tests && nsp check --output checkstyle && retire"
     },
     "dependencies": {
+        "compression": "^1.6.2",
         "cookie-parser": "^1.4.3",
         "express": "^4.14.0",
         "express-minify": "^0.2.0",

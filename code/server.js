@@ -6,30 +6,32 @@ This file is part of the robototes-website project.
 Any copying and/or distributing and/or use in commercial or non-commercial environments
 via any medium without the express permission of Robotics Leadership is strictly prohibited
  */
+// System imports
 var http = require("http"),
     path = require("path");
 
-var classes = require("./classes"),
-    express = require("express"),
+// External libraries
+var express = require("express"),
     subdomain = require("express-subdomain"),
     cookieParser = require("cookie-parser"),
+    compression = require("compression"),
     helmet = require("helmet");
 
-var app = express(),
-    server = http.Server(app);
-module.exports = {
-    app: app,
-    http: server,
-    createServer: server
+// Local code
+var classes = require("./classes");
+
+// Creates a new router
+var app = module.exports = express();
+
+// Sets globally accessible variables
+app.set("env", process.env.NODE_ENV || "development") // The current environment (development|production)
+    .set("port", classes.constants.ports[app.get("env").toUpperCase()] || process.env.PORT || 8080); // Gets the port to run on
+app.locals = {
+    classes: classes
 };
 
-app.set("env", process.env.NODE_ENV)
-    .set("port", classes.constants.ports[app.get("env").toUpperCase()] || process.env.PORT || 8080);
-app.locals = {
-    classes: classes,
-    port: app.get("port")
-};
-app.use(helmet.contentSecurityPolicy({
+// Sets up express middleware
+app.use(helmet.contentSecurityPolicy({ // CSP
         directives: {
             defaultSrc: [ "'self'" ],
             scriptSrc: [
@@ -59,31 +61,34 @@ app.use(helmet.contentSecurityPolicy({
         }
     }))
     .use(helmet.xssFilter())
-    .use(helmet.frameguard({ action: "deny" }))
-    .use(helmet.hidePoweredBy())
+    .use(helmet.frameguard({ action: "deny" })) // Prevents framing
+    .use(helmet.hidePoweredBy()) // Removes X-Powered-By header
     .use(helmet.ieNoOpen())
-    .use(helmet.noSniff());
+    .use(helmet.noSniff())
+    .use(compression());
 
 app.use(function(req, res, next) {
+        // Sends an error page to the client
         res.errorPage = function(code) {
             this.status(code);
             this.render(path.join(__dirname, "/../views/pages/error.ejs"), { code: code });
             this.end();
         };
         
+        res.locals.req = req;
+        res.locals.res = res;
         next();
     })
     .use(subdomain(classes.constants.subdomains.CDN, require("./routes/cdn-routes")))
     .use(subdomain(classes.constants.subdomains.PUBLIC, require("./routes/public-routes")))
-    .use(subdomain(classes.constants.subdomains.NONE, function(req, res, next) {
+    .use(subdomain(classes.constants.subdomains.NONE, function(req, res, next) { // If no subdomain specified
         if(!res.headersSent)
             res.redirect("//" + classes.constants.subdomains.PUBLIC + "." + classes.constants.domain);
     }))
-    .use(function(req, res) {
+    .use(function(req, res) { // If request not routed
         res.errorPage(404);
     })
-    .use(function(err, req, res, next){
-        // Handles server errors gracefully
+    .use(function(err, req, res, next) { // If error occurred
         console.error(err);
         res.errorPage(500);
     });

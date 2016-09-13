@@ -47,6 +47,18 @@ and check that all the modules are there and match the below table. All of these
 
 After running the commands and installing the required modules, follow the instructions in [Starting the server](#startserver).
 
+##### Required client side libraries
+
+| Library                                                                   | License                                                                   | Reason                                                                                                        |
+|---------------------------------------------------------------------------|---------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------|
+| [Angular](//angularjs.org/)                                               | [MIT](//github.com/angular/angular.js/blob/master/LICENSE)                | MVC framework                                                                                                 |
+| [Angular-mocks](//angularjs.org)                                          | [MIT](//github.com/angular/angular.js/blob/master/LICENSE)                | Angular unit testing                                                                                          |
+| [Bootstrap](//getbootstrap.com/)                                          | [MIT](//github.com/twbs/bootstrap/blob/v4-dev/LICENSE)                    | Modal dialogs, UI stuff, etc.                                                                                 |
+| [mochajs](//mochajs.org/)                                                 | [MIT](//github.com/mochajs/mocha/blob/master/LICENSE)                     | Complete Unit testing library that allows us to test our code in various situations, reducing bug density     | 
+| [chaijs](//chaijs.com/)                                                   | [MIT](//github.com/chaijs/chai#license)                                   | Testing assertion library                                                                                     |
+| [jQuery](//jquery.org)                                                    | [MIT](//tldrlegal.com/license/mit-license)                                | Event handling, DOM navigation, other libraries (see above) require it.                                       |
+| [Normalize](//github.com/necolas/normalize.css/blob/master/LICENSE.md)    | [MIT](//github.com/necolas/normalize.css/blob/master/LICENSE.md)          | Normalizes CSS styles over multiple browsers                                                                  |
+
 ### <a id="startserver">Starting the server</a>
 
 ##### Production mode

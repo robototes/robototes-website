@@ -6,26 +6,21 @@ This file is part of the robototes-website project.
 Any copying and/or distributing and/or use in commercial or non-commercial environments
 via any medium without the express permission of Robotics Leadership is strictly prohibited
  */
-var pagesApp = angular.module("robototes-pages", [
+var devApp = angular.module("robototes-dev", [
         "robototes-common"
     ]);
-pagesApp.controller("homeController", [
+devApp.controller("devController", [
     "$scope",
     "$controller",
     function($scope, $controller) {
-        angular.extend(this, $controller("commonController", { $scope: $scope }));
-    }
-]);
-pagesApp.controller("errorController", [
-    "$scope",
-    "$controller",
-    function($scope, $controller) {
+        console.log("here");
         angular.extend(this, $controller("commonController", { $scope: $scope }));
         
-        var errorMessages = {
-            404: "Uh oh, we lost the robot!",
-            500: ""
+        $scope.showTestResults = false;
+        $scope.runTests = function() {
+            console.log("Running tests...");
+            $scope.showTestResults = true;
+            mocha.run();
         };
-        // $scope.errorMessage;
     }
 ]);

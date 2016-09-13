@@ -6,9 +6,12 @@ This file is part of the robototes-website project.
 Any copying and/or distributing and/or use in commercial or non-commercial environments
 via any medium without the express permission of Robotics Leadership is strictly prohibited
  */
+// External libraries
 var expect = require("chai").expect,
-    request = require("supertest"),
-    classes = require("../classes"),
+    request = require("supertest");
+
+// Local code
+var classes = require("../classes"),
     server = require("../server");
 
 // Unit tests here

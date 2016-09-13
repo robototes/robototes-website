@@ -13,19 +13,10 @@ via any medium without the express permission of Robotics Leadership is strictly
 </footer>
 
 <!-- CookieConsent to comply with EU laws-->
-<script type="text/javascript">
-    window.cookieconsent_options = {
-        "message": "We store some data on your computer to ensure you get the best experience on our website",
-        "dismiss": "Got it!",
-        "learnMore": "Privacy Policy",
-        "link": "\" data-toggle=\"modal\" data-target=\"#cookieinfo",
-        "theme": "light-floating"
-    };
-</script>
 <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/2.0.0/cookieconsent.min.js"
     integrity="sha256-LP2Bn711J375x5aY4PlrotakbRRTp7Yl9+TV2VUTIuo="
     crossorigin="anonymous"></script>
-<div class="modal fade" id="cookieinfo" tabindex="-1" role="dialog">
+<div class="modal fade" id="cookieinfo" tabindex="-1" style="z-index: 100000" role="dialog">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -58,7 +49,6 @@ via any medium without the express permission of Robotics Leadership is strictly
                     policies may change). What they do with that data is mostly up to you, and you should be able to control. As our
                     website is rather inoffensive, we don't think this will be much of a concern for most users. That said, we'd really
                     <span class="fa fa-heart"></span> it if you could tell your friends about us on social media.</p>
-                <p>Sound good? Click the "Got it!" button to the bottom right and happy browsing!</p>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -68,21 +58,24 @@ via any medium without the express permission of Robotics Leadership is strictly
 </div>
 
 <% if(process.env.NODE_ENV == "development") { %>
-<div class="btn-group btn-group-justified" style="bottom: 0; position: fixed; height: 60px;">
-    <a class="btn btn-default" data-run="tests">Run tests</a>
-</div>
-<div class="modal fade" id="testresults" tabindex="-1" role="dialog">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h4 class="modal-title">Test results</h4>
-            </div>
-            <div class="modal-body" id="mocha"></div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary" data-run="tests">Run again</button>
+    <!--Test runner-->
+    <div data-ng-app="robototes-dev" data-ng-controller="devController">
+        <div class="btn-group btn-group-justified" style="bottom: 0; position: fixed; height: 60px;">
+            <a class="btn btn-default" data-toggle="modal" data-target="#testresults" ng-click="runTests()">Run tests</a>
+        </div>
+        <div class="modal fade" id="testresults" tabindex="-1" role="dialog">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title">Test results</h4>
+                    </div>
+                    <div class="modal-body" id="mocha"></div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary">Run again</button>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
-</div>
 <% } %>

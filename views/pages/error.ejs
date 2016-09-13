@@ -6,3 +6,22 @@ This file is part of the robototes-website project.
 Any copying and/or distributing and/or use in commercial or non-commercial environments
 via any medium without the express permission of Robotics Leadership is strictly prohibited
 -->
+<!DOCTYPE html>
+<html>
+    <head>
+        <% include ../partials/head.ejs %>
+    </head>
+    <body>
+        <% include ../partials/header.ejs %>
+        <section id="main" data-ng-app="robototes-pages" data-ng-controller="errorController">
+            <h1><%= {
+                403: "Ummmmm, I don't think you should be here. The robots are sleeping",
+                404: "Uh oh! We lost the robot!",
+                500: "When your robot stops working right before the competition :O"
+            }[code]; %></h1>
+            <p>There seems to have been a <%= code; %> error. If you think this is a problem with our website, please tell us
+                <a href="/feedback/forms/errorPage?code=<%= code; %>">here</a></p>
+        </section>
+        <% include ../partials/footer.ejs %>
+    </body>
+</html>

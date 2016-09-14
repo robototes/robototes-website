@@ -1,0 +1,8 @@
+language: node_js
+node_js:
+  - "6.5.0"
+  - "6.1.x"
+env:
+    global:
+    - NODE_ENV=production
+script: npm run start-server

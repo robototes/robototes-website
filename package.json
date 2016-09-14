@@ -7,7 +7,7 @@
     "license": "SEE LICENSE IN LICENSE",
     "author": "dannytech <dhellstern@outlook.com>",
     "scripts": {
-        "start": "echo Use \\\"npm run start-server\\\" or \\\"npm run start-server-dev\\\" instead (see README.md for more info)",
+        "start": "echo Use \\\"npm run start-server\\\" or \\\"npm run start-server-dev\\\" instead && npm run start-server",
         "start-server": "npm run tests && NODE_ENV=production naught start --worker-count 8 --ipc-file server/naught.ipc --pid-file server/naught.pid --log server/naught.log --stdout server/stdout.log --stderr server/stderr.log start.js",
         "start-server-dev": "NODE_ENV=development naught start --worker-count 2 --ipc-file server/dev/naught.ipc --pid-file server/dev/naught.pid --log server/dev/naught.log --stdout server/dev/stdout.log --stderr server/dev/stderr.log start.js",
         "status": "naught status server/naught.ipc",
@@ -18,7 +18,7 @@
         "abort-deploy-dev": "naught deploy-abort server/dev/naught.ipc",
         "stop": "naught stop server/naught.ipc",
         "stop-dev": "naught stop server/dev/naught.ipc",
-        "test": "echo Use \\\"npm run tests\\\" instead",
+        "test": "echo Use \\\"npm run tests\\\" instead && npm run tests",
         "tests": "mocha code/tests && nsp check --output checkstyle && retire"
     },
     "dependencies": {

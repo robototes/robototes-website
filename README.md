@@ -1,5 +1,7 @@
 # robototes-website
 
+[![Build Status](https://travis-ci.org/robototes/robototes-website.svg?branch=master)](https://travis-ci.org/robototes/robototes-website)
+
 The official Node.js website for the Robototes 2412 team.
 
 ### <a id="setup">Setting up the server</a>

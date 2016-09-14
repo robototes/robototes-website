@@ -22,16 +22,17 @@
         "tests": "mocha code/tests && nsp check --output checkstyle && retire"
     },
     "dependencies": {
+        "chai": "^3.5.0",
         "compression": "^1.6.2",
         "cookie-parser": "^1.4.3",
         "express": "^4.14.0",
         "express-minify": "^0.2.0",
+        "express-subdomain": "^1.0.5",
         "helmet": "^2.1.2",
-        "naught": "^1.6.0",
         "mocha": "^3.0.2",
-        "chai": "^3.5.0",
-        "supertest": "^2.0.0",
+        "naught": "^1.6.0",
         "nsp": "^2.6.1",
-        "retire": "^1.2.9"
+        "retire": "^1.2.9",
+        "supertest": "^2.0.0"
     }
 }

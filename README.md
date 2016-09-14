@@ -53,15 +53,15 @@ After running the commands and installing the required modules, follow the instr
 
 ##### Required client side libraries
 
-| Library                                                                   | License                                                                   | Reason                                                                                                        |
-|---------------------------------------------------------------------------|---------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------|
-| [Angular](//angularjs.org/)                                               | [MIT](//github.com/angular/angular.js/blob/master/LICENSE)                | MVC framework                                                                                                 |
-| [Angular-mocks](//angularjs.org)                                          | [MIT](//github.com/angular/angular.js/blob/master/LICENSE)                | Angular unit testing                                                                                          |
-| [Bootstrap](//getbootstrap.com/)                                          | [MIT](//github.com/twbs/bootstrap/blob/v4-dev/LICENSE)                    | Modal dialogs, UI stuff, etc.                                                                                 |
-| [mochajs](//mochajs.org/)                                                 | [MIT](//github.com/mochajs/mocha/blob/master/LICENSE)                     | Complete Unit testing library that allows us to test our code in various situations, reducing bug density     | 
-| [chaijs](//chaijs.com/)                                                   | [MIT](//github.com/chaijs/chai#license)                                   | Testing assertion library                                                                                     |
-| [jQuery](//jquery.org)                                                    | [MIT](//tldrlegal.com/license/mit-license)                                | Event handling, DOM navigation, other libraries (see above) require it.                                       |
-| [Normalize](//github.com/necolas/normalize.css/blob/master/LICENSE.md)    | [MIT](//github.com/necolas/normalize.css/blob/master/LICENSE.md)          | Normalizes CSS styles over multiple browsers                                                                  |
+| Library                                                               | License                                                                   | Reason                                                                                                        |
+|-----------------------------------------------------------------------|---------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------|
+| [AngularJS](//angularjs.org/)                                         | [MIT](//github.com/angular/angular.js/blob/master/LICENSE)                | MVC framework                                                                                                 |
+| [angular-mocks](//angularjs.org)                                      | [MIT](//github.com/angular/angular.js/blob/master/LICENSE)                | Angular unit testing                                                                                          |
+| [Bootstrap](//getbootstrap.com/)                                      | [MIT](//github.com/twbs/bootstrap/blob/v4-dev/LICENSE)                    | Modal dialogs, UI stuff, etc.                                                                                 |
+| [mochajs](//mochajs.org/)                                             | [MIT](//github.com/mochajs/mocha/blob/master/LICENSE)                     | Complete Unit testing library that allows us to test our code in various situations, reducing bug density     | 
+| [chaijs](//chaijs.com/)                                               | [MIT](//github.com/chaijs/chai#license)                                   | Testing assertion library                                                                                     |
+| [jQuery](//jquery.org)                                                | [MIT](//tldrlegal.com/license/mit-license)                                | Event handling, DOM navigation, other libraries (see above) require it.                                       |
+| [Normalize](//github.com/necolas/normalize.css/blob/master/LICENSE.md)| [MIT](//github.com/necolas/normalize.css/blob/master/LICENSE.md)          | Normalizes CSS styles over multiple browsers                                                                  |
 
 ### <a id="startserver">Starting the server</a>
 
@@ -167,6 +167,9 @@ redeploy
     * Have at least one experienced programmer review your changes
     * Commit to the git repository with a detailed commit message
     * Once a feature is stable and production-ready, triage it and push it to the git repo on the ```production``` branch
+    * Our [Travis CI](//travis-ci.org/robototes/robototes-website/) will build and test the project based off the settings in .travis.yml
+    * Now setup the server with the updates by pulling from the repository or using a code deployment tool
+    * And last of all, [reward yourself](//www.rinkworks.com/stupid/)
 
 ### License
 

@@ -4,4 +4,7 @@ node_js:
 env:
     global:
     - NODE_ENV=production
+git:
+    depth: 1
+os: "linux"
 script: npm run start-server

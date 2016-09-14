@@ -25,6 +25,7 @@
         "chai": "^3.5.0",
         "compression": "^1.6.2",
         "cookie-parser": "^1.4.3",
+        "ejs": "^2.5.2",
         "express": "^4.14.0",
         "express-minify": "^0.2.0",
         "express-subdomain": "^1.0.5",

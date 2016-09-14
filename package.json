@@ -27,9 +27,7 @@
         "express": "^4.14.0",
         "express-minify": "^0.2.0",
         "helmet": "^2.1.2",
-        "naught": "^1.6.0"
-    },
-    "devDependencies": {
+        "naught": "^1.6.0",
         "mocha": "^3.0.2",
         "chai": "^3.5.0",
         "supertest": "^2.0.0",

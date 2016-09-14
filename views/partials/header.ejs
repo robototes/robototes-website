@@ -7,5 +7,25 @@ Any copying and/or distributing and/or use in commercial or non-commercial envir
 via any medium without the express permission of Robotics Leadership is strictly prohibited
 -->
 <header data-ng-app="robototes-common" data-ng-controller="commonController" class="container-fluid">
-    <nav class="navbar navbar-default navbar-fixed-top"></nav>
+    <nav class="navbar navbar-default navbar-fixed-top">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <!--Mobile Icon-->
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navlinks">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <%- link_to(img_tag("\/\/" + classes.fulldomains.CDN() + "/media/robototeslogo.png"), "/", { class: "navbar-brand" }); %>
+            </div>
+            <div class="collapse navbar-collapse" id="navlinks">
+                <ul class="nav navbar-nav">
+                    <li class="active"><a href="/about">About <span class="sr-only">(current)</span></a></li>
+                    <li><a href="/blog">Blog</a></li>
+                    <li><a href="/resources">Resources</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
 </header>

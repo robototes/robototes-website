@@ -12,6 +12,7 @@ var http = require("http"),
 
 // External libraries
 var express = require("express"),
+    expressHelpers = require("express-helpers"),
     subdomain = require("express-subdomain"),
     cookieParser = require("cookie-parser"),
     compression = require("compression"),
@@ -22,13 +23,14 @@ var classes = require("./classes");
 
 // Creates a new router
 var app = module.exports = express();
+expressHelpers(app);
 
 // Sets globally accessible variables
 app.set("env", process.env.NODE_ENV || "development") // The current environment (development|production)
+    .set("views", path.join(__dirname, "/../views"))
+    .set("view engine", "ejs")
     .set("port", classes.constants.ports[app.get("env").toUpperCase()] || process.env.PORT || 8080); // Gets the port to run on
-app.locals = {
-    classes: classes
-};
+app.locals.classes = classes;
 
 // Sets up express middleware
 app.use(helmet.contentSecurityPolicy({ // CSP

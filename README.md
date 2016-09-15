@@ -1,6 +1,7 @@
 # robototes-website
 
-[![Build Status](https://travis-ci.org/robototes/robototes-website.svg?branch=master)](https://travis-ci.org/robototes/robototes-website)
+[![Build Status](//travis-ci.org/robototes/robototes-website.svg?branch=master)](//travis-ci.org/robototes/robototes-website)
+[![Dependencies](//david-dm.org/robototes/robototes-website/status.svg)(//david-dm.org/robototes/robototes-website)]
 
 The official Node.js website for the Robototes 2412 team.
 
@@ -59,10 +60,13 @@ After running the commands and installing the required modules, follow the instr
 | [AngularJS](//angularjs.org/)                                         | [MIT](//github.com/angular/angular.js/blob/master/LICENSE)                | MVC framework                                                                                                 |
 | [angular-mocks](//angularjs.org)                                      | [MIT](//github.com/angular/angular.js/blob/master/LICENSE)                | Angular unit testing                                                                                          |
 | [Bootstrap](//getbootstrap.com/)                                      | [MIT](//github.com/twbs/bootstrap/blob/v4-dev/LICENSE)                    | Modal dialogs, UI stuff, etc.                                                                                 |
+| [Cookie Consent 2](//silktide.com/tools/cookie-consent/)              | [MIT](//silktide.com/tools/cookie-consent/docs/license/)                  | Cookie consent to comply with EU laws                                                                         |
+| [Angular Bootstrap UI](//angular-ui.github.io/bootstrap/)             | [MIT](//github.com/angular-ui/bootstrap/blob/master/LICENSE)              | Easy integration from Bootstrap to Angular directives                                                         |
 | [mochajs](//mochajs.org/)                                             | [MIT](//github.com/mochajs/mocha/blob/master/LICENSE)                     | Complete Unit testing library that allows us to test our code in various situations, reducing bug density     | 
 | [chaijs](//chaijs.com/)                                               | [MIT](//github.com/chaijs/chai#license)                                   | Testing assertion library                                                                                     |
-| [jQuery](//jquery.org)                                                | [MIT](//tldrlegal.com/license/mit-license)                                | Event handling, DOM navigation, other libraries (see above) require it.                                       |
+| [jQuery](//jquery.org)                                                | [Copyright](//github.com/jquery/jquery/blob/master/LICENSE.txt)           | Event handling, DOM navigation, other libraries (see above) require it.                                       |
 | [Normalize](//github.com/necolas/normalize.css/blob/master/LICENSE.md)| [MIT](//github.com/necolas/normalize.css/blob/master/LICENSE.md)          | Normalizes CSS styles over multiple browsers                                                                  |
+| [FontAwesome](//fontawesome.io/)                                      | [License](//github.com/FortAwesome/Font-Awesome#license)                  | Set of various Glyphicons                                                                                     |
 
 ### <a id="startserver">Starting the server</a>
 
@@ -161,9 +165,16 @@ redeploy
 * Triage and assign bugs
 * Follow the Test-Driven-Development workflow:
     * Create a git branch with a descriptive name for what you are planning on creating:
-    ```
-        git checkout -b branch-name-goes-here
-    ```
+    ```git checkout -b branch-name-goes-here```
+        The branch name should be be named like this: reason/detail
+        There are 4 reasons that you can use:
+        * ```wip``` Work in progress. This is generally a large feature and is likely to take a long time, so name it appropriately, like
+            ```wip/loginsystem```
+        * ```bug``` Bug fix. Generally this is a small feature with an issue open on Github, so use ```bug/issue_id_number_here```
+        * ```feat``` A minor feature. Often times this is also a feature request on Github, so use ```feat/issue_id_number_here```.
+            Alernatively, if it is not filed as a feature request, just use a descriptor like ```feat/reallyawesomefeature```
+        * ```junk``` An experimental branch. These should generally not be merged, and are for experimentation that can be implemented
+            correctly later on a ```feat``` or ```wip``` branch
     * Write tests for the results you want from your code (as many as needed, for as many situations as possible, no matter how unlikely)
     * Write the actual code (with comments)
     * Make sure the code passes the tests

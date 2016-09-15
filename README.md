@@ -160,13 +160,23 @@ redeploy
 * Update this README as necessary so that programmers that come after you can easily start developing
 * Triage and assign bugs
 * Follow the Test-Driven-Development workflow:
-    * Create a git branch with a descriptive name for what you are planning on creating
+    * Create a git branch with a descriptive name for what you are planning on creating:
+    ```
+        git checkout -b branch-name-goes-here
+    ```
     * Write tests for the results you want from your code (as many as needed, for as many situations as possible, no matter how unlikely)
     * Write the actual code (with comments)
-    * Make the code pass the tests
-    * Optimize the code
+    * Make sure the code passes the tests
+    * Optimize the code (make code gooder)
     * Have at least one experienced programmer review your changes
-    * Commit to the git repository with a detailed commit message
+    * When you're done, commit your changes, merge the branch, and push to the git repository:
+    ```
+        git commit -m "Detailed commit message goes here."
+        git checkout production
+        git merge branch-name-goes-here
+        git branch -d branch-name-goes-here
+        git push origin master
+    ```
     * Once a feature is stable and production-ready, triage it and push it to the git repo on the ```production``` branch
     * Our [Travis CI](//travis-ci.org/robototes/robototes-website/) will build and test the project based off the settings in .travis.yml
     * Now setup the server with the updates by pulling from the repository or using a code deployment tool

@@ -1,7 +1,7 @@
 # robototes-website
 
 [![Build Status](//travis-ci.org/robototes/robototes-website.svg?branch=master)](//travis-ci.org/robototes/robototes-website)
-[![Dependencies](//david-dm.org/robototes/robototes-website/status.svg)(//david-dm.org/robototes/robototes-website)]
+[![Dependencies](//david-dm.org/robototes/robototes-website/status.svg)](//david-dm.org/robototes/robototes-website)
 
 The official Node.js website for the Robototes 2412 team.
 

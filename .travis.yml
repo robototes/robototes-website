@@ -1,9 +1,6 @@
 language: node_js
 node_js:
   - "6.5.0"
-env:
-    global:
-    - NODE_ENV=production
 git:
     depth: 1
 os: "linux"
@@ -11,3 +8,7 @@ script: npm run start-server
 cache:
     directories:
         - node_modules
+branches:
+    only:
+        - master
+        - production

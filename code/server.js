@@ -16,7 +16,8 @@ var express = require("express"),
     subdomain = require("express-subdomain"),
     cookieParser = require("cookie-parser"),
     compression = require("compression"),
-    helmet = require("helmet");
+    helmet = require("helmet"),
+    cors = require("cors");
 
 // Local code
 var classes = require("./classes");
@@ -70,6 +71,7 @@ app.use(helmet.contentSecurityPolicy({ // CSP
     .use(helmet.hidePoweredBy()) // Removes X-Powered-By header
     .use(helmet.ieNoOpen())
     .use(helmet.noSniff())
+    .use(cors({ origin: [ classes.fulldomains.CDN() ] }))
     .use(compression());
 
 app.use(function(req, res, next) {

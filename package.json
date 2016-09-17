@@ -19,7 +19,7 @@
     "stop": "naught stop server/naught.ipc",
     "stop-dev": "naught stop server/dev/naught.ipc",
     "test": "echo Use \\\"npm run tests\\\" instead && npm run tests",
-    "tests": "mocha code/tests && nsp check --output checkstyle && retire"
+    "tests": "mocha code/tests && nsp check --output checkstyle && retire && standard"
   },
   "dependencies": {
     "chai": "^3.5.0",
@@ -37,5 +37,8 @@
     "nsp": "^2.6.1",
     "retire": "^1.2.9",
     "supertest": "^2.0.0"
+  },
+  "devDependencies": {
+    "standard": "^8.1.0"
   }
 }

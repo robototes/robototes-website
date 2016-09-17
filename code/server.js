@@ -38,24 +38,27 @@ app.use(helmet.contentSecurityPolicy({ // CSP
             defaultSrc: [ "'self'" ],
             scriptSrc: [
                 "'self'",
-                classes.constants.subdomains.CDN + "." + classes.constants.domain + ":" + app.get("port"),
+                classes.fulldomains.CDN(),
                 "cdnjs.cloudflare.com",
                 "'unsafe-eval'",
                 "'unsafe-inline'"
             ],
             styleSrc: [
                 "'self'",
-                classes.constants.subdomains.CDN + "." + classes.constants.domain + ":" + app.get("port"),
+                classes.fulldomains.CDN(),
                 "cdnjs.cloudflare.com",
                 "fonts.googleapis.com",
                 "'unsafe-inline'"
             ],
             fontSrc: [
+                "'self'",
+                classes.fulldomains.CDN(),
                 "cdnjs.cloudflare.com",
                 "fonts.gstatic.com"
             ],
             imgSrc: [
                 "'self'",
+                classes.fulldomains.CDN(),
                 "cdnjs.cloudflare.com"
             ],
             sandbox: [ "allow-forms", "allow-scripts", "allow-same-origin" ],

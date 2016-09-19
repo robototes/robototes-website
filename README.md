@@ -11,27 +11,27 @@ The official Node.js website for the Robototes 2412 team.
 
 Before downloading the server code, ensure your server environment is prepared by installing the following
 
-* ```node.js``` version 6.5.0
-* ```npm``` version 3.10.6 (installed with node)
-* ```nvm``` version 0.31.0 (installed with node)
+* `node.js` version 6.5.0
+* `npm` version 3.10.6 (installed with node)
+* `nvm` version 0.31.0 (installed with node)
 
 ##### Preparing the server
 
 After the above dependencies are installed, download the server code and test it
 
-* ```git clone -b production git@github.com:robototes/robototes-website.git --depth 1``` to clone the latest production release
-* ```cd robototes-website``` to enter the server code
-* ```npm install``` to install all dependencies as described in ```package.json```
-* [```mocha code/tests/module_tests```](#runningtests) to ensure the modules are installed and up to date
-* ```npm install``` the missing or out of date modules as described by failed tests
+* `git clone -b production git@github.com:robototes/robototes-website.git --depth 1` to clone the latest production release
+* `cd robototes-website` to enter the server code
+* `npm install` to install all dependencies as described in `package.json`
+* [`mocha code/tests/module_tests`](#runningtests) to ensure the modules are installed and up to date
+* `npm install` the missing or out of date modules as described by failed tests
 
-(If the ```mocha``` command is not found, run ```npm install --dev```)
+(If the `mocha` command is not found, run `npm install --dev`)
 
 A list of modules that must be included can be found below.
 
 ##### Required node modules
 
-These modules should be auto-installed by ```npm install```, but make sure to run [```mocha code/tests/module_tests```](#runningtests)
+These modules should be auto-installed by `npm install`, but make sure to run [`mocha code/tests/module_tests`](#runningtests)
 and check that all the modules are there and match the below table. All of these modules are readily available on [npm](//www.npmjs.com)
 
 | Library                                                               | License                                                           | Reason                                                                                                        |
@@ -78,7 +78,7 @@ npm run start-server // Runs the server on 8 workers
 ```
 
 This will run several automated tests, and start the server if they succeed. The server uses [naught](//www.npmjs.com/package/naught) for zero-downtime deployment, and as such
-the server runs on a daemon and logs are not printed to the console. Instead, you can find ```stdout.log``` and ```stderr.log``` files inside the ```server``` and ```server/dev```
+the server runs on a daemon and logs are not printed to the console. Instead, you can find `stdout.log` and `stderr.log` files inside the `server` and `server/dev`
 folders, depending on how you are running the server.
 
 ##### Development mode
@@ -94,9 +94,9 @@ in all major browsers ([Internet Explorer/Edge](//www.microsoft.com/en-us/downlo
 to production, if you have made any changes to client side files.
 
 The production server runs on port 8080, while the development server runs on 8081 to allow both environments to run at the same time. When running the server, consider a few best practices:
-* DO NOT run the server as ```root```, this is a serious security risk that could allow for attacks with root privileges
+* DO NOT run the server as `root`, this is a serious security risk that could allow for attacks with root privileges
 * DO follow this procedure for starting the server:
-    * Run [```npm run tests```](#runningtests) and ensure ALL tests pass
+    * Run [`npm run tests`](#runningtests) and ensure ALL tests pass
     * Run the server in development mode
     * Run client side tests and ensure ALL tests pass
     * [Shut down](#specialcommands) the development server
@@ -111,17 +111,17 @@ npm run tests
 ```
 
 We use [mocha](//www.npmjs.com/package/mocha) and [chai](//www.npmjs.com/package/chai) to unit test on both the server and the client. At the moment,
-the above code runs all server tests in ```code/tests``` and prints the results. This command is also run by [```npm run start-server```](#startserver) and will only start the
+the above code runs all server tests in `code/tests` and prints the results. This command is also run by [`npm run start-server`](#startserver) and will only start the
 server if all tests pass.
 
-The following tests are available (to run them by themselves, use ```mocha code/tests/{test}```):
-* ```module_tests``` Makes sure all modules are installed and up to date (may take a while to finish)
-* ```server_tests``` Ensures the server responds correctly to predictable input
+The following tests are available (to run them by themselves, use `mocha code/tests/{test}`):
+* `module_tests` Makes sure all modules are installed and up to date (may take a while to finish)
+* `server_tests` Ensures the server responds correctly to predictable input
 
 ##### Client side
 
-As long as the server is run in development mode, our unit testing suite will be included in the client. The tests are automatically fetched from ```views/js/tests``` and can
-be run by clicking the "Run tests" button fixed to the bottom of the page or the Run again button on the shown modal.
+As long as the server is run in development mode, our unit testing suite will be included in the client. The tests are automatically fetched from `views/js/tests` and can
+be run by clicking the `Run tests` button fixed to the bottom of the page or the `Run again` button on the shown modal.
 
 ### <a id="specialcommands">Special commands</a>
 
@@ -134,7 +134,7 @@ npm run status // Displays the current server status
 npm run stop // Shuts all workers down
 ```
 
-All commands except [```tests```](#runningtests) have a development counterpart that can be run by adding ```-dev``` to the end of the command. Ex.:
+All commands except [`tests`](#runningtests) have a development counterpart that can be run by adding `-dev` to the end of the command. Ex.:
 
 ```javascript
 npm run stop-dev // Stops the development server
@@ -142,8 +142,8 @@ npm run stop-dev // Stops the development server
 
 In addition to being a different server instance from the production server, which allows for live testing, there are a few command differences:
 
-* ```npm run start-server-dev```([starting the server](#startserver)) ignores all tests and starts the server on only 2 workers as opposed to 8
-* ```npm run deploy-dev``` ignores all tests and deploys to running threads
+* `npm run start-server-dev`([starting the server](#startserver)) ignores all tests and starts the server on only 2 workers as opposed to 8
+* `npm run deploy-dev` ignores all tests and deploys to running threads
 
 ### Best practices
 
@@ -153,10 +153,10 @@ We follow some rules to make code consistent, future proof, and easy to debug.
 
 It is recommended to regularly maintain the server, following this checklist:
 
-* Keep ```node```, ```npm```, and ```nvm``` updated. After updating to the latest stable version (DO NOT use unstable versions in production), [run all test](#runningtests), and then
+* Keep `node`, `npm`, and `nvm` updated. After updating to the latest stable version (DO NOT use unstable versions in production), [run all tests](#runningtests), and then
 redeploy
 * Keep all node modules updated. As modules are deprecated, update to their latest stable release and [run relevant tests](#runningtests), modifying code as necessary
-* Run [```npm run tests```](#runningtests) even if no changes are made, simply to ensure the server is stable
+* Run [`npm run tests`](#runningtests) even if no changes are made, simply to ensure the server is stable
 * Review server logs for errors
 
 ##### Development best practices
@@ -166,16 +166,16 @@ redeploy
 * Triage and assign bugs
 * Follow the Test-Driven-Development workflow:
     * Create a git branch with a descriptive name for what you are planning on creating:
-    ```git checkout -b branch-name-goes-here```
+    `git checkout -b branch-name-goes-here`
         The branch name should be be named like this: reason/detail
         There are 4 reasons that you can use:
-        * ```wip``` Work in progress. This is generally a large feature and is likely to take a long time, so name it appropriately, like
-            ```wip/loginsystem```
-        * ```bug``` Bug fix. Generally this is a small feature with an issue open on Github, so use ```bug/issue_id_number_here```
-        * ```feat``` A minor feature. Often times this is also a feature request on Github, so use ```feat/issue_id_number_here```.
-            Alernatively, if it is not filed as a feature request, just use a descriptor like ```feat/reallyawesomefeature```
-        * ```junk``` An experimental branch. These should generally not be merged, and are for experimentation that can be implemented
-            correctly later on a ```feat``` or ```wip``` branch
+        * `wip` Work in progress. This is generally a large feature and is likely to take a long time, so name it appropriately, like
+            `wip/loginsystem`
+        * `bug` Bug fix. Generally this is a small feature with an issue open on Github, so use `bug/issue_id_number_here`
+        * `feat` A minor feature. Often times this is also a feature request on Github, so use `feat/issue_id_number_here`.
+            Alernatively, if it is not filed as a feature request, just use a descriptor like `feat/reallyawesomefeature`
+        * `junk` An experimental branch. These should generally not be merged, and are for experimentation that can be implemented
+            correctly later on a `feat` or `wip` branch
     * Write tests for the results you want from your code (as many as needed, for as many situations as possible, no matter how unlikely)
     * Write the actual code (with comments)
     * Make sure the code passes the tests
@@ -189,7 +189,7 @@ redeploy
         git branch -d branch-name-goes-here
         git push origin master
     ```
-    * Once a feature is stable and production-ready, triage it and push it to the git repo on the ```production``` branch
+    * Once a feature is stable and production-ready, triage it and push it to the git repo on the `production` branch
     * Our [Travis CI](//travis-ci.org/robototes/robototes-website/) will build and test the project based off the settings in .travis.yml
     * Now setup the server with the updates by pulling from the repository or using a code deployment tool
     * And last of all, [reward yourself](//www.rinkworks.com/stupid/)

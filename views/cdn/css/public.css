@@ -15,8 +15,7 @@ body {
     padding-right: calc(100% / 24);
 }
 #logo {
-    font-family: "Bank Gothic", bold, sans-serif;
-    font-weight: bold;
+    font-family: "Orbitron", bold, sans-serif;
     color: red;
-    font-size: 20px;
+    font-size: 25px;
 }

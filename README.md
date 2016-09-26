@@ -11,8 +11,8 @@ The official Node.js website for the Robototes 2412 team.
 
 Before downloading the server code, ensure your server environment is prepared by installing the following
 
-* `node.js` version 6.5.0
-* `npm` version 3.10.6 (installed with node)
+* `node.js` version 6.6.0
+* `npm` version 3.10.3 (installed with node)
 * `nvm` version 0.31.0 (installed with node)
 
 ##### Preparing the server

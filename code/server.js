@@ -28,9 +28,10 @@ expressHelpers(app);
 
 // Sets globally accessible variables
 app.set("env", process.env.NODE_ENV || "development") // The current environment (development|production)
-    .set("views", path.join(__dirname, "/../views"))
-    .set("view engine", "ejs")
-    .set("port", classes.constants.ports[app.get("env").toUpperCase()] || process.env.PORT || 8080); // Gets the port to run on
+    .set("views", path.join(__dirname, "/../views")) // Sets the views
+    .set("subdomain offset", process.env.SUBDOMAIN_OFFSET || 2) // Parses subdomains
+    .set("view engine", "ejs") // Sets templating to use EJS
+    .set("port", process.env.PORT || 8080); // Gets the port to run on
 app.locals.classes = classes;
 
 // Sets up express middleware
@@ -39,27 +40,27 @@ app.use(helmet.contentSecurityPolicy({ // CSP
             defaultSrc: [ "'self'" ],
             scriptSrc: [
                 "'self'",
-                classes.fulldomains.CDN(),
+                classes.constants.subdomains.full("CDN"),
                 "cdnjs.cloudflare.com",
                 "'unsafe-eval'",
                 "'unsafe-inline'"
             ],
             styleSrc: [
                 "'self'",
-                classes.fulldomains.CDN(),
+                classes.constants.subdomains.full("CDN"),
                 "cdnjs.cloudflare.com",
                 "fonts.googleapis.com",
                 "'unsafe-inline'"
             ],
             fontSrc: [
                 "'self'",
-                classes.fulldomains.CDN(),
+                classes.constants.subdomains.full("CDN"),
                 "cdnjs.cloudflare.com",
                 "fonts.gstatic.com"
             ],
             imgSrc: [
                 "'self'",
-                classes.fulldomains.CDN(),
+                classes.constants.subdomains.full("CDN"),
                 "cdnjs.cloudflare.com"
             ],
             sandbox: [ "allow-forms", "allow-scripts", "allow-same-origin" ],
@@ -70,15 +71,14 @@ app.use(helmet.contentSecurityPolicy({ // CSP
     .use(helmet.frameguard({ action: "deny" })) // Prevents framing
     .use(helmet.hidePoweredBy()) // Removes X-Powered-By header
     .use(helmet.ieNoOpen())
-    .use(helmet.noSniff())
-    .use(cors({ origin: [ classes.fulldomains.CDN() ] }))
-    .use(compression());
+    .use(helmet.noSniff()) // Prevents MIME type sniffing
+    .use(cors({ origin: [ classes.constants.subdomains.full("CDN") ] })) // Enables CORS
+    .use(compression()); // Compresses data for speed
 
 app.use(function(req, res, next) {
         // Sends an error page to the client
         res.errorPage = function(code) {
-            this.status(code);
-            this.render(path.join(__dirname, "/../views/pages/error.ejs"), { code: code });
+            this.status(code).render(path.join(__dirname, "/../views/pages/error.ejs"), { code: code });
             this.end();
         };
         
@@ -88,12 +88,11 @@ app.use(function(req, res, next) {
     })
     .use(subdomain(classes.constants.subdomains.CDN, require("./routes/cdn-routes")))
     .use(subdomain(classes.constants.subdomains.PUBLIC, require("./routes/public-routes")))
-    .use(subdomain(classes.constants.subdomains.NONE, function(req, res, next) { // If no subdomain specified
-        if(!res.headersSent)
-            res.redirect("//" + classes.constants.subdomains.PUBLIC + "." + classes.constants.domain);
-    }))
-    .use(function(req, res) { // If request not routed
-        res.errorPage(404);
+    .use(function(req, res, next) { // If no subdomain specified
+        if(!req.subdomains.length)
+            res.redirect("//" + classes.constants.subdomains.full("PUBLIC"));
+        else
+            res.errorPage(404);
     })
     .use(function(err, req, res, next) { // If error occurred
         console.error(err);

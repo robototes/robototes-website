@@ -24,6 +24,7 @@ After the above dependencies are installed, download the server code and test it
 * `npm install` to install all dependencies as described in `package.json`
 * [`mocha code/tests/module_tests`](#runningtests) to ensure the modules are installed and up to date
 * `npm install` the missing or out of date modules as described by failed tests
+* Modify settings in `code/classes.js`
 
 (If the `mocha` command is not found, run `npm install --dev`)
 

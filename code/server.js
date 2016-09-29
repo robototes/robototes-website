@@ -33,15 +33,19 @@ app.set("env", process.env.NODE_ENV || "development") // The current environment
     .set("view engine", "ejs") // Sets templating to use EJS
     .set("port", process.env.PORT || 8080); // Gets the port to run on
 app.locals.classes = classes;
+app.locals.app = app;
+app.locals.util = require("util")
 
 // Sets up express middleware
 app.use(helmet.contentSecurityPolicy({ // CSP
         directives: {
             defaultSrc: [ "'self'" ],
+            allow: [ "'self'" ], // For earlier versions of Firefox, same as defaultSrc
             scriptSrc: [
                 "'self'",
                 classes.constants.subdomains.full("CDN"),
                 "cdnjs.cloudflare.com",
+                "www.google-analytics.com",
                 "'unsafe-eval'",
                 "'unsafe-inline'"
             ],
@@ -61,8 +65,11 @@ app.use(helmet.contentSecurityPolicy({ // CSP
             imgSrc: [
                 "'self'",
                 classes.constants.subdomains.full("CDN"),
+                "www.google-analytics.com",
                 "cdnjs.cloudflare.com"
             ],
+            childSrc: [],
+            frameSrc: [], // Same as childSrc
             sandbox: [ "allow-forms", "allow-scripts", "allow-same-origin" ],
             objectSrc: [],
         }
@@ -85,6 +92,9 @@ app.use(function(req, res, next) {
         res.locals.req = req;
         res.locals.res = res;
         next();
+    })
+    .use("/sitemap.xml", function(req, res) {
+        res.sendFile(path.join(__dirname, "/../views/sitemap.xml"));
     })
     .use(subdomain(classes.constants.subdomains.CDN, require("./routes/cdn-routes")))
     .use(subdomain(classes.constants.subdomains.PUBLIC, require("./routes/public-routes")))

@@ -16,6 +16,17 @@ var express = require("express"),
 
 // Public routing code
 module.exports = express.Router()
+    .use("/robots.txt", function(req, res) {
+        var robots = "";
+        [
+            { key: "User-Agent", value: "*" },
+            { key: "Allow", value: "/" },
+            { key: "Sitemap", value: req.app.locals.classes.constants.domain + "/sitemap.xml" }
+        ].forEach(function(current) {
+            robots += (current.line || current.key) + ": " + current.value + "\n";
+        });
+        res.send(robots);
+    })
     .get("/", function(req, res, next) {
         res.render(path.join(__dirname, "/../../views/pages/index.ejs"));
         res.end();

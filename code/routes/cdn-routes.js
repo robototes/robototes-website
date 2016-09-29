@@ -26,6 +26,16 @@ if(process.env.NODE_ENV === "development") delete options.maxAge;
 
 // Simple CDN static and dynamic routing
 module.exports = express.Router()
+    .use("/robots.txt", function(req, res) {
+        var robots = "";
+        [
+            { key: "User-Agent", value: "*" },
+            { key: "Disallow", value: "/" }
+        ].forEach(function(current) {
+            robots += (current.line || current.key) + ": " + current.value + "\n";
+        });
+        res.send(robots);
+    })
     .use(function(req, res, next) {
         if(req.app.get("env") == "production") minify();
         next();

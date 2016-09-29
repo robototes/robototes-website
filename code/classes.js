@@ -9,21 +9,11 @@ via any medium without the express permission of Robotics Leadership is strictly
 module.exports = {
     constants: {
         subdomains: {
-            STATUS: "status.robototes-website-dannytech",
-            PUBLIC: "www.robototes-website-dannytech",
-            CDN: "cdn.robototes-website-dannytech",
-            NONE: "robototes-website-dannytech"
+            STATUS: "status",
+            PUBLIC: "www",
+            CDN: "cdn",
+            full: function(sub) { return module.exports.constants.subdomains[sub] + "." + module.exports.constants.domain; }
         },
-        ports: {
-            PRODUCTION: 8080,
-            DEVELOPMENT: 8081
-        },
-        domain: "c9users.io"
-    },
-    fulldomains: {
-        STATUS: function() { return module.exports.constants.subdomains.STATUS + "." + module.exports.constants.domain + ":" + module.exports.constants.ports[process.env.NODE_ENV.toUpperCase()] },
-        PUBLIC: function() { return module.exports.constants.subdomains.PUBLIC + "." + module.exports.constants.domain + ":" + module.exports.constants.ports[process.env.NODE_ENV.toUpperCase()] },
-        CDN: function() { return module.exports.constants.subdomains.CDN + "." + module.exports.constants.domain + ":" + module.exports.constants.ports[process.env.NODE_ENV.toUpperCase()] },
-        NONE: function() { return module.exports.constants.subdomains.NONE + "." + module.exports.constants.domain + ":" + module.exports.constants.ports[process.env.NODE_ENV.toUpperCase()] }
+        domain: process.env.DOMAIN || "openpass.pw"
     }
 };

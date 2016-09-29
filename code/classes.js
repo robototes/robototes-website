@@ -12,8 +12,13 @@ module.exports = {
             STATUS: "status",
             PUBLIC: "www",
             CDN: "cdn",
-            full: function(sub) { return module.exports.constants.subdomains[sub] + "." + module.exports.constants.domain; }
+            full: function(sub) { return module.exports.constants.subdomains[sub.toUpperCase()] + "." + module.exports.constants.domain; }
         },
-        domain: process.env.DOMAIN || "openpass.pw"
+        domain: process.env.DOMAIN || "c9users.io",
+        api_keys: {
+            google: {
+                analytics: "UA-84502206-1"
+            }
+        }
     }
 };

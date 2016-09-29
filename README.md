@@ -25,6 +25,11 @@ After the above dependencies are installed, download the server code and test it
 * [`mocha code/tests/module_tests`](#runningtests) to ensure the modules are installed and up to date
 * `npm install` the missing or out of date modules as described by failed tests
 * Modify settings in `code/classes.js`
+* `export` (in bash) the following settings:
+    - `DOMAIN` (the domain the server serves on, default robototes.com)
+    - `PORT` (the port for the server to run on, default 8080)
+    - `NODE_ENV` (the node environment: production|development)
+    - `SUBDOMAIN_OFFSET` (optional, the offset to subdomains, default 2)
 
 (If the `mocha` command is not found, run `npm install --dev`)
 

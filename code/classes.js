@@ -14,7 +14,7 @@ module.exports = {
             CDN: "cdn",
             full: function(sub) { return module.exports.constants.subdomains[sub.toUpperCase()] + "." + module.exports.constants.domain; }
         },
-        domain: process.env.DOMAIN || "c9users.io",
+        domain: process.env.DOMAIN || "robototes.com",
         api_keys: {
             google: {
                 analytics: "UA-84502206-1"

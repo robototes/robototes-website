@@ -43,3 +43,7 @@ window.cookieconsent_options = {
     "link": "\" data-toggle=\"modal\" data-target=\"#cookieinfo",
     "theme": "light-floating"
 };
+
+$(document).ready(function() {
+    $("[data-toggle=tooltip]").tooltip();
+});

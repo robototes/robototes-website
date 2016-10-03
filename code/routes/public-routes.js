@@ -27,8 +27,12 @@ module.exports = express.Router()
         });
         res.send(robots);
     })
-    .get("/", function(req, res, next) {
+    .get("/", function(req, res) {
         res.render(path.join(__dirname, "/../../views/pages/index.ejs"));
+        res.end();
+    })
+    .get("/resources", function(req, res) {
+        res.render(path.join(__dirname, "/../../views/pages/resources.ejs"));
         res.end();
     })
     .get("/rss", serveStatic(path.join(__dirname, "/../../views/rss"), { "Content-Type": "text/rss" }));

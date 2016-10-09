@@ -21,11 +21,5 @@ pagesApp.controller("errorController", [
     "$controller",
     function($scope, $controller) {
         angular.extend(this, $controller("commonController", { $scope: $scope }));
-        
-        var errorMessages = {
-            404: "Uh oh, we lost the robot!",
-            500: ""
-        };
-        // $scope.errorMessage;
     }
 ]);

@@ -7,11 +7,11 @@ Any copying and/or distributing and/or use in commercial or non-commercial envir
 via any medium without the express permission of Robotics Leadership is strictly prohibited
  */
 var commonApp = angular.module("robototes-common", [
-    "ui.bootstrap"
-]);
+        "ui.bootstrap"
+    ]);
 commonApp.controller("commonController", [
     "$scope",
     function($scope) {
-    
+        
     }
 ]);

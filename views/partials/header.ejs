@@ -19,11 +19,8 @@ via any medium without the express permission of Robotics Leadership is strictly
                 </a>
                 <%- link_to("\/\/ROBOTOTES", "/", { id: "logo", class: "navbar-brand" }); %>
                 <div class="visible-xs btn-group btn-group-justfified text-center pull-right">
-                    
-                </div>
-                <ul class="visible-xs btn-group btn-group-justfified text-center pull-right">
                     <% include ./social.ejs %>
-                </ul>
+                </div>
             </div>
             <div class="collapse navbar-collapse" id="navlinks">
                 <ul class="nav navbar-nav">
@@ -31,9 +28,9 @@ via any medium without the express permission of Robotics Leadership is strictly
                     <li class="<%= current.path == "/blog" ? "active" : ""; %>"><%- link_to("Blog", "/blog"); %></li>
                     <li class="<%= current.path == "/resources" ? "active" : ""; %>"><%- link_to("Resources", "/resources"); %></li>
                 </ul>
-                <ul class="nav navbar-nav navbar-right">
+                <div class="nav navbar-nav navbar-right">
                     <% include ./social.ejs %>
-                </ul>
+                </div>
             </div>
         </div>
     </nav>

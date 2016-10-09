@@ -15,13 +15,8 @@ partialsApp.controller("footerController", [
     function($scope, $controller) {
         angular.extend(this, $controller("commonController", { $scope: $scope }));
         
-<<<<<<< HEAD
         // Opt-out function
         $scope.analytics.optout = function() {
-=======
-        // Google analytics opt-out
-        $scope.optout = function() {
->>>>>>> wip/homepage
             console.log("u");
             window["ga-disable-" + ga.q[0][1]] = true;
         };

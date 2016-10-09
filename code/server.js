@@ -19,6 +19,9 @@ var express = require("express"),
     helmet = require("helmet"),
     cors = require("cors");
 
+//Config file
+var configs = require("../configs.json");
+
 // Local code
 var classes = require("./classes");
 
@@ -29,12 +32,13 @@ expressHelpers(app);
 // Sets globally accessible variables
 app.set("env", process.env.NODE_ENV || "development") // The current environment (development|production)
     .set("views", path.join(__dirname, "/../views")) // Sets the views
-    .set("subdomain offset", process.env.SUBDOMAIN_OFFSET || 2) // Parses subdomains
+    .set("subdomain offset", configs.SUBDOMAIN_OFFSET || 2) // Parses subdomains
     .set("view engine", "ejs") // Sets templating to use EJS
     .set("port", process.env.PORT || 8080); // Gets the port to run on
 app.locals.classes = classes;
 app.locals.app = app;
-app.locals.util = require("util")
+app.locals.util = require("util");
+app.locals.configs = configs;
 
 // Sets up express middleware
 app.use(helmet.contentSecurityPolicy({ // CSP

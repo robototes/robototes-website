@@ -27,9 +27,9 @@ via any medium without the express permission of Robotics Leadership is strictly
             </div>
             <div class="collapse navbar-collapse" id="navlinks">
                 <ul class="nav navbar-nav">
-                    <li class="active"><%- link_to("About" + tag("span", { class: "sr-only" }) + "(current)" + end_tag("span"), "/about"); %></li>
-                    <li><%- link_to("Blog", "/blog"); %></li>
-                    <li><%- link_to("Resources", "/resources"); %></li>
+                    <li class="<%= current.path == "/about" ? "active" : ""; %>"><%- link_to("About" + tag("span", { class: "sr-only" }) + "(current)" + end_tag("span"), "/about"); %></li>
+                    <li class="<%= current.path == "/blog" ? "active" : ""; %>"><%- link_to("Blog", "/blog"); %></li>
+                    <li class="<%= current.path == "/resources" ? "active" : ""; %>"><%- link_to("Resources", "/resources"); %></li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
                     <% include ./social.ejs %>

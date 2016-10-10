@@ -7,7 +7,7 @@ Any copying and/or distributing and/or use in commercial or non-commercial envir
 via any medium without the express permission of Robotics Leadership is strictly prohibited
  */
 // System imports
-var http = require("http"),
+var url = require("url"),
     path = require("path");
 
 // External libraries
@@ -93,6 +93,7 @@ app.use(function(req, res, next) {
             this.end();
         };
         
+        res.locals.current = url.parse((req.connection.encrypted ? "https" : "http") + "://" + req.headers.host + req.originalUrl, true);
         res.locals.req = req;
         res.locals.res = res;
         next();

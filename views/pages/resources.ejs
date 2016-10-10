@@ -21,18 +21,54 @@ via any medium without the express permission of Robotics Leadership is strictly
             <div id="socialmedia">
                 <h2>Hopefully updated social media</h2>
                 <ul>
-                    <li><a href="https://www.youtube.com/channel/UCGCRO_t4RDHoEnl4MQ5A4hg">Youtube Channel</a></li>
-                    <li><a href="https://www.facebook.com/Robototes">Old Facebook page</a></li>
+                    <li><a href="https://www.youtube.com/channel/UCGCRO_t4RDHoEnl4MQ5A4hg">Youtube Channel<i class="fa fa-external-link"></i></a></li>
+                    <li><a href="https://www.facebook.com/Robototes">Facebook page<i class="fa fa-external-link"></i></a></li>
                 </ul>
             </div>
             <div id="externallinks">
                 <h2>External Links:</h2>
                 <ul>
-                    <li><a href="http://www.chiefdelphi.com/forums/portal.php" target="_blank">ChiefDelphi</a></li>
-                    <li><a href="http://www.thebluealliance.com/team/2412">TheBlueAlliance - Competition data, videos, etc.</a></li>
-                    <li><a href="http://www.usfirst.org/">FIRST</a></li>
-                    <li><a href="http://firstwa.org">FIRSTWA</a></li>
+                    <li><a href="http://www.chiefdelphi.com/forums/portal.php" target="_blank">ChiefDelphi<i class="fa fa-external-link"></i></a></li>
+                    <li><a href="http://www.thebluealliance.com/team/2412" target="_blank">TheBlueAlliance - Competition data, videos, etc.<i class="fa fa-external-link"></i></a></li>
+                    <li><a href="http://www.usfirst.org/">FIRST<i class="fa fa-external-link"></i></a></li>
+                    <li><a href="http://firstwa.org">FIRSTWA<i class="fa fa-external-link"></i></a></li>
                 </ul>
+            </div>
+            <div id="contactus">
+                <h2>Contact us</h2>
+                <h4>Robotics Leadership</h4>
+                <div class="container m-md-h-0 text-left">
+                    <div class="row">
+                        <% var getImgUrl = function(imgname) {
+                            return "//" + classes.constants.subdomains.full("CDN") + "/media/email_pictures/" + imgname + ".png";
+                        }
+                        %>
+                        <div class="col-sm-6 col-xs-12">
+                            <img src="<%= getImgUrl("team_captain");%>"></img>
+                        </div>
+                        <div class="col-sm-6 col-xs-12">
+                            <img src="<%= getImgUrl("outreach_hr");%>"></img>
+                        </div>
+                        <div class="col-sm-6 col-xs-12">
+                            <img src="<%= getImgUrl("robot_lead");%>"></img>
+                        </div>
+                        <div class="col-sm-6 col-xs-12">
+                            <img src="<%= getImgUrl("logistics");%>"></img>
+                        </div>
+                        <div class="col-sm-6 col-xs-12">
+                            <img src="<%= getImgUrl("scouting");%>"></img>
+                        </div>
+                        <div class="col-sm-6 col-xs-12">
+                            <img src="<%= getImgUrl("digital_outreach");%>" data-toggle="tooltip" data-placement="bottom" data-original-title="The cool one"></img>
+                        </div>
+                    </div>
+                </div>
+                <h4 data-toggle="tooltip" data-placement="bottom" data-original-title="takbs and owcra, the cool ones">Website Creators:</h4>
+                <div id="container">
+                    <div class="row">
+                        
+                    </div>
+                </div>
             </div>
         </section>
         <% include ../partials/footer.ejs %>

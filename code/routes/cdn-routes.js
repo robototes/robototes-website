@@ -22,7 +22,6 @@ var options = {
     index: false,
     maxAge: 1000 * 60 * 60 * 24 * 7 // One week
 };
-if(process.env.NODE_ENV === "development") delete options.maxAge;
 
 // Simple CDN static and dynamic routing
 module.exports = express.Router()

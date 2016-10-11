@@ -44,7 +44,6 @@ app.locals.configs = configs;
 app.use(helmet.contentSecurityPolicy({ // CSP
         directives: {
             defaultSrc: [ "'self'" ],
-            allow: [ "'self'" ], // For earlier versions of Firefox, same as defaultSrc
             scriptSrc: [
                 "'self'",
                 classes.constants.subdomains.full("CDN"),

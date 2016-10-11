@@ -1,5 +1,6 @@
 {
     "DOMAIN": "robototes-website-dannytech.c9users.io",
     "SUBDOMAIN_OFFSET": 3,
-    "NODE_ENV": "production"
+    "NODE_ENV": "production",
+    "G_TRACKING_ID": "UA-84502206-1"
 }

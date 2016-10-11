@@ -19,7 +19,7 @@ module.exports = {
         domain: configs.DOMAIN || "robototes.com",
         api_keys: {
             google: {
-                analytics: "UA-84502206-1"
+                analytics: configs.G_TRACKING_ID
             }
         }
     }

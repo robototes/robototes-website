@@ -20,10 +20,15 @@ var express = require("express"),
     cors = require("cors");
 
 // Config file
-var configs = require("../configs.json");
+var configs;
+try {
+    configs = require("../configs.json");
+} catch(err) {
+    configs = {};
+}
 
 // Local code
-var classes = require("./classes");
+var classes = require("./classes")(configs);
 
 // Creates a new router
 var app = module.exports = express();
@@ -38,7 +43,6 @@ app.set("env", configs.ENV || process.env.NODE_ENV || "development") // The curr
 app.locals.classes = classes;
 app.locals.app = app;
 app.locals.util = require("util");
-app.locals.configs = configs;
 
 // Sets up express middleware
 app.use(helmet.contentSecurityPolicy({ // CSP

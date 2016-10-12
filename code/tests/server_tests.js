@@ -16,8 +16,7 @@ var expect = require("chai").expect, // Assertion lib
     request = require("supertest"); // Routing testing
 
 // Local code
-var classes = require("../classes"), // Constants and global data
-    app = require("../server"); // Routing
+var app = require("../server"); // Routing
 
 var server = http.Server(app); // Creates an HTTP server
 

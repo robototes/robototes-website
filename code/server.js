@@ -34,7 +34,7 @@ app.set("env", configs.NODE_ENV || process.env.NODE_ENV || "development") // The
     .set("views", path.join(__dirname, "/../views")) // Sets the views
     .set("subdomain offset", configs.SUBDOMAIN_OFFSET || process.env.SUBDOMAIN_OFFSET || 2) // Parses subdomains
     .set("view engine", "ejs") // Sets templating to use EJS
-    .set("port", process.env.PORT || 8080); // Gets the port to run on
+    .set("port", configs.PORT || process.env.PORT || 8080); // Gets the port to run on
 app.locals.classes = classes;
 app.locals.app = app;
 app.locals.util = require("util");

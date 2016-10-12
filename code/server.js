@@ -19,7 +19,7 @@ var express = require("express"),
     helmet = require("helmet"),
     cors = require("cors");
 
-//Config file
+// Config file
 var configs = require("../configs.json");
 
 // Local code
@@ -30,7 +30,7 @@ var app = module.exports = express();
 expressHelpers(app);
 
 // Sets globally accessible variables
-app.set("env", configs.NODE_ENV || process.env.NODE_ENV || "development") // The current environment (development|production)
+app.set("env", configs.ENV || process.env.NODE_ENV || "development") // The current environment (development|production)
     .set("views", path.join(__dirname, "/../views")) // Sets the views
     .set("subdomain offset", configs.SUBDOMAIN_OFFSET || process.env.SUBDOMAIN_OFFSET || 2) // Parses subdomains
     .set("view engine", "ejs") // Sets templating to use EJS

@@ -26,11 +26,12 @@ After the above dependencies are installed, download the server code and test it
 * [`mocha code/tests/module_tests`](#runningtests) to ensure the modules are installed and up to date
 * `npm install` the missing or out of date modules as described by failed tests
 * Modify settings in `code/classes.js`
-* `export` (in bash) the following settings:
+* Add the following settings to a file called `configs.json` in the root directory of the repository or `export` them in bash:
     - `DOMAIN` (the domain the server serves on, default robototes.com)
-    - `PORT` (the port for the server to run on, default 8080)
-    - `NODE_ENV` (the node environment: production|development)
+    - `ENV` or `NODE_ENV` in bash (the node environment: production|development)
     - `SUBDOMAIN_OFFSET` (optional, the offset to subdomains, default 2)
+    - `G_TRACKING_ID` (optional, the Google Analytics tracking ID)
+    - `PORT` (the port for the server to run on, default 8080)
 
 (If the `mocha` command is not found, run `npm install --dev`)
 
@@ -80,6 +81,8 @@ After running the commands and installing the required modules, follow the instr
 
 ##### Production mode
 
+Change ENV in the `configs.json` file or set the NODE_ENV environment variable to "production"
+
 ```javascript
 npm run start-server // Runs the server on 8 workers
 ```
@@ -90,11 +93,11 @@ folders, depending on how you are running the server.
 
 ##### Development mode
 
+Change ENV in the `configs.json` file or set the NODE_ENV environment variable to "development"
+
 ```javascript
-npm run start-server-dev // Runs the server in development mode
+npm run start-server-notest // Runs the server, ignoring tests
 ```
-
-
 
 It is recommended that you run the server in developer mode before running it in production, to ensure the code is stable. It is also recommended that you run client-side unit tests
 in all major browsers ([Internet Explorer/Edge](//www.microsoft.com/en-us/download/internet-explorer.aspx), [Chrome](//www.google.com/chrome/browser/desktop/), and [Firefox](//mozilla.org)) before deploying
@@ -141,16 +144,12 @@ npm run status // Displays the current server status
 npm run stop // Shuts all workers down
 ```
 
-All commands except [`tests`](#runningtests) have a development counterpart that can be run by adding `-dev` to the end of the command. Ex.:
-
-```javascript
-npm run stop-dev // Stops the development server
-```
+Both the `start-server` and `deploy` commands have a simpler counterpart, which skips tests, and can be run by adding `-notest` to the end of the command
 
 In addition to being a different server instance from the production server, which allows for live testing, there are a few command differences:
 
-* `npm run start-server-dev`([starting the server](#startserver)) ignores all tests and starts the server on only 2 workers as opposed to 8
-* `npm run deploy-dev` ignores all tests and deploys to running threads
+* `npm run start-server-notest`([starting the server](#startserver)) ignores all tests
+* `npm run deploy-notest` ignores all tests and deploys to running threads
 
 ### Best practices
 

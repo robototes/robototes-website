@@ -1,7 +1,14 @@
 language: node_js
 node_js:
-  - "node"
-  - "6.6.0"
+- node
+- 6
+- 6.3
+- 6.4
+- 6.5
+- 6.6
+- 6.7
+- 6.8
+- 6.9
 git:
     depth: 1
 os: "linux"

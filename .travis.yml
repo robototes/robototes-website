@@ -10,13 +10,16 @@ node_js:
 - 6.8
 - 6.9
 git:
-    depth: 1
-os: "linux"
+  depth: 1
+os: linux
 script: npm run start-server
 cache:
-    directories:
-        - node_modules
+  directories:
+  - node_modules
 branches:
-    only:
-        - master
-        - production
+  only:
+  - master
+  - production
+notifications:
+  slack:
+    secure: ur+YbMSm55pZws40RQ7BwHm4XpIA1Occ51Zey6BuvUwFcHFTYy7ZHjA7msk8wiRq8Y0vwGPx0OyZI2PJhREd2tAksACatox8zFxQPkrCAaulBacYxIFjyEun/KbOSxJblVoSkVQbAxeFnoJZPbcUAwDFz5tYFW2Vh7gDb+sPif8qVCt4fgPUyzXb0XAFfOIyb0jBA6Dt0C6AcAwOjvkBI0UERrAAH3fMk0wvGcVAoMO2yI8iXszK9v2FRqdjmM7Kwlr2cSfpv8EXalGdOEbbc7nfpLkseVvkGAoN3M248G5/bVeJIENJePx10lwD42EWUZ1dQUVJ40YLJIzlGxATSY16v5tjoD6mExYnMjRQy4m7quZJphv3cmw1TKoCS+pwIUV3IV0k6Bfus1y7Hfvk7+l+iCl2Yl15GSQRJVxegTJ9e3Io7cTmufOZcNXX8Qg0noEMEccY1KMPxNJGsnPVeXo1LCFhGn6kX3o9huNpCt/VTygPyCjbJvUCg1NS/A/HLbkywxlmewMiMGsrgQEPhDPEeFdtcD8uIukjlTCJ/IwCdtCQInozMnRw8oY0Y6R7KYYxp7HmgCqKSaK/0miU/hX2TuKGeD4b9VlLSYT8NsVyKJ/9MRsCauas8Cop7jzR+TQkUGya/HUJcv5yq3QKG1PFshk0pchobPg/B5DK30M=

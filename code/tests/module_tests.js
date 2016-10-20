@@ -17,17 +17,24 @@ describe("Modules", function() {
     
     async.each(Object.keys(modules), function(current, callback) {
         describe(current, function() {
-            it("is installed", function() {
-                expect(require(current)).to.not.be.equal(null);
-            });
-            it("is up to date", function(done) {
-                this.timeout(10000);
-                require("child_process").exec("npm show " + current + " version", function(err, stdout, stderr) {
-                    if(err) return done(err);
-                    expect(stdout.trim()).to.be.equal(modules[current].substr(1));
-                    done();
-                });
-            });
+            async.parallel([
+                function(cb) {
+                    it("is installed", function() {
+                        expect(require(current)).to.not.be.equal(null);
+                        cb(null);
+                    });
+                },
+                function() {
+                    it("is up to date", function(done) {
+                        this.timeout(10000);
+                        require("child_process").exec("npm show " + current + " version", function(err, stdout, stderr) {
+                            if(err) return done(err);
+                            expect(stdout.trim()).to.be.equal(modules[current].substr(1));
+                            done();
+                        });
+                    });
+                }
+            ], callback);
         });
     });
 });

@@ -19,6 +19,7 @@
     "tests": "mocha code/tests && nsp check --output checkstyle && retire"
   },
   "dependencies": {
+    "async": "^2.1.2",
     "chai": "^3.5.0",
     "compression": "^1.6.2",
     "cookie-parser": "^1.4.3",

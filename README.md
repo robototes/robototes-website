@@ -12,7 +12,7 @@ The official Node.js website for the Robototes 2412 team.
 
 Before downloading the server code, ensure your server environment is prepared by installing the following
 
-* `node.js` version 6.6.0
+* `node.js` version 6.9.0
 * `npm` version 3.10.3 (installed with node)
 * `nvm` version 0.31.0 (installed with node)
 
@@ -54,6 +54,7 @@ and check that all the modules are there and match the below table. All of these
 | [cors middleware](//github.com/expressjs/cors)                        | [MIT](//github.com/expressjs/cors/blob/master/LICENSE)            | Enables CORS (cross origin request sharing)                                                                   |
 | [ejs](//www.embeddedjs.com/)                                          | [MIT](//github.com/tj/ejs)                                        | Templating engine                                                                                             |
 | [naught](//github.com/andrewrk/naught)                                | [MIT](//github.com/andrewrk/naught/blob/master/LICENSE)           | Enables zero-downtime deployment solutions and multi-worker server setups                                     |
+| [async](//github.com/caolan/async)                                    | [Copyright](//github.com/caolan/async/blob/master/LICENSE)        | Asynchronous code handling                                                                                    |
 | [mochajs](//mochajs.org/)                                             | [MIT](//github.com/mochajs/mocha/blob/master/LICENSE)             | Complete Unit testing library that allows us to test our code in various situations, reducing bug density     |
 | [chaijs](//chaijs.com/)                                               | [MIT](//github.com/chaijs/chai#license)                           | Testing assertion library                                                                                     |
 | [supertest](//github.com/visionmedia/supertest)                       | [MIT](//github.com/andrewrk/naught/blob/master/LICENSE)           | Run simple HTTP requests                                                                                      |

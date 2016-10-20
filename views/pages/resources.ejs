@@ -17,13 +17,14 @@ via any medium without the express permission of Robotics Leadership is strictly
     </head>
     <body>
         <% include ../partials/header.ejs %>
-        <section id="main">
+        <section id="main" data-ng-app="robototes-pages" data-ng-controller="resourcesController">
             <div id="socialmedia">
                 <h2>Hopefully updated social media</h2>
                 <ul>
                     <li><a href="https://www.youtube.com/channel/UCGCRO_t4RDHoEnl4MQ5A4hg">Youtube Channel<i class="fa fa-external-link"></i></a></li>
                     <li><a href="https://www.facebook.com/Robototes">Facebook page<i class="fa fa-external-link"></i></a></li>
                     <li><a href="https://twitter.com/robotics_2412">Twitter page<i class="fa fa-external-link"></i></a></li>
+                    <li><a href="https://instagram.com/robototes_2412">Instagram page<i class="fa fa-external-link"></i></a></li>
                 </ul>
             </div>
             <div id="externallinks">
@@ -33,6 +34,7 @@ via any medium without the express permission of Robotics Leadership is strictly
                     <li><a href="http://www.thebluealliance.com/team/2412" target="_blank">TheBlueAlliance - Competition data, videos, etc.<i class="fa fa-external-link"></i></a></li>
                     <li><a href="http://www.usfirst.org/">FIRST<i class="fa fa-external-link"></i></a></li>
                     <li><a href="http://firstwa.org">FIRSTWA<i class="fa fa-external-link"></i></a></li>
+                    <li><a href="http://github.com/robototes">Our github<i class="fa fa-external-link"></i></a></li>
                 </ul>
             </div>
             <div id="contactus">
@@ -40,27 +42,8 @@ via any medium without the express permission of Robotics Leadership is strictly
                 <h4>Robotics Leadership</h4>
                 <div class="container m-md-h-0 text-left">
                     <div class="row">
-                        <% var getImgUrl = function(imgname) {
-                            return "//" + classes.constants.subdomains.full("CDN") + "/media/email_pictures/" + imgname + ".png";
-                        }
-                        %>
-                        <div class="col-sm-6 col-xs-12">
-                            <img src="<%= getImgUrl("team_captain");%>"></img>
-                        </div>
-                        <div class="col-sm-6 col-xs-12">
-                            <img src="<%= getImgUrl("outreach_hr");%>"></img>
-                        </div>
-                        <div class="col-sm-6 col-xs-12">
-                            <img src="<%= getImgUrl("robot_lead");%>"></img>
-                        </div>
-                        <div class="col-sm-6 col-xs-12">
-                            <img src="<%= getImgUrl("logistics");%>"></img>
-                        </div>
-                        <div class="col-sm-6 col-xs-12">
-                            <img src="<%= getImgUrl("scouting");%>"></img>
-                        </div>
-                        <div class="col-sm-6 col-xs-12">
-                            <img src="<%= getImgUrl("digital_outreach");%>" data-toggle="tooltip" data-placement="bottom" data-original-title="The cool one"></img>
+                        <div class="col-sm-6 col-xs-12" ng-repeat="leader in leadership">
+                            {{ leader.contact }} ({{ leader.role }}) - {{ leader.email }}
                         </div>
                     </div>
                 </div>

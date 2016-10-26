@@ -14,6 +14,14 @@ var path = require("path"),
 var express = require("express"),
     serveStatic = require("serve-static");
 
+// Slideshow images
+var fileType = /\.(jpg)/i,
+    dir = fs.readdirSync(path.join(__dirname, "../../views/cdn/media/slideshow")),
+    files = [];
+for(var i = 0; i < dir.length; i++)
+    if(fileType.exec(path.extname(dir[i])))
+        files.push(dir[i]); //store the file name into the array files
+
 // Public routing code
 module.exports = express.Router()
     .use("/robots.txt", function(req, res) {
@@ -28,7 +36,7 @@ module.exports = express.Router()
         res.send(robots);
     })
     .get("/", function(req, res) {
-        res.render(path.join(__dirname, "/../../views/pages/index.ejs"));
+        res.render(path.join(__dirname, "/../../views/pages/index.ejs"), { slideshow: files });
         res.end();
     })
     .get("/resources", function(req, res) {

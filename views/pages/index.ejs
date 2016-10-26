@@ -18,10 +18,14 @@ via any medium without the express permission of Robotics Leadership is strictly
     <body>
         <% include ../partials/header.ejs %>
         <section id="main" data-ng-app="robototes-pages" data-ng-controller="homeController">
-            <!--Parallax Slide show-->
+            <!--Slide show-->
             <div class="carousel slide" id="welcome-carousel" data-ride="carousel">
                 <div class="carousel-inner" role="listbox">
-                    <div class="item"></div>
+                    <% slideshow.forEach(function(current, index) {
+                        %><div class="item<%= index == 0 ? " active" : "" %>">
+                            <img src="<%= "\/\/" + classes.constants.subdomains.full("CDN") + "/media/slideshow/" + current; %>">
+                        </div><%
+                    }); %>
                 </div>
                 <a class="left carousel-control" href="#welcome-carousel" role="button" data-slide="prev">
                     <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>

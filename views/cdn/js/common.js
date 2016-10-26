@@ -40,7 +40,7 @@ window.cookieconsent_options = {
     "message": "We store some data on your computer to ensure you get the best experience on our website",
     "dismiss": "I'm cool with that!",
     "learnMore": "Privacy Policy",
-    "link": "\" data-toggle=\"modal\" data-target=\"#cookieinfo",
+    "link": "\" data-toggle=\"modal\" data-target=\"#privacy",
     "theme": "light-floating"
 };
 

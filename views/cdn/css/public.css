@@ -19,3 +19,6 @@ body {
     color: red;
     font-size: 25px;
 }
+.carousel-inner > .item > img {
+    margin: 0 auto;
+}

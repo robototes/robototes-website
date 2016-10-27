@@ -33,6 +33,7 @@
     "mocha": "^3.1.2",
     "nsp": "^2.6.2",
     "retire": "^1.2.10",
-    "supertest": "^2.0.1"
+    "supertest": "^2.0.1",
+    "serve-favicon": "^2.3.0"
   }
 }

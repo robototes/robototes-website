@@ -13,6 +13,8 @@ var path = require("path"),
 // External libraries
 var express = require("express"),
     serveStatic = require("serve-static");
+//Favicon
+var favicon = require("serve-favicon");
 
 // Slideshow images
 var fileType = /\.(jpg)/i,
@@ -24,6 +26,7 @@ for(var i = 0; i < dir.length; i++)
 
 // Public routing code
 module.exports = express.Router()
+    .use(favicon(path.join(__dirname, "../../views/cdn/media/robotote.png")))
     .use("/robots.txt", function(req, res) {
         var robots = "";
         [

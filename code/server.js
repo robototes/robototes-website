@@ -75,10 +75,9 @@ app.use(helmet.contentSecurityPolicy({ // CSP
                 "www.google-analytics.com",
                 "cdnjs.cloudflare.com"
             ],
-            childSrc: [],
-            frameSrc: [], // Same as childSrc
+            childSrc: [ "'none'" ],
             sandbox: [ "allow-forms", "allow-scripts", "allow-same-origin" ],
-            objectSrc: [],
+            objectSrc: [ "'none'" ],
         }
     }))
     .use(helmet.xssFilter())

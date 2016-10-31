@@ -18,7 +18,49 @@ via any medium without the express permission of Robotics Leadership is strictly
     <body>
         <% include ../partials/header.ejs %>
         <section id="main">
-            
+            <h1>About</h1>
+            <h3>Our History</h3>
+            <p>Team 2412 was founded in 2007 and first competed in 2008. Our first competition was OverDrive and we've been building robots ever since.</p>
+            <h3>Best years</h3>
+            <p>Our most successful seasons were <a href="https://www.thebluealliance.com/team/2412/2008">2008</a>, <a href="https://www.thebluealliance.com/team/2412/2014">2014</a>, and <a href="https://www.thebluealliance.com/team/2412/2016">2016</a>. In those three years, we have won a total of 52 matches (not including the offseason) and received several awards.</p>
+            <h2>Our Robots</h2>
+            <%
+            //Utility function to generate a list from an array
+            function genList(arr) { %>
+                <ul>
+                    <% for(var i = 0; i < arr.length; i++) { %>
+                        <li><%-arr[i]%></li>
+                    <%}%>
+                </ul>
+            <%}%>
+            <%
+            //Creates a div that displays information about a robot.
+            //Paramaters:
+            //name - name of robot (e.g., Sir Costalot)
+            //year - year robot was made (e.g., 2016)
+            //yearcomp - name of competition (e.g., Stronghold)
+            //comparr - array of strings, each one a link to a competition that the robot competed in
+            //awardarr - array of strings, each one an award/accomplishment that the robot has made (and links if possible)
+            //imgurl - url for robot image
+            function createRobotSection(name, year, yearcomp, comparr, awardarr, imgurl) { %>
+                <div class="well robot-display">
+                <div id="text">
+                  <p id="robotname">Name: <%=name%></p>
+                  <p>Year: <%=year%> (<%=yearcomp%>)</p>
+                  <ul>
+                    <li>Competed at:
+                        <%-genList(comparr);%>
+                    </li>
+                  </ul>
+                  <ul>
+                    <li>Awards received:
+                        <%- genList(awardarr);%>
+                    </li>
+                  </ul>
+                </div>
+                <img src="<%=imgurl%>">
+              </div>
+            <%}%>
         </section>
         <% include ../partials/footer.ejs %>
     </body>

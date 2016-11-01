@@ -44,23 +44,26 @@ via any medium without the express permission of Robotics Leadership is strictly
             //imgurl - url for robot image
             function createRobotSection(name, year, yearcomp, comparr, awardarr, imgurl) { %>
                 <div class="well robot-display">
-                <div id="text">
-                  <p id="robotname">Name: <%=name%></p>
-                  <p>Year: <%=year%> (<%=yearcomp%>)</p>
-                  <ul>
-                    <li>Competed at:
-                        <%-genList(comparr);%>
-                    </li>
-                  </ul>
-                  <ul>
-                    <li>Awards received:
-                        <%- genList(awardarr);%>
-                    </li>
-                  </ul>
+                    <div id="text">
+                      <p id="robotname">Name: <%-name%></p>
+                      <p>Year: <%=year%> (<%=yearcomp%>)</p>
+                      <ul>
+                        <li>Competed at:
+                            <%-genList(comparr);%>
+                        </li>
+                      </ul>
+                      <ul>
+                        <li>Awards received:
+                            <%- genList(awardarr);%>
+                        </li>
+                      </ul>
+                    </div>
+                    <img src="<%=imgurl%>">
                 </div>
-                <img src="<%=imgurl%>">
-              </div>
             <%}%>
+            <%- createRobotSection("Sir Costalot", "2016", "Stronghold", ['<a href="https://www.thebluealliance.com/event/2016wasno">Glacier Peak</a>', '<a href="https://www.thebluealliance.com/event/2016waahs">Auburn</a>', '<a href="https://www.thebluealliance.com/event/2016wagg">Girls Gen</a>'], ['Ranked #8 at <a href="https://www.thebluealliance.com/event/2016wasno">Glacier Peak</a>', '7th seeded captain at <a href="https://www.thebluealliance.com/event/2016waahs">Auburn</a>', 'Finalist at <a href="https://www.thebluealliance.com/event/2016wagg">Girls Gen</a>'], "http://i.imgur.com/nBPZYzp.jpg");%>
+            <%- createRobotSection("YPOTRYLLA (The Yodeling Pusher of Totes and Recycling containers Yusing Lots and Lots of Acme) - <span style='color: red'>DISMANTLED</span>", "2015", "Recycle Rush", ['<a href="https://www.thebluealliance.com/event/2015waamv">Auburn Mountainview</a>', '<a href="https://www.thebluealliance.com/event/2015washo">Shorewood</a>'], ['Innovation in Control Award', 'Semifinalists at <a href="https://www.thebluealliance.com/event/2015waamv">Auburn Mountainview</a>', 'Ranked #8 at <a href="https://www.thebluealliance.com/event/2015washo">Shorewood</a>'], "http://i.imgur.com/F9QX1ZVh.jpg");%>
+            <%- createRobotSection("CONDOR (Cooperatively Optimized Northwest Defensive and Offensive Robot)", "2014", "Aerial Assist", ['<a href="https://www.thebluealliance.com/event/2014wasno">Glacier Peak</a>', '<a href="https://www.thebluealliance.com/event/2014washo">Shorewood</a>', '<a href="https://www.thebluealliance.com/event/2014pncmp">Pacific Northwest Championship</a>'], ['Quality Award (twice)', 'Ranked #1 at <a href="https://www.thebluealliance.com/event/2014wasno">Glacier Peak</a>', 'Semifinalists at <a href="https://www.thebluealliance.com/event/2014pncmp">Pacific Northwest Championship</a>'], "http://www.chiefdelphi.com/media/img/88d/88dab581db125b6a40bc2efa56e93a4a_m.jpg");%>
         </section>
         <% include ../partials/footer.ejs %>
     </body>

@@ -45,5 +45,10 @@ module.exports = express.Router()
     .get("/resources", function(req, res) {
         res.render(path.join(__dirname, "/../../views/pages/resources.ejs"));
         res.end();
+        
+    })
+    .get("/about", function(req, res) {
+        res.render(path.join(__dirname, "/../../views/pages/about.ejs"));
+        res.end();
     })
     .get("/rss", serveStatic(path.join(__dirname, "/../../views/rss"), { "Content-Type": "text/rss" }));

@@ -23,3 +23,14 @@ body {
 .carousel-inner > .item > img {
     margin: 0 auto;
 }
+#text {
+    float: left;
+}
+.robot-display {
+    display: inline-block;
+}
+.robot-image {
+    max-height: 30em;
+    margin-left: 10em;
+    margin-right: 10em;
+}

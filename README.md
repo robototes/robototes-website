@@ -60,6 +60,7 @@ and check that all the modules are there and match the below table. All of these
 | [supertest](//github.com/visionmedia/supertest)                       | [MIT](//github.com/andrewrk/naught/blob/master/LICENSE)           | Run simple HTTP requests                                                                                      |
 | [nsp](//github.com/nodesecurity/nsp)                                  | [Apache 2.0](//www.apache.org/licenses/LICENSE-2.0)               | Scans node modules for vulnerabilities                                                                        |
 | [retire.js](//github.com/RetireJS/retire.js)                          | [Apache 2.0](//www.apache.org/licenses/LICENSE-2.0)               | Identifying code security vulnerabilities.                                                                    |
+| [node-flarum](//github.com/FlarumJS/node-flarum)                      | [Copyright](//github.com/FlarumJS/node-flarum/blob/master/LICENSE)| Flarum forum software for NodeJS                                                                              |
 
 After running the commands and installing the required modules, follow the instructions in [Starting the server](#startserver).
 

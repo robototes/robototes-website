@@ -17,8 +17,7 @@ var express = require("express"),
     cookieParser = require("cookie-parser"),
     compression = require("compression"),
     helmet = require("helmet"),
-    cors = require("cors"),
-    flarum = require("node-flarum");
+    cors = require("cors");
 
 // Config file
 var configs;
@@ -106,7 +105,6 @@ app.use(function(req, res, next) {
     })
     .use(subdomain(classes.constants.subdomains.CDN, require("./routes/cdn-routes")))
     .use(subdomain(classes.constants.subdomains.PUBLIC, require("./routes/public-routes")))
-    .use(subdomain(classes.constants.subdomains.FORUM, flarum))
     .use(function(req, res, next) { // If no subdomain specified
         if(!req.subdomains.length)
             res.redirect("//" + classes.constants.subdomains.full("PUBLIC"));

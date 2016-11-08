@@ -22,7 +22,7 @@ $(function() {
         $("#leadership_emails").append(link);
     }
     $(".contactlink").mouseover(function() {
-        var index = parseInt($(this).attr("id").split("_")[1]);
+        var index = parseInt($(this).attr("id").split("_")[1], 10);
         $(this).attr("href", "mailto:s-" + leadership_emails[index] + "@bsd405.org");
     });
     $(".contactlink").mouseleave(function() {

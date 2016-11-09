@@ -31,20 +31,6 @@ via any medium without the express permission of Robotics Leadership is strictly
     integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8="
     crossorigin="anonymous"></script>
 
-<!--AngularJS-->
-<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.8/angular.min.js"
-    integrity="sha256-6Sr0HqNgUf/p88g6vsl87CrAnNqiOWhjlY6LS8jeWHA="
-    crossorigin="anonymous"></script>
-<script type="text/javascript"
-    src="//<%= classes.constants.subdomains.full("CDN"); %>/js/angular/angular-common.js"></script>
-<script type="text/javascript"
-    src="//<%= classes.constants.subdomains.full("CDN"); %>/js/angular/angular-pages.js"></script>
-<script type="text/javascript"
-    src="//<%= classes.constants.subdomains.full("CDN"); %>/js/angular/angular-partials.js"></script>
-<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/2.1.3/ui-bootstrap-tpls.min.js"
-    integrity="sha256-mDLwdzkhrAtizK5ZcOcVcXl21qKNUU93iNFrEMKa//Q="
-    crossorigin="anonymous"></script>
-
 <!--Common JS/CSS-->
 <script type="text/javascript"
     src="//<%= classes.constants.subdomains.full("CDN"); %>/js/common.js"></script>
@@ -68,14 +54,8 @@ via any medium without the express permission of Robotics Leadership is strictly
     <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/chai/3.5.0/chai.min.js"
         integrity="sha256-BKU3X97p6yXHn1wgJmMJQ0CNhqCdxVGjBf0EwjSzi3c="
         crossorigin="anonymous"></script>
-    <!--Setup mocha before angular-mocks is included so that we don't create an error-->
+    <!--Setup mocha so that we don't create an error-->
     <script> mocha.setup('bdd'); </script>
-    <!--AngularJS Development Code-->
-    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.8/angular-mocks.js"
-        integrity="sha256-WJmOK13ofb/tpGhU/GSXnu8LPv5Qq/i+UKiq8Zj0jJQ="
-        crossorigin="anonymous"></script>
-    <script type="text/javascript"
-        src="//<%= classes.constants.subdomains.full("CDN"); %>/js/angular/angular-development.js"></script>
     
     <script type="text/javascript" src="//<%= classes.constants.subdomains.full("CDN"); %>/js/tests/client_tests.js"></script>
 <% } %>

@@ -47,6 +47,14 @@ $(function() {
             $(this).attr("href", "");
         });
     }
+    var headmentorcontact = $('<div class="col-sm-6 col-xs-12"><a style="cursor: pointer" class="contactlink2" id="lcontact_' + leadership_names.length + '">Mrs. Herzog, Team Administrator</a></div>');
+    $("#leadership_emails").append(headmentorcontact);
+     $(".contactlink2").mouseover(function() {
+        $(this).attr("href", "mailto:herzogk@bsd405.org");
+    });
+    $(".contactlink2").mouseleave(function() {
+        $(this).attr("href", "");
+    });
     genLinks("l",  "leadership_emails");
     genLinks("w",  "website_emails");
 });

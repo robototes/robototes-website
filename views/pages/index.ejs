@@ -1,16 +1,16 @@
 <% var seo = {
     title: "Home | Team 2412 - The Robototes"
 }; %>
-<!--
-Copyright (C) 2016 Sammamish Robotics <robototes2412@gmail.com> All rights reserved
-
-This file is part of the robototes-website project.
-
-Any copying and/or distributing and/or use in commercial or non-commercial environments
-via any medium without the express permission of Robotics Leadership is strictly prohibited
--->
 <!DOCTYPE html>
 <html lang="en">
+    <!--
+        Copyright (C) 2016 Sammamish Robotics <robototes2412@gmail.com> All rights reserved
+        
+        This file is part of the robototes-website project.
+        
+        Any copying and/or distributing and/or use in commercial or non-commercial environments
+        via any medium without the express permission of Robotics Leadership is strictly prohibited
+        -->
     <head>
         <% include ../partials/head.ejs %>
         <% include ../partials/seo.ejs %>
@@ -23,9 +23,16 @@ via any medium without the express permission of Robotics Leadership is strictly
             <!--Slide show-->
             <div class="carousel slide" id="welcome-carousel" data-ride="carousel">
                 <div class="carousel-inner" role="listbox">
+                    <% //Alt tags
+                        var altvals = [];
+                        altvals["girls_gen_all.jpg"] = "Everybody on our team who came to girls gen.";
+                        altvals["girls_gen_drive_team.jpg"] = "The drive team who came to girls gen.";
+                        altvals["sir_costalot.jpg"] = "Our 2016 robot, Sir Costalot.";
+                        altvals["sir_costalot_girls_gen.jpg"] = "Sir Costalot at Girls Gen, along with some other robots.";
+                    %>
                     <% slideshow.forEach(function(current, index) {
                         %><div class="item<%= index == 0 ? " active" : "" %>">
-                            <img src="<%= "\/\/" + classes.constants.subdomains.full("CDN") + "/media/slideshow/" + current; %>">
+                            <img src="<%= "\/\/" + classes.constants.subdomains.full("CDN") + "/media/slideshow/" + current; %>" alt="<%=altvals[current];%>">
                         </div><%
                     }); %>
                 </div>
@@ -57,7 +64,7 @@ via any medium without the express permission of Robotics Leadership is strictly
                     </ol>
                     <p>All donations are tax deductible.</p>
                 </div>
-                <div id="girlsgen" class="news-col well col-sm-4">
+                <div id="tomomockbuild" class="news-col well col-sm-4">
                     <h2>Tomo Mock Build</h2>
                     <p>From Halloween until kickoff, we will be working on a Tomo mock build season, where we brainstorm and implement ideas for improving Tomo^3, our T-Shirt shooting cannon.</p>
                 </div>

@@ -52,6 +52,7 @@ app.use(helmet.contentSecurityPolicy({ // CSP
                 "'self'",
                 classes.constants.subdomains.full("CDN"),
                 "cdnjs.cloudflare.com",
+                "ajax.cloudflare.com",
                 "www.google-analytics.com",
                 "'unsafe-eval'",
                 "'unsafe-inline'"

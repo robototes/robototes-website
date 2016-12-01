@@ -29,7 +29,6 @@ After the above dependencies are installed, download the server code and test it
 * Add the following settings to a file called `configs.json` in the root directory of the repository or `export` them in bash:
     - `DOMAIN` (the domain the server serves on, default robototes.com)
     - `ENV` or `NODE_ENV` in bash (the node environment: production|development)
-    - `SUBDOMAIN_OFFSET` (optional, the offset to subdomains, default 2)
     - `G_TRACKING_ID` (optional, the Google Analytics tracking ID)
     - `PORT` (the port for the server to run on, default 8080)
 

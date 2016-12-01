@@ -37,7 +37,7 @@ expressHelpers(app);
 // Sets globally accessible variables
 app.set("env", configs.ENV || process.env.NODE_ENV || "development") // The current environment (development|production)
     .set("views", path.join(__dirname, "/../views")) // Sets the views
-    .set("subdomain offset", configs.SUBDOMAIN_OFFSET || process.env.SUBDOMAIN_OFFSET || 2) // Parses subdomains
+    .set("subdomain offset", (configs.DOMAIN || process.env.DOMAIN || "robototes.com").split(".").length || 2) // Parses subdomains
     .set("view engine", "ejs") // Sets templating to use EJS
     .set("port", configs.PORT || process.env.PORT || 8080); // Gets the port to run on
 app.locals.classes = classes;

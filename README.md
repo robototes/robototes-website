@@ -93,7 +93,7 @@ This will run several automated tests, and start the server if they succeed. The
 the server runs on a daemon and logs are not printed to the console. Instead, you can find `stdout.log` and `stderr.log` files inside the `server` and `server/dev`
 folders, depending on how you are running the server.
 
-##### <a id="devmode">Development mode</a>
+##### <a id="debugmode">Debug mode</a>
 
 Change DEBUG in the `configs.json` file/environment variables to true or set the NODE_ENV environment variable to "development"
 
@@ -105,7 +105,7 @@ When running the server, consider a few best practices:
 * DO NOT run the server as `root`, this is a serious security risk that could allow for attacks with root privileges
 * DO follow this procedure for starting the server:
     * Run [`npm run tests`](#runningtests) and ensure ALL tests pass
-    * Run the server in [development mode](#devmode)
+    * Run the server in [debug mode](#debugmode)
     * Run client side tests and ensure ALL tests pass
     * [Shut down](#specialcommands) the development server
     * Run the server in [production mode](#prodmode)
@@ -128,8 +128,8 @@ The following tests are available (to run them by themselves, use `mocha code/te
 
 ##### Client side
 
-As long as the server is run in development mode, our unit testing suite will be included in the client. The tests are automatically fetched from `views/js/tests` and can
-be run by clicking the `Run tests` button fixed to the bottom of the page or the `Run again` button on the shown modal.
+As long as the server is run in [debug mode](#debugmode), our unit testing suite will be included in the client. The tests are automatically fetched from
+`views/js/tests/client_tests.js` and can be run by clicking the `Run tests` button fixed to the bottom of the page or the `Run again` button on the shown modal.
 
 ### <a id="specialcommands">Special commands</a>
 
@@ -137,41 +137,37 @@ While the server is running, the following commands can be run:
 
 ```javascript
 npm run deploy // Initiates a zero downtime deploy
-npm run abort-deploy // Aborts hanging deployments (when a worker is stuck open)
+npm run abort-deploy // Aborts hanging deployments (when a deployment is unable to start or stop workers)
 npm run status // Displays the current server status
 npm run stop // Shuts all workers down
 ```
 
-Both the `start-server` and `deploy` commands have a simpler counterpart, which skips tests, and can be run by adding `-notest` to the end of the command
-
-In addition to being a different server instance from the production server, which allows for live testing, there are a few command differences:
-
-* `npm run start-server-notest`([starting the server](#startserver)) ignores all tests
-* `npm run deploy-notest` ignores all tests and deploys to running threads
+Both the [`start-server`](#startserver) and `deploy` commands have a simpler counterpart, which skips tests, and can be run by adding `-notest` to the end of the
+command
 
 ### Best practices
 
-We follow some rules to make code consistent, future proof, and easy to debug.
+We follow some rules to make code consistent, future proofed, and easy to debug.
 
 ##### Keeping the server updated
 
 It is recommended to regularly maintain the server, following this checklist:
 
-* Keep `node`, `npm`, and `nvm` updated. After updating to the latest stable version (DO NOT use unstable versions in production), [run all tests](#runningtests), and then
+* Keep `node` and `npm` updated. After updating to the latest stable version (DO NOT use unstable versions in production), [run all tests](#runningtests), and then
 redeploy
-* Keep all node modules updated. As modules are deprecated, update to their latest stable release and [run relevant tests](#runningtests), modifying code as necessary
+* Keep all node modules updated. As modules are deprecated, update to their latest stable release and [run tests](#runningtests), modifying code as necessary
 * Run [`npm run tests`](#runningtests) even if no changes are made, simply to ensure the server is stable
 * Review server logs for errors
 
 ##### Development best practices
 
 * Comment your code so that future programmers know what your code is supposed to do
-* Update this README as necessary so that programmers that come after you can easily start developing
+* Update this README as necessary so that programmers that come after you can easily start developing (speaking from experience, they will hate you if you don't)
 * Triage and assign bugs
 * Follow the Test-Driven-Development workflow:
     * Create a git branch with a descriptive name for what you are planning on creating:
     `git checkout -b branch-name-goes-here`
-        The branch name should be be named like this: reason/detail
+        The branch name should be be named like this: reason/descriptor
         There are 4 reasons that you can use:
         * `wip` Work in progress. This is generally a large feature and is likely to take a long time, so name it appropriately, like
             `wip/loginsystem`
@@ -179,22 +175,20 @@ redeploy
         * `feat` A minor feature. Often times this is also a feature request on Github, so use `feat/issue_id_number_here`.
             Alernatively, if it is not filed as a feature request, just use a descriptor like `feat/reallyawesomefeature`
         * `junk` An experimental branch. These should generally not be merged, and are for experimentation that can be implemented
-            correctly later on a `feat` or `wip` branch
+            correctly later on a `feat`, `bug`, or `wip` branch
     * Write tests for the results you want from your code (as many as needed, for as many situations as possible, no matter how unlikely)
+    We use [mochajs](//mochajs.org/) and [chaijs](//chaijs.com/), so follow their documentation for how to write tests
     * Write the actual code (with comments)
     * Make sure the code passes the tests
     * Optimize the code (make code gooder)
-    * Have at least one experienced programmer review your changes
-    * When you're done, commit your changes, merge the branch, and push to the git repository:
+    * When you're done, commit your changes, and push to the git remote:
     ```
         git commit -m "Detailed commit message goes here."
-        git checkout production
-        git merge branch-name-goes-here
-        git branch -d branch-name-goes-here
-        git push origin master
+        git push origin <branch-name>
     ```
-    * Once a feature is stable and production-ready, triage it and push it to the git repo on the `production` branch
+    * Once a feature is stable and production-ready, triage it and submit a pull request to `master`
     * Our [Travis CI](//travis-ci.org/robototes/robototes-website/) will build and test the project based off the settings in .travis.yml
+    * If all tests pass, have at least one experienced programmer review your changes, and accept the pull request
     * Now setup the server with the updates by pulling from the repository or using a code deployment tool
     * And last of all, [reward yourself](//www.rinkworks.com/stupid/)
 

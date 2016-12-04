@@ -101,7 +101,7 @@ It is recommended that you run the server in developer mode before running it in
 in all major browsers ([Internet Explorer/Edge](//www.microsoft.com/en-us/download/internet-explorer.aspx), [Chrome](//www.google.com/chrome/browser/desktop/), and [Firefox](//mozilla.org)) before deploying
 to production, if you have made any changes to client side files.
 
-The production server runs on port 8080, while the development server runs on 8081 to allow both environments to run at the same time. When running the server, consider a few best practices:
+When running the server, consider a few best practices:
 * DO NOT run the server as `root`, this is a serious security risk that could allow for attacks with root privileges
 * DO follow this procedure for starting the server:
     * Run [`npm run tests`](#runningtests) and ensure ALL tests pass

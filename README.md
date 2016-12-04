@@ -39,7 +39,8 @@ A list of modules that must be included can be found below.
 ##### Required node modules
 
 These modules should be auto-installed by `npm install`, but make sure to run [`mocha code/tests/module_tests`](#runningtests)
-and check that all the modules are there and match the below table. All of these modules are readily available on [npm](//www.npmjs.com)
+and check that all the modules are there and match the below table. All of these modules are readily available on
+[npm](//www.npmjs.com)
 
 | Library                                                               | License                                                           | Reason                                                                                                        |
 |-----------------------------------------------------------------------|-------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------|
@@ -76,25 +77,25 @@ After running the commands and installing the required modules, follow the instr
 
 ### <a id="startserver">Starting the server</a>
 
-##### Production mode
+To start the server, simply run either of the following
+
+```shell
+npm run start-server // Runs the server
+npm run start-server-notest // Runs the server, ignoring tests
+```
+
+##### <a id="prodmode">Production mode</a>
 
 Change DEBUG in the `configs.json` file/environment variables to false or set the NODE_ENV environment variable to "production"
 
-```javascript
-npm run start-server // Runs the server on 8 workers
-```
 
 This will run several automated tests, and start the server if they succeed. The server uses [naught](//www.npmjs.com/package/naught) for zero-downtime deployment, and as such
 the server runs on a daemon and logs are not printed to the console. Instead, you can find `stdout.log` and `stderr.log` files inside the `server` and `server/dev`
 folders, depending on how you are running the server.
 
-##### Development mode
+##### <a id="devmode">Development mode</a>
 
 Change DEBUG in the `configs.json` file/environment variables to true or set the NODE_ENV environment variable to "development"
-
-```javascript
-npm run start-server-notest // Runs the server, ignoring tests
-```
 
 It is recommended that you run the server in developer mode before running it in production, to ensure the code is stable. It is also recommended that you run client-side unit tests
 in all major browsers ([Internet Explorer/Edge](//www.microsoft.com/en-us/download/internet-explorer.aspx), [Chrome](//www.google.com/chrome/browser/desktop/), and [Firefox](//mozilla.org)) before deploying
@@ -104,10 +105,10 @@ When running the server, consider a few best practices:
 * DO NOT run the server as `root`, this is a serious security risk that could allow for attacks with root privileges
 * DO follow this procedure for starting the server:
     * Run [`npm run tests`](#runningtests) and ensure ALL tests pass
-    * Run the server in development mode
+    * Run the server in [development mode](#devmode)
     * Run client side tests and ensure ALL tests pass
     * [Shut down](#specialcommands) the development server
-    * Run the server in production mode
+    * Run the server in [production mode](#prodmode)
 
 ### <a id="runningtests">Running tests</a>
 

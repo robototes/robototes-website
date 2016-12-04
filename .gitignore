@@ -1,4 +1,5 @@
 .eslintrc
+.retire-cache/
 server/*.*
 server/dev/*.*
 node_modules

@@ -84,7 +84,7 @@ npm run start-server-notest // Runs the server, ignoring tests
 
 #### <a id="prodmode">Production mode</a>
 
-Change DEBUG in the `configs.json` file/environment variables to false or set the NODE_ENV environment variable to "production"
+Change `DEBUG` in the `configs.json` file/environment variables to false or set the `NODE_ENV` environment variable to "production"
 
 This mode will run several automated tests, and start the server if they succeed. The server uses [naught](//www.npmjs.com/package/naught) for zero-downtime
 deployment, and as such the server runs on a daemon and logs are not printed to the console. Instead, you can find `stdout.log` and `stderr.log` files inside
@@ -92,7 +92,7 @@ the `server` folder.
 
 #### <a id="debugmode">Debug mode</a>
 
-Change DEBUG in the `configs.json` file/environment variables to true or set the NODE_ENV environment variable to "development"
+Change `DEBUG` in the `configs.json` file/environment variables to true or set the `NODE_ENV` environment variable to "development"
 
 It is recommended that you run the server in developer mode before running it in production, to ensure the code is stable. It is also recommended that you run
 client-side unit tests in all major browsers ([Internet Explorer](//www.microsoft.com/en-us/download/internet-explorer.aspx),

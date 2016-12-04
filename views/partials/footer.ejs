@@ -57,7 +57,7 @@ via any medium without the express permission of Robotics Leadership is strictly
     </div>
 </div>
 
-<% if(process.env.NODE_ENV == "development") { %>
+<% if(app.get("debug")) { %>
     <!--Test runner-->
     <div ng-app="robototes-dev" ng-controller="devController">
         <div class="btn-group btn-group-justified" style="bottom: 0; position: fixed; height: 60px;">

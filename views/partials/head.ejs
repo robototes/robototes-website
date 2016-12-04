@@ -43,7 +43,7 @@ via any medium without the express permission of Robotics Leadership is strictly
 
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<% if(process.env.NODE_ENV == "development") { %>
+<% if(app.get("debug")) { %>
     <!--Unit testing libraries-->
     <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/mocha/3.0.2/mocha.min.js"
         integrity="sha256-nDwBevNLGaqRExf5rHKA59C9WBi365Ezg3Bv+sAyxrw="

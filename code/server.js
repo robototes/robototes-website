@@ -43,6 +43,8 @@ app.locals.classes = classes;
 app.locals.app = app;
 app.locals.util = require("util");
 
+if(app.get("debug")) console.log("Server running in debug mode, DO NOT use in production");
+
 // Sets up express middleware
 app.use(helmet.contentSecurityPolicy({ // CSP
         directives: {

@@ -10,14 +10,14 @@ The official Node.js website for the Robototes 2412 team.
 
 #### Installing the environment
 
-Before downloading the server code, ensure your server environment is prepared by installing the following
+Before downloading the server code, ensure your server environment is prepared by installing the following:
 
 * `node.js` version 7.2.0
 * `npm` version 3.10.9 (installed with node)
 
 #### Preparing the server
 
-After the above dependencies are installed, download the server code and test it
+After the above dependencies are installed, download the server code and test it:
 
 * `git clone -b production git@github.com:robototes/robototes-website.git --depth 1` to clone the latest production release
 * `cd robototes-website` to enter the server code
@@ -36,7 +36,7 @@ A list of modules that must be included can be found below.
 #### Required node modules
 
 These modules should be auto-installed by `npm install`, but make sure to run [`npm run tests`](#runningtests) and check that all the modules are there and match
-the below table. All of these modules are readily available on [npm](//www.npmjs.com)
+the below table. All of these modules are readily available on [npm](//www.npmjs.com).
 
 | Library                                                               | License                                                           | Reason                                                                                                        |
 |-----------------------------------------------------------------------|-------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------|
@@ -61,7 +61,7 @@ After running the commands and installing the required modules, follow the instr
 
 #### Required client side libraries
 
-These libraries are automatically included from [cdnjs](//cdnjs.com)
+These libraries are automatically included from [cdnjs](//cdnjs.com).
 
 | Library                                                               | License                                                                   | Reason                                                                                                        |
 |-----------------------------------------------------------------------|---------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------|
@@ -75,7 +75,7 @@ These libraries are automatically included from [cdnjs](//cdnjs.com)
 
 ### <a id="startserver">Starting the server</a>
 
-To start the server, simply run either of the following
+To start the server, simply run either of the following:
 
 ```shell
 npm run start-server // Runs the server
@@ -84,7 +84,7 @@ npm run start-server-notest // Runs the server, ignoring tests
 
 #### <a id="prodmode">Production mode</a>
 
-Change `DEBUG` in the `configs.json` file/environment variables to false or set the `NODE_ENV` environment variable to "production"
+Change `DEBUG` in the `configs.json` file/environment variables to false or set the `NODE_ENV` environment variable to "production".
 
 This mode will run several automated tests, and start the server if they succeed. The server uses [naught](//www.npmjs.com/package/naught) for zero-downtime
 deployment, and as such the server runs on a daemon and logs are not printed to the console. Instead, you can find `stdout.log` and `stderr.log` files inside
@@ -92,7 +92,7 @@ the `server` folder.
 
 #### <a id="debugmode">Debug mode</a>
 
-Change `DEBUG` in the `configs.json` file/environment variables to true or set the `NODE_ENV` environment variable to "development"
+Change `DEBUG` in the `configs.json` file/environment variables to true or set the `NODE_ENV` environment variable to "development".
 
 It is recommended that you run the server in developer mode before running it in production, to ensure the code is stable. It is also recommended that you run
 client-side unit tests in all major browsers ([Internet Explorer](//www.microsoft.com/en-us/download/internet-explorer.aspx),
@@ -102,6 +102,7 @@ and [Firefox](//mozilla.org)) before deploying to production, if you have made a
 #### Best practices
 
 When running the server, consider a few best practices:
+
 * DO NOT run the server as `root`, this is a serious security risk that could allow for attacks with root privileges
 * DO follow this procedure for starting the server:
     * Run [`npm run tests`](#runningtests) and ensure ALL tests pass
@@ -123,6 +124,7 @@ the above code runs all server tests in `code/tests` and prints the results. Thi
 server if all tests pass.
 
 The following tests are available (to run them by themselves, use `mocha code/tests/{test}`):
+
 * `module_tests` Makes sure all modules are installed and up to date (may take a while to finish)
 * `server_tests` Ensures the server responds correctly to predictable input
 
@@ -143,7 +145,7 @@ npm run stop // Shuts all workers down
 ```
 
 Both the [`start-server`](#startserver) and `deploy` commands have a simpler counterpart, which skips all tests, and can be run by adding `-notest` to the end of the
-command
+command.
 
 ### Best practices
 
@@ -194,7 +196,7 @@ redeploy
 
 ### License
 
-Copyright (C) 2016 Sammamish Robotics <robototes2412@gmail.com> All rights reserved
+Copyright (C) 2016 Sammamish Robotics <robototes2412@gmail.com>, All rights reserved.
 
 Any copying and/or distributing and/or use in commercial or non-commercial environments
-via any medium of this project without the express permission of Robotics Leadership is strictly prohibited
+via any medium of this project without the express permission of Robotics Leadership is strictly prohibited.

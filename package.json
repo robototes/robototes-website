@@ -22,7 +22,6 @@
     "async": "^2.1.4",
     "chai": "^3.5.0",
     "compression": "^1.6.2",
-    "cookie-parser": "^1.4.3",
     "cors": "^2.8.1",
     "ejs": "^2.5.3",
     "express": "^4.14.0",

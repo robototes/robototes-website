@@ -14,7 +14,6 @@ var url = require("url"),
 var express = require("express"),
     expressHelpers = require("express-helpers"),
     subdomain = require("express-subdomain"),
-    cookieParser = require("cookie-parser"),
     compression = require("compression"),
     helmet = require("helmet"),
     cors = require("cors");

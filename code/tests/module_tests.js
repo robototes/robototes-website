@@ -8,6 +8,8 @@ via any medium without the express permission of Robotics Leadership is strictly
  */
 var expect = require("chai").expect,
     async = require("async"),
+    fs = require("fs"),
+    path = require("path"),
     request = require("supertest"),
     extend = require("util")._extend;
 
@@ -19,9 +21,10 @@ describe("Modules", function() {
         describe(current, function() {
             async.parallel([
                 function(cb) {
-                    it("is installed", function() {
-                        expect(require(current)).to.not.be.equal(null);
-                        cb(null);
+                    it("is installed", function(done) {
+                        fs.readdir(path.join(__dirname, "/../../node_modules/" + current), function(err, files) {
+                            return done(err);
+                        });
                     });
                 },
                 function() {
@@ -29,7 +32,8 @@ describe("Modules", function() {
                         this.timeout(10000);
                         require("child_process").exec("npm show " + current + " version", function(err, stdout, stderr) {
                             if(err) return done(err);
-                            expect(stdout.trim()).to.be.equal(modules[current].substr(1));
+                            var version = require("../../node_modules/" + current + "/package.json").version;
+                            expect(version).to.be.equal(stdout.trim());
                             done();
                         });
                     });

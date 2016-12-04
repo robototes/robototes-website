@@ -53,8 +53,9 @@ the below table. All of these modules are readily available on [npm](//www.npmjs
 | [mochajs](//mochajs.org/)                                             | [MIT](//github.com/mochajs/mocha/blob/master/LICENSE)             | Complete Unit testing library that allows us to test our code in various situations, reducing bug density     |
 | [naught](//github.com/andrewrk/naught)                                | [MIT](//github.com/andrewrk/naught/blob/master/LICENSE)           | Enables zero-downtime deployment solutions and multi-worker server setups                                     |
 | [nsp](//github.com/nodesecurity/nsp)                                  | [Apache 2.0](//www.apache.org/licenses/LICENSE-2.0)               | Scans node modules for vulnerabilities                                                                        |
-| [supertest](//github.com/visionmedia/supertest)                       | [MIT](//github.com/visionmedia/supertest/blob/master/LICENSE)     | Run simple HTTP requests                                                                                      |
 | [retire.js](//github.com/RetireJS/retire.js)                          | [Apache 2.0](//www.apache.org/licenses/LICENSE-2.0)               | Identifying code security vulnerabilities.                                                                    |
+| [serve-favicon](//github.com/expressjs/serve-favicon)                 | [MIT](//github.com/expressjs/serve-favicon/blob/master/LICENSE)   | Simple way of serving requests for /favicon.icon                                                              |
+| [supertest](//github.com/visionmedia/supertest)                       | [MIT](//github.com/visionmedia/supertest/blob/master/LICENSE)     | Run simple HTTP requests                                                                                      |
 
 After running the commands and installing the required modules, follow the instructions to [start the server](#startserver).
 

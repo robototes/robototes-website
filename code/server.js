@@ -34,7 +34,7 @@ var app = module.exports = express();
 expressHelpers(app);
 
 // Sets globally accessible variables
-app.set("debug", !(configs.DEBUG === false || process.env.DEBUG === false || process.env.NODE_ENV !== null || process.env.NODE_ENV === "production" || true)) // The current environment (development|production)
+app.set("debug", configs.DEBUG || process.env.DEBUG || (process.env.NODE_ENV && process.env.NODE_ENV === "production") || false) // The current environment (development|production)
     .set("views", path.join(__dirname, "/../views")) // Sets the views
     .set("subdomain offset", (configs.DOMAIN || process.env.DOMAIN || "robototes.com").split(".").length || 2) // Parses subdomains
     .set("view engine", "ejs") // Sets templating to use EJS

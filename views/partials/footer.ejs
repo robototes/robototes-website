@@ -59,9 +59,9 @@ via any medium without the express permission of Robotics Leadership is strictly
 
 <% if(app.get("debug")) { %>
     <!--Test runner-->
-    <div ng-app="robototes-dev" ng-controller="devController">
+    <div>
         <div class="btn-group btn-group-justified" style="bottom: 0; position: fixed; height: 60px;">
-            <a class="btn btn-default" data-toggle="modal" data-target="#testresults" ng-click="runTests()">Run tests</a>
+            <a class="btn btn-default" data-toggle="modal" data-target="#testresults" data-action="run-tests">Run tests</a>
         </div>
         <div class="modal fade" id="testresults" tabindex="-1" role="dialog">
             <div class="modal-dialog" role="document">
@@ -72,7 +72,7 @@ via any medium without the express permission of Robotics Leadership is strictly
                     <div class="modal-body" id="mocha"></div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                        <button type="button" class="btn btn-primary">Run again</button>
+                        <button type="button" class="btn btn-primary" data-action="run-tests">Run again</button>
                     </div>
                 </div>
             </div>

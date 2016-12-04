@@ -6,6 +6,13 @@ This file is part of the robototes-website project.
 Any copying and/or distributing and/or use in commercial or non-commercial environments
 via any medium without the express permission of Robotics Leadership is strictly prohibited
  */
+$(document).ready(function() {
+    $("[data-action=run-tests]").click(function() {
+        $("#mocha").empty();
+        mocha.run();
+    });
+});
+
 // External libraries
 var expect = chai.expect;
 

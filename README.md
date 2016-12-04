@@ -8,14 +8,14 @@ The official Node.js website for the Robototes 2412 team.
 
 ### <a id="setup">Setting up the server</a>
 
-##### Installing the environment
+#### Installing the environment
 
 Before downloading the server code, ensure your server environment is prepared by installing the following
 
 * `node.js` version 7.2.0
 * `npm` version 3.10.9 (installed with node)
 
-##### Preparing the server
+#### Preparing the server
 
 After the above dependencies are installed, download the server code and test it
 
@@ -33,7 +33,7 @@ environment variables):
 
 A list of modules that must be included can be found below.
 
-##### Required node modules
+#### Required node modules
 
 These modules should be auto-installed by `npm install`, but make sure to run [`npm run tests`](#runningtests) and check that all the modules are there and match
 the below table. All of these modules are readily available on [npm](//www.npmjs.com)
@@ -59,7 +59,7 @@ the below table. All of these modules are readily available on [npm](//www.npmjs
 
 After running the commands and installing the required modules, follow the instructions to [start the server](#startserver).
 
-##### Required client side libraries
+#### Required client side libraries
 
 These libraries are automatically included from [cdnjs](//cdnjs.com)
 
@@ -82,7 +82,7 @@ npm run start-server // Runs the server
 npm run start-server-notest // Runs the server, ignoring tests
 ```
 
-##### <a id="prodmode">Production mode</a>
+#### <a id="prodmode">Production mode</a>
 
 Change DEBUG in the `configs.json` file/environment variables to false or set the NODE_ENV environment variable to "production"
 
@@ -90,7 +90,7 @@ This mode will run several automated tests, and start the server if they succeed
 deployment, and as such the server runs on a daemon and logs are not printed to the console. Instead, you can find `stdout.log` and `stderr.log` files inside
 the `server` folder.
 
-##### <a id="debugmode">Debug mode</a>
+#### <a id="debugmode">Debug mode</a>
 
 Change DEBUG in the `configs.json` file/environment variables to true or set the NODE_ENV environment variable to "development"
 
@@ -99,7 +99,7 @@ client-side unit tests in all major browsers ([Internet Explorer](//www.microsof
 [Edge](//www.microsoft.com/en-us/windows/microsoft-edge), [Google Chrome](//www.google.com/chrome/browser/desktop/), [Opera](//www.opera.com/),
 and [Firefox](//mozilla.org)) before deploying to production, if you have made any changes to client side files.
 
-##### Best practices
+#### Best practices
 
 When running the server, consider a few best practices:
 * DO NOT run the server as `root`, this is a serious security risk that could allow for attacks with root privileges
@@ -112,7 +112,7 @@ When running the server, consider a few best practices:
 
 ### <a id="runningtests">Running tests</a>
 
-##### Server side
+#### Server side
 
 ```javascript
 npm run tests
@@ -126,7 +126,7 @@ The following tests are available (to run them by themselves, use `mocha code/te
 * `module_tests` Makes sure all modules are installed and up to date (may take a while to finish)
 * `server_tests` Ensures the server responds correctly to predictable input
 
-##### Client side
+#### Client side
 
 As long as the server is run in [debug mode](#debugmode), our unit testing suite will be included in the client. The tests are automatically fetched from
 `views/js/tests/client_tests.js` and can be run by clicking the `Run tests` button fixed to the bottom of the page or the `Run again` button on the shown modal.
@@ -149,7 +149,7 @@ command
 
 We follow some rules to make code consistent, future proofed, and easy to debug.
 
-##### Keeping the server updated
+#### Keeping the server updated
 
 It is recommended to regularly maintain the server, following this checklist:
 
@@ -159,7 +159,7 @@ redeploy
 * Run [`npm run tests`](#runningtests) even if no changes are made, simply to ensure the server is stable
 * Review server logs for errors
 
-##### Development best practices
+#### Development best practices
 
 * Comment your code so that future programmers know what your code is supposed to do
 * Update this README as necessary so that programmers that come after you can easily start developing (speaking from experience, they will hate you if you don't)

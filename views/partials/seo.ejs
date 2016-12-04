@@ -46,5 +46,5 @@ ga("send", {
     hitType: "pageview"
 });
 </script>
-<script async type="text/javascript" src="//www.google-analytics.com/analytics<%= app.get("env") === "development" ? "_debug" : "" %>.js"></script>
+<script async type="text/javascript" src="//www.google-analytics.com/analytics<%= app.get("debug") ? "_debug" : "" %>.js"></script>
 <!-- End Google Analytics -->

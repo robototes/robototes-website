@@ -36,7 +36,7 @@ module.exports = express.Router()
         res.send(robots);
     })
     .use(function(req, res, next) {
-        if(req.app.get("env") == "production") minify();
+        if(!req.app.get("debug")) minify();
         next();
     })
     .use(serveStatic(path.join(__dirname, "/../../views/cdn")));

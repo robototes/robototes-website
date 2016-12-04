@@ -26,9 +26,10 @@ After the above dependencies are installed, download the server code and test it
 * [`mocha code/tests/module_tests`](#runningtests) to ensure the modules are installed and up to date
 * `npm install` the missing or out of date modules as described by failed tests
 * Modify settings in `code/classes.js`
-* Add the following settings to a file called `configs.json` in the root directory of the repository or `export` them in bash:
+* Add the following settings to a file called `configs.json` in the root directory of the repository or `export` them in bash
+(configs.json takes priority over environment variables):
     - `DOMAIN` (the domain the server serves on, default robototes.com)
-    - `ENV` or `NODE_ENV` in bash (the node environment: production|development)
+    - `DEBUG` (whether to run in debug mode: true|false)
     - `G_TRACKING_ID` (optional, the Google Analytics tracking ID)
     - `PORT` (the port for the server to run on, default 8080)
 
@@ -78,7 +79,7 @@ After running the commands and installing the required modules, follow the instr
 
 ##### Production mode
 
-Change ENV in the `configs.json` file or set the NODE_ENV environment variable to "production"
+Change DEBUG in the `configs.json` file/environment variables to false or set the NODE_ENV environment variable to "production"
 
 ```javascript
 npm run start-server // Runs the server on 8 workers
@@ -90,7 +91,7 @@ folders, depending on how you are running the server.
 
 ##### Development mode
 
-Change ENV in the `configs.json` file or set the NODE_ENV environment variable to "development"
+Change DEBUG in the `configs.json` file/environment variables to true or set the NODE_ENV environment variable to "development"
 
 ```javascript
 npm run start-server-notest // Runs the server, ignoring tests

@@ -22,25 +22,21 @@ After the above dependencies are installed, download the server code and test it
 * `git clone -b production git@github.com:robototes/robototes-website.git --depth 1` to clone the latest production release
 * `cd robototes-website` to enter the server code
 * `npm install` to install all dependencies as described in `package.json`
-* [`mocha code/tests/module_tests`](#runningtests) to ensure the modules are installed and up to date
+* [`npm run tests`](#runningtests) to ensure the modules are installed and up to date, and the server is able to run
 * `npm install` the missing or out of date modules as described by failed tests
-* Modify settings in `code/classes.js`
-* Add the following settings to a file called `configs.json` in the root directory of the repository or `export` them in bash
-(configs.json takes priority over environment variables):
+* Create a new file in the root directory called `configs.json` and add the following settings, or `export` them in bash (`configs.json` takes priority over
+environment variables):
     - `DOMAIN` (the domain the server serves on, default robototes.com)
     - `DEBUG` (whether to run in debug mode: true|false)
     - `G_TRACKING_ID` (optional, the Google Analytics tracking ID)
     - `PORT` (the port for the server to run on, default 8080)
 
-(If the `mocha` command is not found, run `npm install --dev`)
-
 A list of modules that must be included can be found below.
 
 ##### Required node modules
 
-These modules should be auto-installed by `npm install`, but make sure to run [`mocha code/tests/module_tests`](#runningtests)
-and check that all the modules are there and match the below table. All of these modules are readily available on
-[npm](//www.npmjs.com)
+These modules should be auto-installed by `npm install`, but make sure to run [`npm run tests`](#runningtests) and check that all the modules are there and match
+the below table. All of these modules are readily available on [npm](//www.npmjs.com)
 
 | Library                                                               | License                                                           | Reason                                                                                                        |
 |-----------------------------------------------------------------------|-------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------|
@@ -61,9 +57,11 @@ and check that all the modules are there and match the below table. All of these
 | [nsp](//github.com/nodesecurity/nsp)                                  | [Apache 2.0](//www.apache.org/licenses/LICENSE-2.0)               | Scans node modules for vulnerabilities                                                                        |
 | [retire.js](//github.com/RetireJS/retire.js)                          | [Apache 2.0](//www.apache.org/licenses/LICENSE-2.0)               | Identifying code security vulnerabilities.                                                                    |
 
-After running the commands and installing the required modules, follow the instructions in [Starting the server](#startserver).
+After running the commands and installing the required modules, follow the instructions to [start the server](#startserver).
 
 ##### Required client side libraries
+
+These libraries are automatically included from [cdnjs](//cdnjs.com)
 
 | Library                                                               | License                                                                   | Reason                                                                                                        |
 |-----------------------------------------------------------------------|---------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------|
@@ -88,18 +86,20 @@ npm run start-server-notest // Runs the server, ignoring tests
 
 Change DEBUG in the `configs.json` file/environment variables to false or set the NODE_ENV environment variable to "production"
 
-
-This will run several automated tests, and start the server if they succeed. The server uses [naught](//www.npmjs.com/package/naught) for zero-downtime deployment, and as such
-the server runs on a daemon and logs are not printed to the console. Instead, you can find `stdout.log` and `stderr.log` files inside the `server` and `server/dev`
-folders, depending on how you are running the server.
+This mode will run several automated tests, and start the server if they succeed. The server uses [naught](//www.npmjs.com/package/naught) for zero-downtime
+deployment, and as such the server runs on a daemon and logs are not printed to the console. Instead, you can find `stdout.log` and `stderr.log` files inside
+the `server` folder.
 
 ##### <a id="debugmode">Debug mode</a>
 
 Change DEBUG in the `configs.json` file/environment variables to true or set the NODE_ENV environment variable to "development"
 
-It is recommended that you run the server in developer mode before running it in production, to ensure the code is stable. It is also recommended that you run client-side unit tests
-in all major browsers ([Internet Explorer/Edge](//www.microsoft.com/en-us/download/internet-explorer.aspx), [Chrome](//www.google.com/chrome/browser/desktop/), and [Firefox](//mozilla.org)) before deploying
-to production, if you have made any changes to client side files.
+It is recommended that you run the server in developer mode before running it in production, to ensure the code is stable. It is also recommended that you run
+client-side unit tests in all major browsers ([Internet Explorer](//www.microsoft.com/en-us/download/internet-explorer.aspx),
+[Edge](//www.microsoft.com/en-us/windows/microsoft-edge), [Google Chrome](//www.google.com/chrome/browser/desktop/), [Opera](//www.opera.com/),
+and [Firefox](//mozilla.org)) before deploying to production, if you have made any changes to client side files.
+
+##### Best practices
 
 When running the server, consider a few best practices:
 * DO NOT run the server as `root`, this is a serious security risk that could allow for attacks with root privileges
@@ -142,7 +142,7 @@ npm run status // Displays the current server status
 npm run stop // Shuts all workers down
 ```
 
-Both the [`start-server`](#startserver) and `deploy` commands have a simpler counterpart, which skips tests, and can be run by adding `-notest` to the end of the
+Both the [`start-server`](#startserver) and `deploy` commands have a simpler counterpart, which skips all tests, and can be run by adding `-notest` to the end of the
 command
 
 ### Best practices
@@ -178,7 +178,7 @@ redeploy
             correctly later on a `feat`, `bug`, or `wip` branch
     * Write tests for the results you want from your code (as many as needed, for as many situations as possible, no matter how unlikely)
     We use [mochajs](//mochajs.org/) and [chaijs](//chaijs.com/), so follow their documentation for how to write tests
-    * Write the actual code (with comments)
+    * Write the actual code (with comments, lots of comments)
     * Make sure the code passes the tests
     * Optimize the code (make code gooder)
     * When you're done, commit your changes, and push to the git remote:

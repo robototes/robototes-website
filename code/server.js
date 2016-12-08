@@ -85,6 +85,11 @@ app.use(helmet.contentSecurityPolicy({ // CSP
             objectSrc: [ "'none'" ],
         }
     }))
+    .use(helmet.hpkp({
+        maxAge: 60 * 60 * 24 * 90,
+        sha256s: configs.HPKP_HASHES,
+        includeSubdomains: true
+    }))
     .use(helmet.xssFilter())
     .use(helmet.frameguard({ action: "deny" })) // Prevents framing
     .use(helmet.hidePoweredBy()) // Removes X-Powered-By header

@@ -57,7 +57,6 @@ app.use(helmet.contentSecurityPolicy({ // CSP
                 "www.google-analytics.com",
                 "analytics.google.com",
                 "www.google.com",
-                "ssl.gstatic.com",
                 "'unsafe-eval'",
                 "'unsafe-inline'"
             ],
@@ -78,7 +77,8 @@ app.use(helmet.contentSecurityPolicy({ // CSP
                 "'self'",
                 classes.constants.subdomains.full("CDN"),
                 "www.google-analytics.com",
-                "cdnjs.cloudflare.com"
+                "cdnjs.cloudflare.com",
+                "ssl.gstatic.com"
             ],
             childSrc: [ "'none'" ],
             sandbox: [ "allow-forms", "allow-scripts", "allow-same-origin" ],

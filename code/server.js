@@ -21,7 +21,7 @@ var express = require("express"),
 // Config file
 var configs;
 try {
-    configs = require("../configs.json");
+    configs = require("../configs");
 } catch(err) {
     configs = {};
 }

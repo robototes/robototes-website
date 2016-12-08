@@ -4,4 +4,4 @@ server/*.*
 server/dev/*.*
 node_modules
 npm-debug.log
-configs.json
+configs.js

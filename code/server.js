@@ -57,6 +57,7 @@ app.use(helmet.contentSecurityPolicy({ // CSP
                 "www.google-analytics.com",
                 "analytics.google.com",
                 "www.google.com",
+                "ssl.gstatic.com",
                 "'unsafe-eval'",
                 "'unsafe-inline'"
             ],

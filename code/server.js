@@ -113,6 +113,9 @@ app.use(function(req, res, next) {
     .use("/sitemap.xml", function(req, res) {
         res.sendFile(path.join(__dirname, "/../views/sitemap.xml"));
     })
+    .use("/blog", function(req, res) {
+        res.redirect("//" + classes.constants.subdomains.BLOG + "." + classes.constants.domain, 301);
+    })
     .use(subdomain(classes.constants.subdomains.CDN, require("./routes/cdn-routes")))
     .use(subdomain(classes.constants.subdomains.PUBLIC, require("./routes/public-routes")))
     .use(function(req, res, next) { // If no subdomain specified

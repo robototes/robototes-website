@@ -64,6 +64,12 @@ describe("Server", function() {
                 .expect(404, done);
         });
     });
+    it("redirects from /blog to blog subdomain", function(done) {
+        request(app)
+            .get('/blog')
+            .expect('Location', "//" + app.locals.classes.constants.subdomains.BLOG + "." + app.locals.classes.constants.domain)
+            .expect(301, done);
+    });
     describe("CDN", function() {
         // Recursively indexes files for URI testing
         walk(path.join(__dirname + "/../../views/cdn"), "", app.locals.classes.constants.subdomains.CDN + "." + app.locals.classes.constants.domain);

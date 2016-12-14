@@ -14,6 +14,7 @@ module.exports = function(configs) {
                 STATUS: "status",
                 PUBLIC: "www",
                 CDN: "cdn",
+                BLOG: "blog",
                 full: function(sub) { return classes.constants.subdomains[sub.toUpperCase()] + "." + classes.constants.domain; }
             },
             domain: configs.DOMAIN || process.env.DOMAIN || "robototes.com",

@@ -45,5 +45,9 @@ window.cookieconsent_options = {
 };
 
 $(document).ready(function() {
-    $("[data-toggle=tooltip]").tooltip();
+    //See https://stackoverflow.com/questions/11903001/hiding-bootstrap-tooltips-on-mobile-using-media-queries
+    if (!window.matchMedia || (window.matchMedia("(min-width: 767px)").matches)) {
+        //Enable tooltips if we're not on mobile
+        $("[data-toggle=tooltip]").tooltip();
+    }
 });

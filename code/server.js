@@ -80,7 +80,7 @@ app.use(helmet.contentSecurityPolicy({ // CSP
                 "cdnjs.cloudflare.com",
                 "ssl.gstatic.com"
             ],
-            childSrc: [ "'none'" ],
+            childSrc: [ "docs.google.com" ],
             sandbox: [ "allow-forms", "allow-scripts", "allow-same-origin" ],
             objectSrc: [ "'none'" ],
         }

@@ -25,8 +25,8 @@
                 404: "Uh oh! We lost the robot!",
                 500: "When your robot stops working right before the competition :O"
             }[code]; %></h1>
-            <p>There seems to have been a <%= code; %> error. If you think this is a problem with our website, please tell us
-                <a href="/feedback/forms/errorPage?code=<%= code; %>">here</a></p>
+            <p>There seems to have been a <%= code; %> error. If you think this is a problem with our website, please fill out this form:</p>
+            <iframe src=<%="https://docs.google.com/forms/d/e/1FAIpQLSeE3DD0gAQy5Zlqrl9mZvAEaGCH5Vk9NtZpS0seYz7CoUe2iQ/viewform?embedded=true&entry.249162248&entry.1950414974=" + code + "&entry.999947763";%> width="760" height="500" frameborder="0" marginheight="0" marginwidth="0">Loading...</iframe>
         </section>
         <% include ../partials/footer.ejs %>
     </body>

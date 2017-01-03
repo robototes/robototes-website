@@ -1,5 +1,5 @@
 /*
-Copyright (C) 2016 Sammamish Robotics <robototes2412@gmail.com>, All rights reserved.
+Copyright (C) 2017 Sammamish Robotics <robototes2412@gmail.com>, All rights reserved.
 
 This file is part of the robototes-website project.
 

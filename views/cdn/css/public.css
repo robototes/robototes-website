@@ -28,6 +28,7 @@ body {
 }
 .robot-display {
     display: inline-block;
+    width: 100%;
 }
 .robot-image {
     max-width: 30em;

@@ -81,12 +81,57 @@
                     <img class="robot-image" src="<%=imgurl%>" alt="<%=imgalt%>">
                 </div>
             <%}%>
-            <% var cdnurl =  "\/\/" + classes.constants.subdomains.full("CDN") + "/media/robot_imgs/";%>
-            <%- createRobotSection(false, "Tomo^2", ["Shoots T-Shirts :)", "Mecanum drive (forward/back, turning, and left/right movement)", "Front headlights"], cdnurl + "tomo.jpg", "Tomo^2, our T-Shirt shooting robot.");%>
-            <%- createRobotSection(true, "Sir Costalot", "2016", "Stronghold", ['<a href="https://www.thebluealliance.com/event/2016wasno">Glacier Peak</a>', '<a href="https://www.thebluealliance.com/event/2016waahs">Auburn</a>', '<a href="https://www.thebluealliance.com/event/2016wagg">Girls Gen</a>'], ['Ranked #8 at <a href="https://www.thebluealliance.com/event/2016wasno">Glacier Peak</a>', '7th seeded captain at <a href="https://www.thebluealliance.com/event/2016waahs">Auburn</a>', 'Finalist at <a href="https://www.thebluealliance.com/event/2016wagg">Girls Gen</a>'], ["Can cross all category B, C, and D defenses in Autonomous (except Drawbridge)", "Crosses all defenses in Teleoperated period (except Drawbridge)", "Intake arm can be raised and lowered", "Low bar scoring"], cdnurl + "sir_costalot.jpg", "Sir Costalot, our 2016 robot.");%>
-            <%- createRobotSection(true, "YPOTRYLLA (The Yodeling Pusher of Totes and Recycling containers Yusing Lots and Lots of Acme) - <span style='color: red'>DISMANTLED</span>", "2015", "Recycle Rush", ['<a href="https://www.thebluealliance.com/event/2015waamv">Auburn Mountainview</a>', '<a href="https://www.thebluealliance.com/event/2015washo">Shorewood</a>'], ['Innovation in Control Award', 'Semifinalists at <a href="https://www.thebluealliance.com/event/2015waamv">Auburn Mountainview</a>', 'Ranked #8 at <a href="https://www.thebluealliance.com/event/2015washo">Shorewood</a>'], ["Mecanum drive", "Ability to stack totes and RCs", "Automatic in-robot stack assembly for fast scoring", "RC &quot;claw&quot; to grab RCs off of center step quickly", "14 sensors"], cdnurl + "YPOTRYLLA.jpg", "YPOTRYLLA (Y P O T R Y L L A), our 2015 robot.");%>
-            <%- createRobotSection(true, "CONDOR (Cooperatively Optimized Northwest Defensive and Offensive Robot)", "2014", "Aerial Assist", ['<a href="https://www.thebluealliance.com/event/2014wasno">Glacier Peak</a>', '<a href="https://www.thebluealliance.com/event/2014washo">Shorewood</a>', '<a href="https://www.thebluealliance.com/event/2014pncmp">Pacific Northwest Championship</a>'], ['Quality Award (twice)', 'Ranked #1 at <a href="https://www.thebluealliance.com/event/2014wasno">Glacier Peak</a>', 'Semifinalists at <a href="https://www.thebluealliance.com/event/2014pncmp">Pacific Northwest Championship</a>'], ["Ability to launch into high goal using pneumatically-driven catapult", "Shifting gearbox for high speed and power", "Fast pick-up", "&quot;Wings&quot; to aid catching", "8-wheel design", "Two ball autonomous"], cdnurl + "CONDOR.jpg", "CONDOR, our 2014 robot.");%>
-            
+            <% var cdnurl =  "\/\/" + classes.constants.subdomains.full("CDN") + "/media/robot_imgs/"; %>
+            <%- createRobotSection(false, "Tomo^2", [
+                    "Shoots T-Shirts :)",
+                    "Mecanum drive (forward/back, turning, and left/right movement)",
+                    "Front headlights"
+                ], cdnurl + "tomo.jpg", "Tomo^2, our T-Shirt shooting robot."); %>
+            <%- createRobotSection(true, "Sir Costalot", "2016", "Stronghold", [
+                    link_to("Glacier Peak", "https:\/\/www.thebluealliance.com/event/2016wasno"),
+                    link_to("Auburn", "https:\/\/www.thebluealliance.com/event/2016waahs"),
+                    link_to("Girls Gen", "https:\/\/www.thebluealliance.com/event/2016wagg")
+                ], [
+                    `Ranked #8 at ${link_to("Glacier Peak", "https:\/\/www.thebluealliance.com/event/2016wasno")}`,
+                    `7th seeded captain at ${link_to("Auburn", "https:\/\/www.thebluealliance.com/event/2016waahs")}`,
+                    `Finalist at ${link_to("Girls Gen", "https:\/\/www.thebluealliance.com/event/2016wagg")}`
+                ], [
+                    "Can cross all category B, C, and D defenses in Autonomous (except Drawbridge)",
+                    "Crosses all defenses in Teleoperated period (except Drawbridge)",
+                    "Intake arm can be raised and lowered", "Low bar scoring"
+                ], cdnurl + "sir_costalot.jpg", "Sir Costalot, our 2016 robot."); %>
+            <%- createRobotSection(true,
+                `YPOTRYLLA (The Yodeling Pusher of Totes and Recycling containers Yusing Lots and Lots of Acme) - ${tag("span", { style: "color: red" })}DISMANTLED${end_tag("span")}`,
+                "2015", "Recycle Rush", [
+                    link_to("Auburn Mountainview", "https:\/\/www.thebluealliance.com/event/2015waamv"),
+                    link_to("Shorewood", "https:\/\/www.thebluealliance.com/event/2015washo")
+                ], [
+                    'Innovation in Control Award',
+                    `Semifinalists at ${link_to("Auburn Mountainview", "https:\/\/www.thebluealliance.com/event/2015waamv")}`,
+                    `Ranked #8 at ${link_to("Shorewood", "https:\/\/www.thebluealliance.com/event/2015washo")}`
+                ], [
+                    "Mecanum drive",
+                    "Ability to stack totes and RCs",
+                    "Automatic in-robot stack assembly for fast scoring",
+                    "RC \"claw\" to grab RCs off of center step quickly",
+                    "14 sensors"
+                ], cdnurl + "YPOTRYLLA.jpg", "YPOTRYLLA (Y P O T R Y L L A), our 2015 robot."); %>
+            <%- createRobotSection(true, "CONDOR (Cooperatively Optimized Northwest Defensive and Offensive Robot)", "2014", "Aerial Assist", [
+                    link_to("Glacier Peak", "https:\/\/www.thebluealliance.com/event/2014wasno"),
+                    link_to("Shorewood", "https:\/\/www.thebluealliance.com/event/2014washo"),
+                    link_to("Pacific Northwest Championship", "https:\/\/www.thebluealliance.com/event/2014pncmp")
+                ], [
+                    'Quality Award (twice)',
+                    `Ranked #1 at ${link_to("Glacier Peak", "https:\/\/www.thebluealliance.com/event/2014wasno")}`,
+                    `Semifinalists at ${link_to("Pacific Northwest Championship", "https:\/\/www.thebluealliance.com/event/2014pncmp")}`
+                ], [
+                    "Ability to launch into high goal using pneumatically-driven catapult",
+                    "Shifting gearbox for high speed and power",
+                    "Fast pick-up",
+                    "\"Wings\" to aid catching",
+                    "8-wheel design",
+                    "Two ball autonomous"
+                ], cdnurl + "CONDOR.jpg", "CONDOR, our 2014 robot."); %>
         </section>
         <% include ../partials/footer.ejs %>
     </body>

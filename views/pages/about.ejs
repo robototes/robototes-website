@@ -82,6 +82,18 @@
                 </div>
             <%}%>
             <% var cdnurl =  "\/\/" + classes.constants.subdomains.full("CDN") + "/media/robot_imgs/"; %>
+            <%- createRobotSection(true, "Falca", "2017", "Steamworks", [
+                    link_to("Glacier Peak", "https:\/\/www.thebluealliance.com/event/2017wasno"),
+                    link_to("Auburn", "https:\/\/www.thebluealliance.com/event/2017waahs")
+                ], [
+                    "Falca hasn't played in any competitions...yet"
+                ], [
+                    "6 wheel tank drive, powered by 4 CIMs",
+                    "Pneumatic gripper can pick gear off the ground",
+                    "Chain-driven climber powered by a 775 pro",
+                    "Can put gear on any peg",
+                    "Crosses baseline for extra 5 points"
+                ], cdnurl + "falca.jpg", "Falca, our 2017 robot."); %>
             <%- createRobotSection(false, "Tomo^2", [
                     "Shoots T-Shirts :)",
                     "Mecanum drive (forward/back, turning, and left/right movement)",

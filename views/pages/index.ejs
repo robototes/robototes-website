@@ -25,10 +25,9 @@
                 <div class="carousel-inner" role="listbox">
                     <% //Alt tags
                         var altvals = [];
-                        altvals["girls_gen_all.jpg"] = "Everybody on our team who came to girls gen.";
-                        altvals["girls_gen_drive_team.jpg"] = "The drive team who came to girls gen.";
-                        altvals["sir_costalot.jpg"] = "Our 2016 robot, Sir Costalot.";
-                        altvals["sir_costalot_girls_gen.jpg"] = "Sir Costalot at Girls Gen, along with some other robots.";
+                        altvals["falca.jpg"] = "Our latest robot, Falca.";
+                        altvals["falca_gear.jpg"] = "Falca picking up a gear.";
+                        altvals["falca_climb.jpg"] = "Falca climbing ";
                     %>
                     <% slideshow.forEach(function(current, index) {
                         %><div class="item<%= index == 0 ? " active" : "" %>">
@@ -65,9 +64,25 @@
                     <p>All donations are tax deductible.</p>
                 </div>
                 <div id="buildseason2017" class="news-col well col-md-4 col-sm-6 col-xs-12">
-                    <h2>Build Season is here!</h2>
-                    <p>After traveling many miles to attend Kickoff, our team finally witnessed the reveal of this year's game: <a href="https://www.youtube.com/watch?v=EMiNmJW7enI">FIRST Steamworks</a>. For the next six weeks, our team will stay up late, eat lots of junk food, and build a working robot. </p>
-
+                    <h2>Our robot is here!</h2>
+                    <p>Team 2412 is proud to present our latest creation: Falca. </p>
+                    <ul>
+                        <ul>
+                            <li>Teleoperated:</li>
+                            <ul>
+                                <li>6 wheel tank drive, powered by 4 CIMs</li>
+                                <li>Pneumatic gripper can pick gear off the ground</li>
+                                <li>Chain-driven climber powered by a 775 pro</li>
+                            </ul>
+                        </ul>
+                        <ul>
+                            <li>Autonomous:</li>
+                            <ul>
+                                <li>Can put gear on any peg</li>
+                                <li>Crosses baseline for extra 5 points</li>
+                            </ul>
+                        </ul>
+                    </ul>
                     <p>More information can be found on our <%- link_to("blog", "\/\/" + classes.constants.subdomains.BLOG + "." + classes.constants.domain); %>.</p>
                 </div>
             </div>

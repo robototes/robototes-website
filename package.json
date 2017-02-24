@@ -20,6 +20,7 @@
   },
   "dependencies": {
     "async": "^2.1.5",
+    "body-parser": "^1.16.1",
     "compression": "^1.6.2",
     "cors": "^2.8.1",
     "ejs": "^2.5.6",

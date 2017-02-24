@@ -14,6 +14,7 @@ var url = require("url"),
 var express = require("express"),
     expressHelpers = require("express-helpers"),
     subdomain = require("express-subdomain"),
+    bodyParser = require("body-parser"),
     compression = require("compression"),
     helmet = require("helmet"),
     cors = require("cors");
@@ -96,6 +97,10 @@ app.use(helmet.contentSecurityPolicy({ // CSP
     .use(helmet.ieNoOpen())
     .use(helmet.noSniff()) // Prevents MIME type sniffing
     .use(cors({ origin: [ classes.constants.subdomains.full("CDN") ] })) // Enables CORS
+    .use(bodyParser.json())
+    .use(bodyParser.urlencoded({
+        extended: true
+    }))
     .use(compression()); // Compresses data for speed
 
 app.use(function(req, res, next) {

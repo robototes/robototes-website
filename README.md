@@ -1,9 +1,8 @@
 # robototes-website
 
-[![Greenkeeper badge](https://badges.greenkeeper.io/robototes/robototes-website.svg)](https://greenkeeper.io/)
-
 [![Build Status](//travis-ci.org/robototes/robototes-website.svg?branch=production)](//travis-ci.org/robototes/robototes-website)
 [![Dependency Status](//david-dm.org/robototes/robototes-website/status.svg?branch=master)](//david-dm.org/robototes/robototes-website#info=dependencies)
+[![Greenkeeper badge](https://badges.greenkeeper.io/robototes/robototes-website.svg)](https://greenkeeper.io/)
 [![Our Trello](//trello.com/b/xUBeXgQ4/robototes-website)](//trello.com/b/xUBeXgQ4/robototes-website)
 
 The official Node.js website for the Robototes 2412 team.

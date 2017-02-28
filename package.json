@@ -17,7 +17,8 @@
     "abort-deploy": "naught deploy-abort server/naught.ipc",
     "stop": "naught stop server/naught.ipc",
     "test": "echo Use \\\"npm run tests\\\" instead && npm run tests",
-    "tests": "mocha code/tests && nsp check --output checkstyle && retire"
+    "tests": "mocha code/tests && nsp check --output checkstyle && retire",
+    "managedb": "node ./node_modules/mongo-express/app.js"
   },
   "dependencies": {
     "async": "^2.1.5",
@@ -38,6 +39,7 @@
   "devDependencies": {
     "chai": "^3.5.0",
     "mocha": "^3.2.0",
+    "mongo-express": "^0.37.2",
     "nsp": "^2.6.2",
     "retire": "^1.2.11",
     "supertest": "^3.0.0"

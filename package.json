@@ -7,7 +7,6 @@
   "license": "SEE LICENSE IN LICENSE",
   "author": "dannytech <dhellstern@outlook.com>",
   "scripts": {
-    "install": "sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv 0C49F3730359A14518585931BC711F9BA15703C6 && echo \"deb [ arch=amd64,arm64 ] http://repo.mongodb.org/apt/ubuntu xenial/mongodb-org/3.4 multiverse\" | sudo tee /etc/apt/sources.list.d/mongodb-org-3.4.list && sudo apt-get update && sudo apt-get install -y mongodb-org && mkdir mongo-data",
     "start": "echo Use \\\"npm run start-server\\\" or \\\"npm run start-server-notest\\\" instead && npm run start-server",
     "start-server-notest": "naught start --worker-count 2 --ipc-file server/naught.ipc --pid-file server/naught.pid --log server/naught.log --stdout server/stdout.log --stderr server/stderr.log start.js",
     "start-server": "npm run tests && npm run start-server-notest",

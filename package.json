@@ -30,7 +30,7 @@
     "express-minify": "^0.2.0",
     "express-subdomain": "^1.0.5",
     "helmet": "^3.4.1",
-    "mongoose": "^4.8.5",
+    "mongoose": "^4.9.1",
     "naught": "^1.6.0",
     "retire": "^1.2.12",
     "serve-favicon": "^2.4.1",

@@ -30,11 +30,12 @@
     "express-minify": "^0.2.0",
     "express-subdomain": "^1.0.5",
     "helmet": "^3.5.0",
-    "mongoose": "^4.9.3",
+    "mocha": "^3.3.0",
+    "mongoose": "^4.9.6",
     "naught": "^1.6.0",
-    "retire": "^1.2.12",
+    "retire": "^1.2.13",
     "serve-favicon": "^2.4.2",
-    "serve-static": "^1.12.1"
+    "serve-static": "^1.12.2"
   },
   "devDependencies": {
     "body-parser": "^1.17.1",

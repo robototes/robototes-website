@@ -47,7 +47,7 @@
     "mongoose": "^4.9.0",
     "nsp": "^2.6.3",
     "retire": "^1.2.11",
-    "serve-static": "^1.12.1",
+    "serve-static": "^1.12.3",
     "supertest": "^3.0.0"
   }
 }

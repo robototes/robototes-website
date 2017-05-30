@@ -34,7 +34,7 @@
     "mongoose": "^4.9.6",
     "naught": "^1.6.0",
     "retire": "^1.2.13",
-    "serve-favicon": "^2.4.2",
+    "serve-favicon": "^2.4.3",
     "serve-static": "^1.12.2"
   },
   "devDependencies": {

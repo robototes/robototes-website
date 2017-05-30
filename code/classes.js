@@ -21,8 +21,12 @@ module.exports = function(configs) {
             api_keys: {
                 google: {
                     analytics: configs.G_TRACKING_ID
+                },
+                tba: {
+                    secret: configs.TBA_SECRET_KEY
                 }
-            }
+            },
+            database: configs.DATABASE
         }
     };
     return classes;

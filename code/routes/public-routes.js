@@ -17,7 +17,7 @@ var express = require("express"),
 var favicon = require("serve-favicon");
 
 // Local code
-var db = require("../db/db.js");
+// var db = require("../db/db.js");
 
 // Slideshow images
 var fileType = /\.(jpg)/i,
@@ -28,13 +28,13 @@ for(var i = 0; i < dir.length; i++)
         files.push(dir[i]); //store the file name into the array files
 
 // Connects to the events database
-var dbconn,
-    Event;
-db.connect("events", function(err, conn) {
-    if(err) throw err;
-    Event = require("../db/models/Event.js")(conn);
-    dbconn = conn;
-});
+// var dbconn,
+//     Event;
+// db.connect("events", function(err, conn) {
+//     if(err) throw err;
+//     Event = require("../db/models/Event.js")(conn);
+//     dbconn = conn;
+// });
 
 // Public routing code
 module.exports = express.Router()
@@ -67,49 +67,49 @@ module.exports = express.Router()
         res.render(path.join(__dirname, "/../../views/pages/media.ejs"));
         res.end();
     })
-    .get("/rss/ticker", function(req, res) {
-        if(dbconn)
-        Event.find({}, function(err, data) {
-            if(err) throw err;
-            console.log(data);
-            // Parse data into uniform JSON structure
-            // Convert to XML
-            res.json(/* Converted XML */);
-        });
-    })
-    .post("/webhook/:source", function(req, res) {
-        // The Blue Alliance
-        if(req.params.source === "tba") { // TODO Check X-TBA-Checksum to ensure payload integrity and source
-            // Detects the type of Blue Alliance Webhook (https://www.thebluealliance.com/apidocs/webhooks)
-            console.log(req.body);
-            switch(req.body.message_type) {
-                case "upcoming_match":
-                    break;
-                case "match_score":
-                    // Add record to database
-                    var newEvent = new Event({
+    // .get("/rss/ticker", function(req, res) {
+    //     if(dbconn)
+    //     Event.find({}, function(err, data) {
+    //         if(err) throw err;
+    //         console.log(data);
+    //         // Parse data into uniform JSON structure
+    //         // Convert to XML
+    //         res.json(/* Converted XML */);
+    //     });
+    // })
+    // .post("/webhook/:source", function(req, res) {
+    //     // The Blue Alliance
+    //     if(req.params.source === "tba") { // TODO Check X-TBA-Checksum to ensure payload integrity and source
+    //         // Detects the type of Blue Alliance Webhook (https://www.thebluealliance.com/apidocs/webhooks)
+    //         console.log(req.body);
+    //         switch(req.body.message_type) {
+    //             case "upcoming_match":
+    //                 break;
+    //             case "match_score":
+    //                 // Add record to database
+    //                 var newEvent = new Event({
                         
-                    });
-                    newEvent.save();
-                    break;
-                case "alliance_selection":
-                    break;
-                case "awards_posted":
-                    break;
-                case "media_posted":
-                    throw new Error("Not implemented yet");
-                case "final_results":
-                    throw new Error("Not implemented yet");
-                case "ping":
-                    console.log("Ping received");
-                    break;
-                case "broadcast":
-                    break;
-                case "verification":
-                    console.log("Verification code received:", req.body.message_data.verification_key);
-                    break;
-                default:
-                    console.log(req.body);
-            }
-        }
-    });
+    //                 });
+    //                 newEvent.save();
+    //                 break;
+    //             case "alliance_selection":
+    //                 break;
+    //             case "awards_posted":
+    //                 break;
+    //             case "media_posted":
+    //                 throw new Error("Not implemented yet");
+    //             case "final_results":
+    //                 throw new Error("Not implemented yet");
+    //             case "ping":
+    //                 console.log("Ping received");
+    //                 break;
+    //             case "broadcast":
+    //                 break;
+    //             case "verification":
+    //                 console.log("Verification code received:", req.body.message_data.verification_key);
+    //                 break;
+    //             default:
+    //                 console.log(req.body);
+    //         }
+    //     }
+    // });

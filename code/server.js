@@ -82,7 +82,7 @@ app.use(helmet.contentSecurityPolicy({ // CSP
                 "ssl.gstatic.com"
             ],
             childSrc: [ "docs.google.com" ],
-            sandbox: [ "allow-forms", "allow-scripts", "allow-same-origin" ],
+            sandbox: [ "allow-forms", "allow-scripts", "allow-same-origin", "allow-popups" ],
             objectSrc: [ "'none'" ],
         }
     }))

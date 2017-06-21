@@ -18,11 +18,9 @@ $(function() {
         "engt"
     ];
     var website_names = [
-        "Daniel Hellstern",
         "Timothy Eng"
     ];
     var website_emails = [
-        "hellsternd",
         "engt"
     ];
     var all_names = [];
@@ -54,6 +52,9 @@ $(function() {
     });
     $(".contactlink2").mouseleave(function() {
         $(this).attr("href", "");
+    });
+    $(".newtablink").click(function() {
+        window.open($(this).attr("href"));
     });
     genLinks("l",  "leadership_emails");
     genLinks("w",  "website_emails");

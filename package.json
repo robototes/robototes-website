@@ -16,7 +16,7 @@
     "abort-deploy": "naught deploy-abort server/naught.ipc",
     "stop": "naught stop server/naught.ipc",
     "test": "echo Use \\\"npm run tests\\\" instead && npm run tests",
-    "tests": "mocha code/tests && nsp check --output checkstyle && retire",
+    "tests": "ava code/tests && nsp check --output checkstyle && retire",
     "managedb": "node ./node_modules/mongo-express/app.js"
   },
   "dependencies": {
@@ -30,7 +30,6 @@
     "express-minify": "^0.2.0",
     "express-subdomain": "^1.0.5",
     "helmet": "^3.6.1",
-    "mocha": "^3.4.2",
     "mongoose": "^4.10.8",
     "naught": "^1.6.0",
     "retire": "^1.3.2",
@@ -38,11 +37,10 @@
     "serve-static": "^1.12.3"
   },
   "devDependencies": {
+    "ava": "^0.19.1",
     "body-parser": "^1.17.2",
-    "chai": "^4.0.2",
     "express": "^4.15.2",
     "helmet": "^3.6.1",
-    "mocha": "^3.4.2",
     "mongo-express": "^0.40.0",
     "mongoose": "^4.10.4",
     "nsp": "^2.6.3",

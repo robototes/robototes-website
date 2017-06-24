@@ -1,4 +1,5 @@
 .eslintrc
+.env
 .retire-cache/
 server/*.*
 server/dev/*.*

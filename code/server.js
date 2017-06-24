@@ -20,26 +20,22 @@ var helmet = require('helmet')
 var cors = require('cors')
 
 // Config file
-var configs
-try {
-  configs = require('../configs')
-} catch (err) {
-  configs = {}
-}
+var env = require('dotenv').config()
+require('dotenv-expand')(env)
 
 // Local code
-var classes = require('./classes')(configs)
+var classes = require('./classes')()
 
 // Creates a new router
 var app = module.exports = express()
 expressHelpers(app)
 
 // Sets globally accessible variables
-app.set('debug', configs.DEBUG || process.env.DEBUG || (process.env.NODE_ENV && process.env.NODE_ENV === 'production') || false) // The current environment (development|production)
+app.set('debug', process.env.DEBUG != null || (process.env.NODE_ENV && process.env.NODE_ENV === 'production') || false) // Whether to run in debug mode
     .set('views', path.join(__dirname, '/../views')) // Sets the views
     .set('subdomain offset', classes.constants.domain.split('.').length || 2) // Parses subdomains
     .set('view engine', 'ejs') // Sets templating to use EJS
-    .set('port', configs.PORT || process.env.PORT || 8080) // Gets the port to run on
+    .set('port', process.env.PORT || 8080) // Gets the port to run on
 app.locals.classes = classes
 app.locals.app = app
 app.locals.util = require('util')
@@ -88,7 +84,7 @@ app.use(helmet.contentSecurityPolicy({ // CSP
 }))
     .use(helmet.hpkp({
       maxAge: 60 * 60 * 24 * 90,
-      sha256s: configs.HPKP_HASHES,
+      sha256s: process.env.HPKP_HASHES.split(','),
       includeSubdomains: true
     }))
     .use(helmet.xssFilter())

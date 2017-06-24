@@ -23,7 +23,7 @@ var cors = require('cors')
 require('dotenv').config()
 
 // Local code
-var classes = require('./classes')
+var classes = require('./classes')()
 
 // Creates a new router
 var app = module.exports = express()

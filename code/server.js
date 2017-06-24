@@ -20,7 +20,8 @@ var helmet = require('helmet')
 var cors = require('cors')
 
 // Config file
-require('dotenv').config()
+var env = require('dotenv').config()
+require('dotenv-expand')(env)
 
 // Local code
 var classes = require('./classes')()

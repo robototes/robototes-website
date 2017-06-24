@@ -8,13 +8,13 @@ via any medium without the express permission of Robotics Leadership is strictly
  */
 
 // External libraries
-var expect = window.chai.expect
+const expect = window.chai.expect
+const jQuery = window.jQuery
+const Mocha = window.Mocha
+const describe = window.describe
+const it = window.it
 var $ = window.$
-var jQuery = window.jQuery
-var Mocha = window.Mocha
-var mocha = window.mocha
-var describe = window.describe
-var it = window.it
+let mocha = window.mocha
 
 $(document).ready(function () {
   $('[data-action=run-tests]').click(function () {

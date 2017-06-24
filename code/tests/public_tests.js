@@ -1,8 +1,8 @@
-var test = require('ava').test // Testing function
-var request = require('supertest') // Routing testing
+const test = require('ava').test // Testing function
+const request = require('supertest') // Routing testing
 
 // Local code
-var app = require('../server') // Routing
+let app = require('../server') // Routing
 
 // Tests basic requests
 test.cb('Server responds correctly to valid requests (200)', function (t) {

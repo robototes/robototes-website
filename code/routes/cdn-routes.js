@@ -7,17 +7,17 @@ Any copying and/or distributing and/or use in commercial or non-commercial envir
 via any medium without the express permission of Robotics Leadership is strictly prohibited.
  */
 // System imports
-var path = require('path')
+const path = require('path')
 
 // External libraries
-var express = require('express')
-var minify = require('express-minify')
-var serveStatic = require('serve-static')
+const express = require('express')
+const minify = require('express-minify')
+const serveStatic = require('serve-static')
 
 // Simple CDN static and dynamic routing
 module.exports = express.Router()
     .use('/robots.txt', function (req, res) {
-      var robots = '';
+      let robots = '';
       [
             { key: 'User-Agent', value: '*' },
             { key: 'Disallow', value: '/' }

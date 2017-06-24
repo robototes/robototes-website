@@ -7,27 +7,27 @@ Any copying and/or distributing and/or use in commercial or non-commercial envir
 via any medium without the express permission of Robotics Leadership is strictly prohibited.
  */
 // System imports
-var url = require('url')
-var path = require('path')
+const url = require('url')
+const path = require('path')
 
 // External libraries
-var express = require('express')
-var expressHelpers = require('express-helpers')
-var subdomain = require('express-subdomain')
-var bodyParser = require('body-parser')
-var compression = require('compression')
-var helmet = require('helmet')
-var cors = require('cors')
+const express = require('express')
+const expressHelpers = require('express-helpers')
+const subdomain = require('express-subdomain')
+const bodyParser = require('body-parser')
+const compression = require('compression')
+const helmet = require('helmet')
+const cors = require('cors')
 
 // Config file
-var env = require('dotenv').config()
+let env = require('dotenv').config()
 require('dotenv-expand')(env)
 
 // Local code
-var classes = require('./classes')()
+const classes = require('./classes')()
 
 // Creates a new router
-var app = module.exports = express()
+let app = module.exports = express()
 expressHelpers(app)
 
 // Sets globally accessible variables

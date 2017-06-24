@@ -7,28 +7,28 @@ Any copying and/or distributing and/or use in commercial or non-commercial envir
 via any medium without the express permission of Robotics Leadership is strictly prohibited.
  */
 // System imports
-var path = require('path')
-var fs = require('fs')
+const path = require('path')
+const fs = require('fs')
 
 // External libraries
-var express = require('express')
+const express = require('express')
 
 // Favicon
-var favicon = require('serve-favicon')
+const favicon = require('serve-favicon')
 
 // Local code
-// var db = require("../db/db.js");
+// const db = require("../db/db.js");
 
 // Slideshow images
-var fileType = /\.(jpg)/i
-var dir = fs.readdirSync(path.join(__dirname, '../../views/cdn/media/slideshow'))
-var files = []
-for (var i = 0; i < dir.length; i++) {
+const fileType = /\.(jpg)/i
+const dir = fs.readdirSync(path.join(__dirname, '../../views/cdn/media/slideshow'))
+let files = []
+for (let i = 0; i < dir.length; i++) {
   if (fileType.exec(path.extname(dir[i]))) { files.push(dir[i]) }
 } // store the file name into the array files
 
 // Connects to the events database
-// var dbconn,
+// let dbconn,
 //     Event;
 // db.connect("events", function(err, conn) {
 //     if(err) throw err;
@@ -40,7 +40,7 @@ for (var i = 0; i < dir.length; i++) {
 module.exports = express.Router()
     .use(favicon(path.join(__dirname, '../../views/cdn/media/robotote.png')))
     .use('/robots.txt', function (req, res) {
-      var robots = '';
+      let robots = '';
       [
             { key: 'User-Agent', value: '*' },
             { key: 'Allow', value: '/' },
@@ -86,7 +86,7 @@ module.exports = express.Router()
     //                 break;
     //             case "match_score":
     //                 // Add record to database
-    //                 var newEvent = new Event({
+    //                 let newEvent = new Event({
 
     //                 });
     //                 newEvent.save();

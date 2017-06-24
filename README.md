@@ -24,12 +24,13 @@ After the above dependencies are installed, download the server code and test it
 * `cd robototes-website` to enter the server code
 * `npm install` to install all dependencies as described in `package.json`
 * [`npm run tests`](#runningtests) to ensure the server is able to run
-* Create a new file in the root directory called `configs.json` and add the following settings, or `export` them in bash (`configs.json` takes priority over
+* Create a new file in the root directory called `.env` and add the following settings, or `export` them in bash (`.env` takes priority over
 environment variables):
     - `DOMAIN` (the domain the server serves on, default robototes.com)
+    - `PORT` (the port for the server to run on, default 8080)
     - `DEBUG` (whether to run in debug mode: true|false)
     - `G_TRACKING_ID` (optional, the Google Analytics tracking ID)
-    - `PORT` (the port for the server to run on, default 8080)
+    - `HPKP_HASHES` (a comma separated list of HPKP hashes for CAs, Intermediates, and the site certificate)
 
 ### <a id="startserver">Starting the server</a>
 

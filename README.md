@@ -78,9 +78,9 @@ When running the server, consider a few best practices:
 npm run tests
 ```
 
-We use [mocha](//www.npmjs.com/package/mocha) and [chai](//www.npmjs.com/package/chai) to unit test on both the server and the client. At the moment,
-the above code runs all server tests in `code/tests` and prints the results. This command is also run by [`npm run start-server`](#startserver) and will only start the
-server if all tests pass.
+We use [ava](//www.npmjs.com/package/ava) to test on the server, and [mocha](//www.npmjs.com/package/mocha) and [chai](//www.npmjs.com/package/chai) to unit test on the client.
+At the moment, the above code runs all server tests in `code/tests` and prints the results. This command is also run by [`npm run start-server`](#startserver) and `npm run deploy`
+and will only start/deploy to the server if all tests pass.
 
 The following tests are available (to run them by themselves, use `mocha code/tests/{test}`):
 

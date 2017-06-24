@@ -3,6 +3,7 @@
 [![Build Status](https://travis-ci.org/robototes/robototes-website.svg?branch=production)](https://travis-ci.org/robototes/robototes-website)
 [![Dependency Status](https://david-dm.org/robototes/robototes-website/status.svg?branch=master)](https://david-dm.org/robototes/robototes-website#info=dependencies)
 [![Greenkeeper badge](https://badges.greenkeeper.io/openpass-inc/openpass-webapp.svg)](https://greenkeeper.io/)
+[![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
 
 The official Node.js website for the Robototes 2412 team.
 

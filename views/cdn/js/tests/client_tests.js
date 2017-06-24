@@ -8,29 +8,35 @@ via any medium without the express permission of Robotics Leadership is strictly
  */
 
 // External libraries
-var expect = chai.expect;
+var expect = window.chai.expect
+var $ = window.$
+var jQuery = window.jQuery
+var Mocha = window.Mocha
+var mocha = window.mocha
+var describe = window.describe
+var it = window.it
 
-$(document).ready(function() {
-    $("[data-action=run-tests]").click(function() {
-        $("#mocha").empty(); // Clears previous tests
-        
-        mocha = new Mocha;
-        mocha.reporter("html"); // Will output tests to #mocha div
-        
-        mocha.suite.emit('pre-require', window, null, mocha); // Prepares for tests
-        
+$(document).ready(function () {
+  $('[data-action=run-tests]').click(function () {
+    $('#mocha').empty() // Clears previous tests
+
+    mocha = new Mocha()
+    mocha.reporter('html') // Will output tests to #mocha div
+
+    mocha.suite.emit('pre-require', window, null, mocha) // Prepares for tests
+
         // Checks for required libraries
-        describe("Dependencies", function() {
-            describe("jQuery", function() {
-                it("should be loaded", function() {
-                    expect(jQuery).to.not.be.null;
-                });
-                it("should be the latest version", function() {
-                    expect(jQuery.fn.jquery).to.be.equal("3.1.0");
-                });
-            });
-        });
-        
-        mocha.run();
-    });
-});
+    describe('Dependencies', function () {
+      describe('jQuery', function () {
+        it('should be loaded', function () {
+          expect(jQuery).to.not.be.equal(null)
+        })
+        it('should be the latest version', function () {
+          expect(jQuery.fn.jquery).to.be.equal('3.1.0')
+        })
+      })
+    })
+
+    mocha.run()
+  })
+})

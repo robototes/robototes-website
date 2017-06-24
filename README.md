@@ -45,7 +45,7 @@ npm run start-server-notest // Runs the server, ignoring all tests
 
 Change `DEBUG` in the `configs.json` file/environment variables to false or set the `NODE_ENV` environment variable to "production".
 
-This mode will run several automated tests, and start the server if they succeed. The server uses [naught](//www.npmjs.com/package/naught) for zero-downtime
+This mode will run several automated tests, and start the server if they succeed. The server uses [naught](https://www.npmjs.com/package/naught) for zero-downtime
 deployment, and as such the server runs on a daemon and logs are not printed to the console. Instead, you can find `stdout.log` and `stderr.log` files inside
 the `server` folder.
 
@@ -55,8 +55,8 @@ Change `DEBUG` in the `configs.json` file/environment variables to true or set t
 
 It is recommended that you run the server in developer mode before running it in production, to ensure the code is stable. It is also recommended that
 if you have made any changes to any client files, you run client-side unit tests in all major browsers
-([Internet Explorer](//www.microsoft.com/en-us/download/internet-explorer.aspx), [Edge](//www.microsoft.com/en-us/windows/microsoft-edge),
-[Google Chrome](//www.google.com/chrome/browser/desktop/), [Opera](//www.opera.com/), and [Firefox](//mozilla.org)) before deploying to production.
+([Internet Explorer](https://www.microsoft.com/en-us/download/internet-explorer.aspx), [Edge](https://www.microsoft.com/en-us/windows/microsoft-edge),
+[Google Chrome](https://www.google.com/chrome/browser/desktop/), [Opera](https://www.opera.com/), and [Firefox](https://mozilla.org)) before deploying to production.
 
 #### Best practices
 
@@ -78,9 +78,9 @@ When running the server, consider a few best practices:
 npm run tests
 ```
 
-We use [ava](//www.npmjs.com/package/ava) to test on the server, and [mocha](//www.npmjs.com/package/mocha) and [chai](//www.npmjs.com/package/chai) to unit test on the client.
-At the moment, the above code runs all server tests in `code/tests` and prints the results. This command is also run by [`npm run start-server`](#startserver) and `npm run deploy`
-and will only start/deploy to the server if all tests pass.
+We use [ava](https://www.npmjs.com/package/ava) to test on the server, and [mocha](https://www.npmjs.com/package/mocha) and [chai](https://www.npmjs.com/package/chai) to unit test
+on the client. At the moment, the above code runs all server tests in `code/tests` and prints the results. This command is also run by [`npm run start-server`](#startserver) and
+`npm run deploy` and will only start/deploy to the server if all tests pass.
 
 The following tests are available (to run them by themselves, use `mocha code/tests/{test}`):
 
@@ -138,7 +138,7 @@ redeploy
         * `junk` An experimental branch. These should generally not be merged, and are for experimentation that can be implemented
             correctly later on a `feat`, `bug`, or `wip` branch
     * Write tests for the results you want from your code (as many as needed, for as many situations as possible, no matter how unlikely)
-    We use [mochajs](//mochajs.org/) and [chaijs](//chaijs.com/), so follow their documentation for how to write tests
+    We use [mochajs](https://mochajs.org/) and [chaijs](http://chaijs.com/), so follow their documentation for how to write tests
     * Write the actual code (with comments, lots of comments)
     * Make sure the code passes the tests
     * Optimize the code (make code gooder)
@@ -148,10 +148,10 @@ redeploy
         git push origin <branch-name>
     ```
     * Once a feature is stable and production-ready, triage it and submit a pull request to `master`
-    * Our [Travis CI](//travis-ci.org/robototes/robototes-website/) will build and test the project based off the settings in .travis.yml
+    * Our [Travis CI](https://travis-ci.org/robototes/robototes-website/) will build and test the project based off the settings in .travis.yml
     * If all tests pass, have at least one experienced programmer review your changes, and accept the pull request
     * Now setup the server with the updates by pulling from the repository or using a code deployment tool
-    * And last of all, [reward yourself](//www.rinkworks.com/stupid/)
+    * And last of all, [reward yourself](http://www.rinkworks.com/stupid/)
 
 ### License
 

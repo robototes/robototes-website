@@ -4,6 +4,6 @@
 server/*.*
 server/dev/*.*
 mongo-data/
-node_modules
+node_modules/
 npm-debug.log
 configs.js

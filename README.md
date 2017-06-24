@@ -1,4 +1,4 @@
-# robototes-website
+# robototes-website v2
 
 [![Travis branch](https://img.shields.io/travis/robototes/robototes-website/master.svg?style=flat-square)](https://travis-ci.org/robototes/robototes-website)
 [![David](https://img.shields.io/david/robototes/robototes-website.svg?style=flat-square)](https://david-dm.org/robototes/robototes-website#info=dependencies)
@@ -13,18 +13,17 @@ The official Node.js website for the Robototes 2412 team.
 
 Before downloading the server code, ensure your server environment is prepared by installing the following:
 
-* `node.js` version 7.2.0
-* `npm` version 3.10.9 (installed with node)
+* `node.js` version 8.1.2 or latest recommended
+* `npm` version 5.0.3 or latest recommended (installed with node)
 
 #### Preparing the server
 
 After the above dependencies are installed, download the server code and test it:
 
-* `git clone -b production git@github.com:robototes/robototes-website.git --depth 1` to clone the latest production release
+* `git clone -b production git@github.com:robototes/robototes-website.git --branch v2 --depth 1` to clone the latest production release
 * `cd robototes-website` to enter the server code
 * `npm install` to install all dependencies as described in `package.json`
-* [`npm run tests`](#runningtests) to ensure the modules are installed and up to date, and the server is able to run
-* `npm install` the missing or out of date modules as described by failed tests
+* [`npm run tests`](#runningtests) to ensure the server is able to run
 * Create a new file in the root directory called `configs.json` and add the following settings, or `export` them in bash (`configs.json` takes priority over
 environment variables):
     - `DOMAIN` (the domain the server serves on, default robototes.com)
@@ -32,55 +31,13 @@ environment variables):
     - `G_TRACKING_ID` (optional, the Google Analytics tracking ID)
     - `PORT` (the port for the server to run on, default 8080)
 
-A list of modules that must be included can be found below.
-
-#### Required node modules
-
-These modules should be auto-installed by `npm install`, but make sure to run [`npm run tests`](#runningtests) and check that all the modules are there and match
-the below table. All of these modules are readily available on [npm](//www.npmjs.com).
-
-| Library                                                               | License                                                           | Reason                                                                                                        |
-|-----------------------------------------------------------------------|-------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------|
-| [async](//github.com/caolan/async)                                    | [Copyright](//github.com/caolan/async/blob/master/LICENSE)        | Asynchronous code handling                                                                                    |
-| [chaijs](//chaijs.com/)                                               | [MIT](//github.com/chaijs/chai#license)                           | Testing assertion library                                                                                     |
-| [compression middleware](//github.com/expressjs/compression)          | [MIT](//github.com/expressjs/compression/blob/master/LICENSE)     | Uses file compression to reduce file size                                                                     |
-| [cors middleware](//github.com/expressjs/cors)                        | [MIT](//github.com/expressjs/cors/blob/master/LICENSE)            | Enables CORS (cross origin request sharing)                                                                   |
-| [ejs](//www.embeddedjs.com/)                                          | [MIT](//github.com/tj/ejs)                                        | Templating engine                                                                                             |
-| [ExpressJS](//expressjs.com/)                                         | [MIT](//github.com/expressjs/express/blob/master/LICENSE)         | Simple HTTP routing                                                                                           |
-| [express-helpers](//github.com/tanema/express-helpers)                | [MIT](//github.com/tanema/express-helpers#license)                | Adds easy HTML templating tools                                                                               |
-| [express-minify middleware](//github.com/SummerWish/express-minify)   | [MIT](//github.com/SummerWish/express-minify/blob/master/LICENSE) | Decreases file size by removing unnecessary whitespace and obfuscating variables, decreasing page load time   |
-| [express-subdomain](//github.com/bmullan91/express-subdomain)         | MIT                                                               | Easy subdomain routing                                                                                        |
-| [helmetjs middleware](//github.com/helmetjs/helmet)                   | [MIT](//github.com/helmetjs/helmet/blob/master/LICENSE)           | Security library with features such as CSP, noSniff, and frameguard                                           |
-| [mochajs](//mochajs.org/)                                             | [MIT](//github.com/mochajs/mocha/blob/master/LICENSE)             | Complete Unit testing library that allows us to test our code in various situations, reducing bug density     |
-| [naught](//github.com/andrewrk/naught)                                | [MIT](//github.com/andrewrk/naught/blob/master/LICENSE)           | Enables zero-downtime deployment solutions and multi-worker server setups                                     |
-| [nsp](//github.com/nodesecurity/nsp)                                  | [Apache 2.0](//www.apache.org/licenses/LICENSE-2.0)               | Scans node modules for vulnerabilities                                                                        |
-| [retire.js](//github.com/RetireJS/retire.js)                          | [Apache 2.0](//www.apache.org/licenses/LICENSE-2.0)               | Identifying code security vulnerabilities.                                                                    |
-| [serve-favicon](//github.com/expressjs/serve-favicon)                 | [MIT](//github.com/expressjs/serve-favicon/blob/master/LICENSE)   | Simple way of serving requests for `/favicon.ico`                                                              |
-| [supertest](//github.com/visionmedia/supertest)                       | [MIT](//github.com/visionmedia/supertest/blob/master/LICENSE)     | Run simple HTTP requests                                                                                      |
-
-After running the commands and installing the required modules, follow the instructions to [start the server](#startserver).
-
-#### Required client side libraries
-
-These libraries are automatically included from [cdnjs](//cdnjs.com).
-
-| Library                                                               | License                                                                   | Reason                                                                                                        |
-|-----------------------------------------------------------------------|---------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------|
-| [Bootstrap](//getbootstrap.com/)                                      | [MIT](//github.com/twbs/bootstrap/blob/v4-dev/LICENSE)                    | Modal dialogs, UI stuff, etc.                                                                                 |
-| [Cookie Consent 2](//silktide.com/tools/cookie-consent/)              | [MIT](//silktide.com/tools/cookie-consent/docs/license/)                  | Cookie consent to comply with EU laws                                                                         |
-| [mochajs](//mochajs.org/)                                             | [MIT](//github.com/mochajs/mocha/blob/master/LICENSE)                     | Complete Unit testing library that allows us to test our code in various situations, reducing bug density     | 
-| [chaijs](//chaijs.com/)                                               | [MIT](//github.com/chaijs/chai#license)                                   | Testing assertion library                                                                                     |
-| [jQuery](//jquery.org)                                                | [Copyright](//github.com/jquery/jquery/blob/master/LICENSE.txt)           | Event handling, DOM navigation, other libraries (see above) require it.                                       |
-| [Normalize](//github.com/necolas/normalize.css/blob/master/LICENSE.md)| [MIT](//github.com/necolas/normalize.css/blob/master/LICENSE.md)          | Normalizes CSS styles over multiple browsers                                                                  |
-| [FontAwesome](//fontawesome.io/)                                      | [License](//github.com/FortAwesome/Font-Awesome#license)                  | Set of various Glyphicons                                                                                     |
-
 ### <a id="startserver">Starting the server</a>
 
 To start the server, simply run either of the following:
 
 ```shell
 npm run start-server // Runs the server
-npm run start-server-notest // Runs the server, ignoring tests
+npm run start-server-notest // Runs the server, ignoring all tests
 ```
 
 #### <a id="prodmode">Production mode</a>
@@ -95,10 +52,10 @@ the `server` folder.
 
 Change `DEBUG` in the `configs.json` file/environment variables to true or set the `NODE_ENV` environment variable to "development".
 
-It is recommended that you run the server in developer mode before running it in production, to ensure the code is stable. It is also recommended that you run
-client-side unit tests in all major browsers ([Internet Explorer](//www.microsoft.com/en-us/download/internet-explorer.aspx),
-[Edge](//www.microsoft.com/en-us/windows/microsoft-edge), [Google Chrome](//www.google.com/chrome/browser/desktop/), [Opera](//www.opera.com/),
-and [Firefox](//mozilla.org)) before deploying to production, if you have made any changes to client side files.
+It is recommended that you run the server in developer mode before running it in production, to ensure the code is stable. It is also recommended that
+if you have made any changes to any client files, you run client-side unit tests in all major browsers
+([Internet Explorer](//www.microsoft.com/en-us/download/internet-explorer.aspx), [Edge](//www.microsoft.com/en-us/windows/microsoft-edge),
+[Google Chrome](//www.google.com/chrome/browser/desktop/), [Opera](//www.opera.com/), and [Firefox](//mozilla.org)) before deploying to production.
 
 #### Best practices
 

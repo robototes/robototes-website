@@ -3,7 +3,7 @@ var $ = window.$
 window.alert = function (title, content, showclose, buttons) {
   if (!buttons) buttons = [ { display: 'Close', attrs: { 'data-toggle': 'modal', 'data-target': '#alertmodal' } } ]
   if (!showclose) showclose = true
-  var alertModal = $('<div class="modal fade" id="alertmodal" tabindex="-1" style="z-index: 1000000;" role="dialog">' +
+  let alertModal = $('<div class="modal fade" id="alertmodal" tabindex="-1" style="z-index: 1000000;" role="dialog">' +
         '<div class="modal-dialog" role="document">' +
             '<div class="modal-content">' +
                 '<div class="modal-header">' +
@@ -21,9 +21,9 @@ window.alert = function (title, content, showclose, buttons) {
   if (!showclose) $('#closealert').remove()
   buttons.forEach(function (cur) {
     if (!cur.type) cur.type = 'default'
+    let attrstring = ''
     if (cur.attrs) {
-      var attrstring = ''
-      for (var attr in cur.attrs) {
+      for (let attr in cur.attrs) {
         if (cur.attrs.hasOwnProperty(attr)) {
           attrstring += ' ' + attr + '=' + cur.attrs[attr]
         }

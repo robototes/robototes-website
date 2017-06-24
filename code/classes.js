@@ -8,7 +8,7 @@ via any medium without the express permission of Robotics Leadership is strictly
  */
 
 module.exports = function () {
-  var classes = {
+  let classes = {
     constants: {
       subdomains: {
         STATUS: 'status',

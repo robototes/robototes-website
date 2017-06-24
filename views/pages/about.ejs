@@ -1,4 +1,4 @@
-<% var seo = {
+<% let seo = {
     title: "About | Team 2412 - The Robototes"
 }; %>
 <!DOCTYPE html>
@@ -32,7 +32,7 @@
             //Utility function to generate a list from an array
             function genList(arr) { %>
                 <ul>
-                    <% for(var i = 0; i < arr.length; i++) { %>
+                    <% for(let i = 0; i < arr.length; i++) { %>
                         <li><%-arr[i]%></li>
                     <%}%>
                 </ul>
@@ -81,7 +81,7 @@
                     <img class="robot-image" src="<%=imgurl%>" alt="<%=imgalt%>">
                 </div>
             <%}%>
-            <% var cdnurl =  "\/\/" + classes.constants.subdomains.full("CDN") + "/media/robot_imgs/"; %>
+            <% const cdnurl =  "\/\/" + classes.constants.subdomains.full("CDN") + "/media/robot_imgs/"; %>
             <%- createRobotSection(false, "Tomo^2", [
                     "Shoots T-Shirts :)",
                     "Mecanum drive (forward/back, turning, and left/right movement)",

@@ -35,7 +35,7 @@ let pug = new Pug({
   viewPath: path.resolve(__dirname, '..', 'views', 'pages'),
   debug: process.env.DEBUG != null,
   pretty: false,
-  locals: strings
+  locals: { strings }
 })
 pug.use(app)
 

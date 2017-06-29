@@ -22,6 +22,7 @@ const error = require('koa-error')
 
 // Local code
 const router = require('./routes/')
+const strings = require('./strings/')
 
 // Load configuration
 dotenvExpand(dotenv.config())
@@ -33,7 +34,8 @@ const app = new Koa()
 let pug = new Pug({
   viewPath: path.resolve(__dirname, '..', 'views', 'pages'),
   debug: process.env.DEBUG != null,
-  pretty: false
+  pretty: false,
+  locals: strings
 })
 pug.use(app)
 

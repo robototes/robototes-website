@@ -7,48 +7,47 @@ Any copying and/or distributing and/or use in commercial or non-commercial envir
 via any medium without the express permission of Robotics Leadership is strictly prohibited.
  */
 // System imports
-const url = require('url')
 const path = require('path')
 
-// External libraries
-const express = require('express')
-const expressHelpers = require('express-helpers')
-const subdomain = require('express-subdomain')
-const bodyParser = require('body-parser')
-const compression = require('compression')
-const helmet = require('helmet')
-const cors = require('cors')
-
-// Config file
-let env = require('dotenv').config()
-require('dotenv-expand')(env)
+// External modules
+const dotenv = require('dotenv')
+const dotenvExpand = require('dotenv-expand')
+const Koa = require('koa')
+const Pug = require('koa-pug')
+const helmet = require('koa-helmet')
+const cors = require('kcors')
+const bodyparser = require('koa-bodyparser')
+const compress = require('koa-compress')
+const error = require('koa-error')
 
 // Local code
-const classes = require('./classes')()
+const router = require('./routes/')
 
-// Creates a new router
-let app = module.exports = express()
-expressHelpers(app)
+// Load configuration
+dotenvExpand(dotenv.config())
 
-// Sets globally accessible variables
-app.set('debug', process.env.DEBUG != null || (process.env.NODE_ENV && process.env.NODE_ENV === 'production') || false) // Whether to run in debug mode
-    .set('views', path.join(__dirname, '/../views')) // Sets the views
-    .set('subdomain offset', classes.constants.domain.split('.').length || 2) // Parses subdomains
-    .set('view engine', 'ejs') // Sets templating to use EJS
-    .set('port', process.env.PORT || 8080) // Gets the port to run on
-app.locals.classes = classes
-app.locals.app = app
-app.locals.util = require('util')
+// Create a new app
+const app = new Koa()
 
-if (app.get('debug')) console.log('Server running in debug mode, DO NOT use in production')
+// Initializes and attaches pug
+let pug = new Pug({
+  viewPath: path.resolve(__dirname, '..', 'views', 'pages'),
+  debug: process.env.DEBUG != null,
+  pretty: false
+})
+pug.use(app)
 
-// Sets up express middleware
-app.use(helmet.contentSecurityPolicy({ // CSP
+// Middleware
+app.use(error({
+  // engine: 'pug',
+  // template: path.resolve(__dirname, '..', 'views', 'pages', 'error.pug')
+}))
+.use(helmet.contentSecurityPolicy({ // CSP
   directives: {
     defaultSrc: [ "'self'" ],
     scriptSrc: [
-      "'self'",
-      classes.constants.subdomains.full('CDN'),
+      '\'self\'',
+      `cdn.${process.env.DOMAIN}`,
       'cdnjs.cloudflare.com',
       'ajax.cloudflare.com',
       'www.google-analytics.com',
@@ -58,21 +57,21 @@ app.use(helmet.contentSecurityPolicy({ // CSP
       "'unsafe-inline'"
     ],
     styleSrc: [
-      "'self'",
-      classes.constants.subdomains.full('CDN'),
+      '\'self\'',
+      `cdn.${process.env.DOMAIN}`,
       'cdnjs.cloudflare.com',
       'fonts.googleapis.com',
       "'unsafe-inline'"
     ],
     fontSrc: [
-      "'self'",
-      classes.constants.subdomains.full('CDN'),
+      '\'self\'',
+      `cdn.${process.env.DOMAIN}`,
       'cdnjs.cloudflare.com',
       'fonts.gstatic.com'
     ],
     imgSrc: [
-      "'self'",
-      classes.constants.subdomains.full('CDN'),
+      '\'self\'',
+      `cdn.${process.env.DOMAIN}`,
       'www.google-analytics.com',
       'cdnjs.cloudflare.com',
       'ssl.gstatic.com'
@@ -82,47 +81,25 @@ app.use(helmet.contentSecurityPolicy({ // CSP
     objectSrc: [ "'none'" ]
   }
 }))
-    .use(helmet.hpkp({
-      maxAge: 60 * 60 * 24 * 90,
-      sha256s: process.env.HPKP_HASHES.split(','),
-      includeSubdomains: true
-    }))
-    .use(helmet.xssFilter())
-    .use(helmet.frameguard({ action: 'deny' })) // Prevents framing
-    .use(helmet.hidePoweredBy()) // Removes X-Powered-By header
-    .use(helmet.ieNoOpen())
-    .use(helmet.noSniff()) // Prevents MIME type sniffing
-    .use(cors({ origin: [ classes.constants.subdomains.full('CDN') ] })) // Enables CORS
-    .use(bodyParser.json())
-    .use(bodyParser.urlencoded({
-      extended: true
-    }))
-    .use(compression()) // Compresses data for speed
-
-app.use(function (req, res, next) {
-        // Sends an error page to the client
-  res.errorPage = function (code) {
-    this.status(code).render(path.join(__dirname, '/../views/pages/error.ejs'), { code: code })
-    this.end()
+.use(helmet.hpkp({ // HTTP Public Key Pinning
+  maxAge: 60 * 60 * 24 * 90,
+  sha256s: process.env.HPKP_HASHES.split(','),
+  includeSubdomains: true
+}))
+.use(helmet.xssFilter())
+.use(helmet.frameguard({ action: 'deny' })) // Prevents framing
+.use(helmet.hidePoweredBy()) // Removes X-Powered-By header
+.use(helmet.ieNoOpen())
+.use(helmet.noSniff()) // Prevents MIME type sniffing
+.use(cors({ origin: [ `cdn.${process.env.DOMAIN}` ] })) // Enables CORS
+.use(bodyparser({
+  onerror: (err, ctx) => {
+    ctx.throw(400, 'Bad Request', { error: err })
   }
+}))
+.use(compress()) // Compresses responses
+.use(router.routes())
+.use(router.allowedMethods())
 
-  res.locals.current = url.parse((req.connection.encrypted ? 'https' : 'http') + '://' + req.headers.host + req.originalUrl, true)
-  res.locals.req = req
-  res.locals.res = res
-  next()
-})
-    .use('/sitemap.xml', function (req, res) {
-      res.sendFile(path.join(__dirname, '/../views/sitemap.xml'))
-    })
-    .use('/blog', function (req, res) {
-      res.redirect(301, '//' + classes.constants.subdomains.BLOG + '.' + classes.constants.domain)
-    })
-    .use(subdomain(classes.constants.subdomains.CDN, require('./routes/cdn-routes')))
-    .use(subdomain(classes.constants.subdomains.PUBLIC, require('./routes/public-routes')))
-    .use(function (req, res, next) { // If no subdomain specified
-      if (!req.subdomains.length) { res.redirect('//' + classes.constants.subdomains.full('PUBLIC')) } else { res.errorPage(404) }
-    })
-    .use(function (err, req, res, next) { // If error occurred
-      console.error(err)
-      res.errorPage(500)
-    })
+// Start the server
+app.listen(process.env.PORT)

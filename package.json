@@ -32,6 +32,7 @@
     "koa-error": "^3.0.1",
     "koa-helmet": "^3.2.0",
     "koa-minify": "^2.0.0",
+    "koa-pug": "^3.0.0-2",
     "koa-router": "^7.2.1",
     "naught": "^1.6.0",
     "pug": "^2.0.0-rc.2",

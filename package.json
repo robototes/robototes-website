@@ -17,6 +17,7 @@
     "stop": "naught stop server/naught.ipc",
     "test": "echo Use \\\"npm run tests\\\" instead && npm run tests",
     "tests": "standard && ava code/tests && nsp check --output checkstyle && retire",
+    "dev": "nodemon code/server.js",
     "managedb": "node ./node_modules/mongo-express/app.js"
   },
   "dependencies": {
@@ -39,6 +40,7 @@
   "devDependencies": {
     "ava": "^0.19.1",
     "mongo-express": "^0.40.0",
+    "nodemon": "^1.11.0",
     "nsp": "^2.6.3",
     "standard": "^10.0.2",
     "supertest": "^3.0.0"

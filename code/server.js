@@ -19,6 +19,7 @@ const cors = require('kcors')
 const bodyparser = require('koa-bodyparser')
 const compress = require('koa-compress')
 const error = require('koa-error')
+const cacheControl = require('koa-cache-control')
 
 // Local code
 const router = require('./routes/')
@@ -33,6 +34,7 @@ const app = new Koa()
 // Initializes and attaches pug
 let pug = new Pug({
   viewPath: path.resolve(__dirname, '..', 'views', 'pages'),
+  basedir: path.resolve(__dirname, '..', 'views', 'partials'),
   debug: process.env.DEBUG != null,
   pretty: false,
   locals: { strings: strings }
@@ -98,6 +100,10 @@ app.use(error({
   onerror: (err, ctx) => {
     ctx.throw(400, 'Bad Request', { error: err })
   }
+}))
+.use(cacheControl({
+  noCache: process.env.DEBUG != null,
+  maxAge: 2678400
 }))
 .use(compress()) // Compresses responses
 .use(router.routes())

@@ -23,7 +23,6 @@ const cacheControl = require('koa-cache-control')
 
 // Local code
 const router = require('./routes/')
-const strings = require('./strings/')
 
 // Load configuration
 dotenvExpand(dotenv.config())
@@ -36,8 +35,7 @@ let pug = new Pug({
   viewPath: path.resolve(__dirname, '..', 'views', 'pages'),
   basedir: path.resolve(__dirname, '..', 'views', 'partials'),
   debug: process.env.DEBUG != null,
-  pretty: false,
-  locals: { strings: strings }
+  pretty: false
 })
 pug.use(app)
 

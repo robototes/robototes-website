@@ -48,12 +48,12 @@ app.use(async (ctx, next) => {
     ctx.status = err.status || 500
     if (process.env.DEBUG != null) {
       ctx.body = err.message
-      ctx.app.emit('err', err, ctx)
     } else {
       ctx.render('error', {
         errorCode: ctx.status
       })
     }
+    ctx.app.emit('err', err, ctx)
   }
 })
 .use(helmet.contentSecurityPolicy({ // CSP

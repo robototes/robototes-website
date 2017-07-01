@@ -18,7 +18,6 @@ const helmet = require('koa-helmet')
 const cors = require('kcors')
 const bodyparser = require('koa-bodyparser')
 const compress = require('koa-compress')
-const error = require('koa-error')
 const cacheControl = require('koa-cache-control')
 
 // Local code
@@ -40,10 +39,23 @@ let pug = new Pug({
 pug.use(app)
 
 // Middleware
-app.use(error({
-  // engine: 'pug',
-  // template: path.resolve(__dirname, '..', 'views', 'pages', 'error.pug')
-}))
+app.use(async (ctx, next) => {
+  try {
+    await next()
+    ctx.status = ctx.status || 404
+    if (ctx.status === 404) ctx.throw(404)
+  } catch (err) {
+    ctx.status = err.status || 500
+    if (process.env.DEBUG != null) {
+      ctx.body = err.message
+      ctx.app.emit('err', err, ctx)
+    } else {
+      ctx.render('error', {
+        errorCode: ctx.status
+      })
+    }
+  }
+})
 .use(helmet.contentSecurityPolicy({ // CSP
   directives: {
     defaultSrc: [ "'self'" ],

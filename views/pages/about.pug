@@ -1,0 +1,77 @@
+doctype html
+html
+  head
+    include /head
+    include /seo
+  body
+    include /header
+    section#main
+      h1 About
+
+      // Who are we
+      h2 Who are we?
+      p.
+        We are the Robototes, #[a(href='http://www.bsd405.org/sammamish') Sammamish High School's] FIRST Robotics Team. Named after our school mascot (the Totems, or totes), we have participated
+        in #[a(href='https://www.firstinspires.org/robotics/frc') FRC] (#[a(href='https://www.firstinspires.org/') FIRST] Robotics Competition) since 2008.
+
+      // FIRST
+      h3 What is FIRST
+      p.
+        #[span.italic FIRST], or For Inspiration and Recognition of Science and Technology, is a national organization dedicated to helping students discover the magic of science and technology.
+        FIRST has several programs, including FIRST Robotics Competition (FRC), a high-school level program where different teams (including us) compete and cooperate with each other. Every year
+        we receive #[a(href='https://www.youtube.com/watch?v=EMiNmJW7enI') a new challenge, or game]. These games can range from #[a(href='https://www.youtube.com/watch?v=nOXsdhZZSdM') basketball]
+        and #[a(href='https://www.youtube.com/watch?v=wa5MGEZNrf0') shooting frisbees] to
+        #[a(href='https://www.youtube.com/watch?v=DTJOXTIaa9g') hanging large inner tubes on pegs over 7 feet in the air]. After the game is revealed, we only have six weeks (and change) to work
+        on the robot. These six weeks are known as "Build Season". After Build Season, our team goes to competitions, where many different teams compete and work together to win matches and awards.
+      h4 More than just robots
+      p.
+        Although building robots is definitely important, we also have many members who are involved in other non-robot aspects, such as fundraising and outreach. A good team (which we hopefully are)
+        is well-balanced in all areas. The moral of the story is that even if you're not into building robots or programming, you can still help. Our team meets at
+        #[a(href='//goo.gl/maps/NKQmaUubxs22') Sammamish High School] in the engineering room (room 143, first floor) after school on Mondays, and every day during the build season.
+
+      // History
+      h3 Our History
+      p Team 2412 was founded in 2007 and first competed in 2008. Our first competition was OverDrive and we've been building robots ever since.
+      h3 Best years
+      p.
+        Our most successful seasons were #[a(href='https://www.thebluealliance.com/team/2412/2008') 2008], #[a(href='https://www.thebluealliance.com/team/2412/2014') 2014], and
+        #[a(href='https://www.thebluealliance.com/team/2412/2016') 2016]. In those three years, we have won a total of 52 matches (not including the offseason) and received several awards.
+
+      // Robots
+      h2 Our robots
+      each robot in robots
+        div.well.robot-display
+          div.text
+            h5.robotname= `Name: ${robot.name}`
+            if robot.dismantled
+              span.red DISMANTLED
+            if robot.year && robot.game && robot.competitions
+              p= `Year: ${robot.year} (${robot.game})`
+              h6 Competed at:
+              ul
+                each competition in robot.competitions
+                  li
+                    a(href=competition.url)= competition.name
+              h6 Awards received:
+              ul
+                each award in robot.awards
+                  li= award
+            if robot.features
+              h6 Features:
+              ul
+                each feature in robot.features
+                  li= feature
+            if robot.image_filename
+              if robot.image_alt
+                img.robot_image(src=`//cdn.${process.env.DOMAIN}/media/robot_imgs/${robot.image_filename}` alt=robot.image_alt)
+              else if robot.name && robot.year
+                img.robot_image(src=`//cdn.${process.env.DOMAIN}/media/robot_imgs/${robot.image_filename}`)&attributes({ alt: `${robot.name}, our ${robot.year} robot.` })
+
+      // Sponsors
+      p Thanks to our wonderful sponsors, we have been able to afford a robot year after year. Without these sponsors, our team would not exist.
+      div.row
+        each sponsor in sponsors
+          a(href=sponsor.website)
+            img.img-responsive.col-xs-12.col-sm-6.col-md-4.col-lg-3(src=`//cdn.${process.env.DOMAIN}/media/sponsor_imgs/${sponsor.image.filename}` alt=sponsor.image.alt title=sponsor.image.alt)
+
+    include /footer

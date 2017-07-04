@@ -1,0 +1,18 @@
+doctype html
+html
+  head
+    include /head
+    include /seo
+  body
+    include /header
+    section#main
+      h1= errorCode
+      //- Custom error messages based on the status
+      if errorCode === 404
+        p Uh oh! We lost the robot!
+      else if errorCode === 500
+        p When your robot stops working right before the competition :O
+      else
+        p Ummmmmmm, why isn't the robot working?
+        p.faded Something happened, we're not sure what, but hopefully it doesn't happen again
+    include /footer

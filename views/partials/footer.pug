@@ -1,0 +1,46 @@
+footer.container
+  span.col-sm-12.text-center.text-muted &copy; #{(new Date()).getFullYear()} Sammamish Robotics
+
+div.modal.fade#privacyPolicy(tabindex='-1' style='z-index: 100000' role='dialog')
+  div.modal-dialog(role='document')
+    div.modal-content
+      div.modal-header
+        button.close(type='button' data-dismiss='modal' aria-label='Close')
+          span(aria-hidden='true') &times;
+        h4.modal-title Our Privacy Policy
+      div.modal-body
+        div.panel-group#summaryAccordian
+          div.panel.panel-default
+            div.panel-heading
+              h4.panel-title
+                a(data-toggle='collapse' data-parent='summaryAccordian' href='#detailed1').
+                  We collect anonymous data about your visit, including which of our pages you've visited and how you found us (e.g. a search engine like
+                  Google). This is used to find out where we are lacking in our user experience, and how to improve our site.
+            div.panel-collapse.collapse#detailed1
+              div.panel-body.
+                We really want to know what we can do to improve your experience, so we measure how many visitors we have using Google Analytics. It doesn't tell us
+                who you are or where exactly you are, but it tells us that #[span.italic someone] visited our site (yay!) and a little about how you found us
+                (e.g. searching on Google, or a Facebook post). If you really don't want us to know that, feel free to
+                #[a(href='//tools.google.com/dlpage/gaoptout') opt out] from Google Analytics. Alternatively, we'd love it if you could tell us about your experience
+                directly #[a(href='/forms/feedback') here].
+          div.panel.panel-default
+            div.panel-heading
+              h4.panel-title
+                a(data-toggle='collapse' data-parent='summaryAccordian' href='#detailed2').
+                  Some 3rd parties like Facebook and Twitter may know you visited this website, if you use their services. We can't control them but we don't
+                  believe this knowledge poses any threat to you.
+            div.panel-collapse.collapse#detailed2
+              div.panel-body.
+                Services like Facebook and Twitter help us get the word out so people can see the incredible things we're doing, using some handy "Like" and "Share"
+                buttons. To protect you, we ask them to put those buttons on our page and as such we have no control over them. If you're logged into one of those
+                services, they #[span.italic could] know that you're viewing this page (they may not do it right now, but their policies may change). What they do with
+                that data is mostly up to you, and you should be able to control. As our website is rather inoffensive, we don't think this will be much of a concern
+                for most users. That said, we'd really #[span.fa.fa-heart] it if you could tell your friends about us on social media.
+      div.modal-footer
+        button(type='button' class='btn btn-default' data-dismiss='modal') Close
+
+// jQuery
+script(type='text/javascript' src='//cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js' integrity='sha256-cCueBR6CsyA4/9szpPfrX3s49M9vUU5BgtiJj06wt/s=' crossorigin='anonymous')
+
+// Bootstrap
+script(type='text/javascript' src='//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js' integrity='sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=' crossorigin='anonymous')

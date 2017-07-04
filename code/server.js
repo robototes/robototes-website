@@ -18,11 +18,10 @@ const helmet = require('koa-helmet')
 const cors = require('kcors')
 const bodyparser = require('koa-bodyparser')
 const compress = require('koa-compress')
-const error = require('koa-error')
+const cacheControl = require('koa-cache-control')
 
 // Local code
 const router = require('./routes/')
-const strings = require('./strings/')
 
 // Load configuration
 dotenvExpand(dotenv.config())
@@ -33,17 +32,33 @@ const app = new Koa()
 // Initializes and attaches pug
 let pug = new Pug({
   viewPath: path.resolve(__dirname, '..', 'views', 'pages'),
+  basedir: path.resolve(__dirname, '..', 'views', 'partials'),
   debug: process.env.DEBUG != null,
   pretty: false,
-  locals: strings
+  locals: {
+    socialMedia: require('../configs/social.js')
+  }
 })
 pug.use(app)
 
 // Middleware
-app.use(error({
-  // engine: 'pug',
-  // template: path.resolve(__dirname, '..', 'views', 'pages', 'error.pug')
-}))
+app.use(async (ctx, next) => {
+  try {
+    await next()
+    ctx.status = ctx.status || 404
+    if (ctx.status === 404) ctx.throw(404)
+  } catch (err) {
+    ctx.status = err.status || 500
+    if (process.env.DEBUG != null) {
+      ctx.body = err.message
+    } else {
+      ctx.render('error', {
+        errorCode: ctx.status
+      })
+    }
+    ctx.app.emit('err', err, ctx)
+  }
+})
 .use(helmet.contentSecurityPolicy({ // CSP
   directives: {
     defaultSrc: [ "'self'" ],
@@ -98,6 +113,10 @@ app.use(error({
   onerror: (err, ctx) => {
     ctx.throw(400, 'Bad Request', { error: err })
   }
+}))
+.use(cacheControl({
+  noCache: process.env.DEBUG != null,
+  maxAge: 2678400
 }))
 .use(compress()) // Compresses responses
 .use(router.routes())

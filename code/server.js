@@ -34,7 +34,10 @@ let pug = new Pug({
   viewPath: path.resolve(__dirname, '..', 'views', 'pages'),
   basedir: path.resolve(__dirname, '..', 'views', 'partials'),
   debug: process.env.DEBUG != null,
-  pretty: false
+  pretty: false,
+  locals: {
+    socialMedia: require('../configs/social.js')
+  }
 })
 pug.use(app)
 

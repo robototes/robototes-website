@@ -8,11 +8,8 @@ header.container-fluid
           span.icon-bar
           span.icon-bar
         a.navbar-brand#headerTitle(href='/') //ROBOTOTES
-        div.visible-xs.btn-group.btn-group-justified.text-center.pull-right.visible-xs
-          each account in socialMedia
-            a(class=`btn btn-default col-sm-3 fa fa-${account.icon}` href=account.url target='_blank')
-              span.sr-only= account.service
       div.collapse.navbar-collapse#navlinks
+        // Pages
         //- TODO Add active page detection
         ul.nav.navbar-nav
           li
@@ -21,7 +18,8 @@ header.container-fluid
             a(href=`//cdn.${process.env.DOMAIN}`) Blog
           li
             a(href='/resources') Resources
-        ul.nav.navbar-nav.navbar-right.hidden-xs
+        // Social media
+        ul.nav.navbar-nav.navbar-right.nav-pills
           each account in socialMedia
             li
               a(class=`fa fa-${account.icon}` href=account.url target='_blank')

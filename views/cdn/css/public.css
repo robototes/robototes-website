@@ -15,7 +15,7 @@ body {
     padding-left: calc(100% / 24);
     padding-right: calc(100% / 24);
 }
-#logo {
+#headerTitle {
     font-family: "Orbitron", bold, sans-serif;
     color: red;
     font-size: 25px;

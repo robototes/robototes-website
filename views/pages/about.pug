@@ -63,9 +63,9 @@ html
                   li= feature
             if robot.image_filename
               if robot.image_alt
-                img.robot_image(src=`//cdn.${process.env.DOMAIN}/media/robot_imgs/${robot.image_filename}` alt=robot.image_alt)
+                img.robot-image(src=`//cdn.${process.env.DOMAIN}/media/robot_imgs/${robot.image_filename}` alt=robot.image_alt)
               else if robot.name && robot.year
-                img.robot_image(src=`//cdn.${process.env.DOMAIN}/media/robot_imgs/${robot.image_filename}`)&attributes({ alt: `${robot.name}, our ${robot.year} robot.` })
+                img.robot-image(src=`//cdn.${process.env.DOMAIN}/media/robot_imgs/${robot.image_filename}`)&attributes({ alt: `${robot.name}, our ${robot.year} robot.` })
 
       // Sponsors
       p Thanks to our wonderful sponsors, we have been able to afford a robot year after year. Without these sponsors, our team would not exist.

@@ -10,8 +10,7 @@ via any medium without the express permission of Robotics Leadership is strictly
 const path = require('path')
 
 // External modules
-const dotenv = require('dotenv')
-const dotenvExpand = require('dotenv-expand')
+const dotenv = require('dotenv-extended')
 const Koa = require('koa')
 const Pug = require('koa-pug')
 const helmet = require('koa-helmet')
@@ -24,7 +23,7 @@ const cacheControl = require('koa-cache-control')
 const router = require('./routes/')
 
 // Load configuration
-dotenvExpand(dotenv.config())
+dotenv.config()
 
 // Create a new app
 const app = new Koa()

@@ -7,7 +7,7 @@
   "license": "SEE LICENSE IN LICENSE",
   "author": "dannytech <dhellstern@outlook.com>",
   "scripts": {
-    "start": "forever start code/server.js",
+    "start": "forever start --minUptime 1000 --spinSleepTime 3000 code/server.js",
     "status": "forever list",
     "deploy": "forever restart code/server.js",
     "stop": "forever stop code/server.js",

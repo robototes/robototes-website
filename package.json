@@ -9,7 +9,7 @@
   "scripts": {
     "start": "forever start start.js",
     "status": "forever list",
-    "deploy": "forever restart start.js"
+    "deploy": "forever restart start.js",
     "stop": "forever stop start.js",
     "test": "standard && ava code/tests && nsp check --output checkstyle && retire",
     "dev": "nodemon code/server.js",

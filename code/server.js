@@ -123,4 +123,4 @@ app.use(async (ctx, next) => {
 .use(router.allowedMethods())
 
 // Start the server
-app.listen(process.env.PORT, process.env.IP)
+module.exports = app.listen(process.env.PORT, process.env.IP)

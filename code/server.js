@@ -23,7 +23,7 @@ const cacheControl = require('koa-cache-control')
 const router = require('./routes/')
 
 // Load configuration
-dotenv.config()
+dotenv.load()
 
 // Create a new app
 const app = new Koa()

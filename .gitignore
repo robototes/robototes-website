@@ -1,9 +1,15 @@
+# Editor configs
 .eslintrc
+
+# Project configurations
 .env
+
+# Caches and dependency trees
 .retire-cache/
-server/*.*
-server/dev/*.*
-mongo-data/
 node_modules/
+
+# Server-specific data stores
+mongo-data/
+
+# Logs
 npm-debug.log
-configs.js

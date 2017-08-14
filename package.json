@@ -1,6 +1,6 @@
 {
   "name": "robototes-website",
-  "version": "0.0.0",
+  "version": "2.0.0-alpha",
   "description": "Official Robototes team website",
   "main": "start.js",
   "repository": "https://github.com/robototes/robototes-website.git",

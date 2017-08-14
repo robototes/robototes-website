@@ -1,9 +1,9 @@
 # robototes-website v2
 
-[![Travis branch](https://img.shields.io/travis/robototes/robototes-website/master.svg?style=flat-square)](https://travis-ci.org/robototes/robototes-website)
-[![David](https://img.shields.io/david/robototes/robototes-website.svg?style=flat-square)](https://david-dm.org/robototes/robototes-website#info=dependencies)
-[![Greenkeeper badge](https://img.shields.io/badge/greenkeeper-enabled-brightgreen.svg?style=flat-square)](https://greenkeeper.io/)
-[![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg?style=flat-square)](https://standardjs.com)
+[![Build Status](https://semaphoreci.com/api/v1/robototes/robototes-website/branches/v2/shields_badge.svg)](https://semaphoreci.com/robototes/robototes-website)
+[![David](https://img.shields.io/david/robototes/robototes-website.svg)](https://david-dm.org/robototes/robototes-website#info=dependencies)
+[![Greenkeeper badge](https://img.shields.io/badge/greenkeeper-enabled-brightgreen.svg)](https://greenkeeper.io/)
+[![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
 
 The official Node.js website for the Robototes 2412 team.
 

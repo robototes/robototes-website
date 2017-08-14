@@ -12,9 +12,7 @@
     "deploy": "forever restart code/server.js",
     "stop": "forever stop code/server.js",
     "test": "standard && ava code/tests && nsp check --output checkstyle && retire",
-    "dev": "nodemon code/server.js",
-    "managedb": "node ./node_modules/mongo-express/app.js",
-    "deploy-s3": "aws s3 sync views/cdn s3://cdn.robototes.com/"
+    "dev": "nodemon code/server.js"
   },
   "dependencies": {
     "async": "^2.4.1",

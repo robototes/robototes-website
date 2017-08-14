@@ -63,15 +63,15 @@ html
                   li= feature
             if robot.image_filename
               if robot.image_alt
-                img.robot_image(src=`//cdn.${process.env.DOMAIN}/media/robot_imgs/${robot.image_filename}` alt=robot.image_alt)
+                img.robot-image(src=`//cdn.${process.env.DOMAIN}/media/robot_imgs/${robot.image_filename}` alt=robot.image_alt)
               else if robot.name && robot.year
-                img.robot_image(src=`//cdn.${process.env.DOMAIN}/media/robot_imgs/${robot.image_filename}`)&attributes({ alt: `${robot.name}, our ${robot.year} robot.` })
+                img.robot-image(src=`//cdn.${process.env.DOMAIN}/media/robot_imgs/${robot.image_filename}`)&attributes({ alt: `${robot.name}, our ${robot.year} robot.` })
 
       // Sponsors
       p Thanks to our wonderful sponsors, we have been able to afford a robot year after year. Without these sponsors, our team would not exist.
       div.row
         each sponsor in sponsors
           a(href=sponsor.website)
-            img.img-responsive.col-xs-12.col-sm-6.col-md-4.col-lg-3(src=`//cdn.${process.env.DOMAIN}/media/sponsor_imgs/${sponsor.image.filename}` alt=sponsor.image.alt title=sponsor.image.alt)
+            img.img-responsive.col-xs-12.col-sm-6.col-md-4.col-lg-3(src=`//cdn.${process.env.DOMAIN}/media/sponsors/${sponsor.image.filename}` alt=sponsor.image.alt title=sponsor.image.alt)
 
     include /footer

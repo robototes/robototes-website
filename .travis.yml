@@ -1,24 +1,13 @@
 language: node_js
-sudo: required
 node_js:
 - node
-- 4
-- 6
-- 7
-- 7.2
-- 7.3
-- 7.4
-- 7.5
-- 7.6
-- 7.7
+- 8
 git:
   depth: 1
 os: linux
-services:
-- mongodb
-before_script:
-- openssl aes-256-cbc -K $encrypted_26b4962af0e7_key -iv $encrypted_26b4962af0e7_iv -in configs.js.enc -out configs.js -d
-script: npm run start-server
+script: npm test
+after_success:
+- npm run deploy-s3
 cache:
   directories:
   - node_modules

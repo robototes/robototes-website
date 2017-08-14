@@ -7,16 +7,11 @@
   "license": "SEE LICENSE IN LICENSE",
   "author": "dannytech <dhellstern@outlook.com>",
   "scripts": {
-    "start": "echo Use \\\"npm run start-server\\\" or \\\"npm run start-server-notest\\\" instead && npm run start-server",
-    "start-server-notest": "naught start --worker-count 2 --ipc-file server/naught.ipc --pid-file server/naught.pid --log server/naught.log --stdout server/stdout.log --stderr server/stderr.log start.js",
-    "start-server": "npm run tests && npm run start-server-notest",
-    "deploy-notest": "naught deploy server/naught.ipc",
-    "deploy": "npm run tests && npm run deploy-notest",
-    "status": "naught status server/naught.ipc",
-    "abort-deploy": "naught deploy-abort server/naught.ipc",
-    "stop": "naught stop server/naught.ipc",
-    "test": "echo Use \\\"npm run tests\\\" instead && npm run tests",
-    "tests": "standard && ava code/tests && nsp check --output checkstyle && retire",
+    "start": "forever start start.js",
+    "status": "forever list",
+    "deploy": "forever restart start.js"
+    "stop": "forever stop start.js",
+    "test": "standard && ava code/tests && nsp check --output checkstyle && retire",
     "dev": "nodemon code/server.js",
     "managedb": "node ./node_modules/mongo-express/app.js"
   },
@@ -25,6 +20,7 @@
     "dotenv": "^4.0.0",
     "dotenv-expand": "^4.0.1",
     "ejs": "^2.5.6",
+    "forever": "^0.15.3",
     "kcors": "^2.2.1",
     "koa": "^2.3.0",
     "koa-bodyparser": "^4.2.0",
@@ -34,7 +30,6 @@
     "koa-minify": "^2.0.0",
     "koa-pug": "^3.0.0-2",
     "koa-router": "^7.2.1",
-    "naught": "^1.6.0",
     "pug": "^2.0.0-rc.2",
     "serve-favicon": "^2.4.3"
   },

@@ -7,10 +7,10 @@
   "license": "SEE LICENSE IN LICENSE",
   "author": "dannytech <dhellstern@outlook.com>",
   "scripts": {
-    "start": "forever start start.js",
+    "start": "forever start code/server.js",
     "status": "forever list",
-    "deploy": "forever restart start.js",
-    "stop": "forever stop start.js",
+    "deploy": "forever restart code/server.js",
+    "stop": "forever stop code/server.js",
     "test": "standard && ava code/tests && nsp check --output checkstyle && retire",
     "dev": "nodemon code/server.js",
     "managedb": "node ./node_modules/mongo-express/app.js",

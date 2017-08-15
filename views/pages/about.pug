@@ -47,16 +47,27 @@ html
               span.red DISMANTLED
             if robot.year && robot.game && robot.competitions
               p= `Year: ${robot.year} (${robot.game})`
+              // Competitions
               h6 Competed at:
               ul
                 each competition in robot.competitions
                   li
                     a(href=competition.url)= competition.name
+              // Awards
               h6 Awards received:
               ul
                 each award in robot.awards
-                  li= award
+                  -
+                    let awardTitle
+                    if (award.competition != null) {
+                      let competition = robot.competitions[award.competition]
+                      awardTitle = `${award.name} at <a href="${competition.url}">${competition.name}</a>` 
+                    } else {
+                      awardTitle = award.name 
+                    }
+                  li!= awardTitle
             if robot.features
+              // Features
               h6 Features:
               ul
                 each feature in robot.features

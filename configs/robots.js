@@ -24,9 +24,12 @@ module.exports = [
       }
     ],
     awards: [
-      '3 Four rotor matches',
-      'Semifinalists at #[a(href=\'https://www.thebluealliance.com/event/2017waahs\') Auburn]',
-      'Innovation in Control Award'
+      { name: '3 Four rotor matches' },
+      {
+        name: 'Semifinalists',
+        competition: 1
+      },
+      { name: 'Innovation in Control Award' }
     ],
     features: [
       '6 wheel tank drive, powered by 4 CIMs',
@@ -55,9 +58,18 @@ module.exports = [
       }
     ],
     awards: [
-      'Ranked #8 at #[a(href=\'https://www.thebluealliance.com/event/2016wasno\') Glacier Peak]',
-      '7th seeded captain at #[a(href=\'https://www.thebluealliance.com/event/2016waahs\') Auburn]',
-      'Finalist at #[a(href=\'https://www.thebluealliance.com/event/2016wagg\') Girls Gen]'
+      {
+        name: 'Ranked #8',
+        competition: 0
+      },
+      {
+        name: '7th seeded captain',
+        competition: 1
+      },
+      {
+        name: 'Finalist',
+        competition: 2
+      }
     ],
     features: [
       'Can cross all category B, C, and D defenses in Autonomous (except Drawbridge)',
@@ -83,9 +95,15 @@ module.exports = [
       }
     ],
     awards: [
-      'Innovation in Control Award',
-      'Semifinalists at #[a(href=\'https://www.thebluealliance.com/event/2015waamv\') Auburn Mountainview]',
-      'Ranked #8 at #[a(href=\'https://www.thebluealliance.com/event/2015washo\') Shorewood]'
+      { name: 'Innovation in Control Award' },
+      {
+        name: 'Semifinalists',
+        competition: 0
+      },
+      {
+        name: 'Ranked #8',
+        competition: 1
+      }
     ],
     features: [
       'Mecanum drive',
@@ -115,9 +133,15 @@ module.exports = [
       }
     ],
     awards: [
-      'Quality Award (twice)',
-      'Ranked #1 at #[a(href=\'https://www.thebluealliance.com/event/2014wasno\') Glacier Peak]',
-      'Semifinalists at #[a(href=\'https://www.thebluealliance.com/event/2014pncmp\') Pacific Northwest Championship]'
+      { name: 'Quality Award (twice)' },
+      {
+        name: 'Ranked #1',
+        competition: 0
+      },
+      {
+        name: 'Semifinalists',
+        competition: 2
+      }
     ],
     features: [
       'Ability to launch into high goal using pneumatically-driven catapult',

@@ -1,14 +1,24 @@
+const fs = require('fs')
+const path = require('path')
+
 const router = require('koa-router')()
 
 const members = require('../../configs/members')
 const robots = require('../../configs/robots')
 const sponsors = require('../../configs/sponsors')
 
+let slideshow
+fs.readdir(path.resolve(__dirname, '..', '..', 'views', 'cdn', 'media', 'slideshow'), (err, items) => {
+  if (err) throw err
+  slideshow = items
+})
+
 router.get('/', async ctx => {
   await ctx.render('index', {
     seo: {
       title: 'Home | Team 2412 - The Robototes'
-    }
+    },
+    slideshowImages: slideshow
   })
 })
 .get('/about', async ctx => {

@@ -79,8 +79,9 @@ html
                 img.robot-image(src=`//cdn.${process.env.DOMAIN}/media/robot_imgs/${robot.image_filename}`)&attributes({ alt: `${robot.name}, our ${robot.year} robot.` })
 
       // Sponsors
+      h2 Sponsors
       p Thanks to our wonderful sponsors, we have been able to afford a robot year after year. Without these sponsors, our team would not exist.
-      div.row
+      div.row.well
         each sponsor in sponsors
           a(href=sponsor.website)
             img.img-responsive.col-xs-12.col-sm-6.col-md-4.col-lg-3(src=`//cdn.${process.env.DOMAIN}/media/sponsors/${sponsor.image.filename}` alt=sponsor.image.alt title=sponsor.image.alt)

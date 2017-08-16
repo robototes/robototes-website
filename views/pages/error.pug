@@ -6,7 +6,7 @@ html
   body
     include /header
     section#main
-      h1= errorCode
+      h1= `${errorCode} error!`
       //- Custom error messages based on the status
       if errorCode === 404
         p Uh oh! We lost the robot!

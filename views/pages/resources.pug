@@ -7,7 +7,7 @@ html
     include /header
     section#main
       div#socialMedia
-        h2
+        h2 Social media
         ul
           li
             a(href='https://www.youtube.com/channel/UCGPcRxxZuqsReqQDWMfKrVw') Youtube Channel
@@ -22,7 +22,7 @@ html
           li
             a(href='https://github.com/robototes') GitHub
       div#externalLinks
-        h2
+        h2 External links
         ul
           li
             a(href='http://www.chiefdelphi.com/forums/portal.php') Chief Delphi
@@ -34,27 +34,25 @@ html
             a(href='http://firstwa.org/') FIRST of Washington
       a(href='#privacyPolicy' data-toggle='modal' data-target='#privacyPolicy') Our Privacy Policy
       div#contactUs
-        h2
-        h4
-        div.panel-group#membersAccordian
+        h2 Contact us
+        h4 Robotics Leadership
+        div.container-fluid#membersAccordian
           each member in teamMembers
-            div.panel.panel-default
-              div.panel-heading
-                h4.panel-title
-                  a(data-toggle='collapse' data-parent='membersAccordian' href=`#${member.alias}`)= `${member.name} (${member.role})`
-                div.panel-collapse.collapse(id=member.alias)
-                  div.panel-body
-                    span Email: 
-                    img(src=`//cdn.${process.env.DOMAIN}/media/email_images/${member.alias}@${member.domain}.${member.tld}.png` alt=`${member.alias} at ${member.domain} dot ${member.tld}`)
-        h4
-        div.panel-group#developersAccordian
+            div.col-md-4.col-sm-6.col-xs-12
+              div.panel.panel-default
+                div.panel-heading
+                  h4.panel-title= `${member.name} (${member.role})`
+                div.panel-body
+                  span Email: 
+                  img(src=`//cdn.${process.env.DOMAIN}/media/email_images/${member.alias}@${member.domain}.${member.tld}.png` alt=`${member.alias} at ${member.domain} dot ${member.tld}`)
+        h4 Website developers
+        div.container-fluid#developersAccordian
           each developer in developers
-            div.panel.panel-default
-              div.panel-heading
-                h4.panel-title
-                  a(data-toggle='collapse' data-parent='membersAccordian' href=`#${developer.alias}`)= `${developer.name}`
-                div.panel-collapse.collapse(id=developer.alias)
-                  div.panel-body
-                    span GitHub: 
-                    a(href=`https://github.com/${developer.github}` target='_blank')= `@${developer.github}`
+            div.col-md-4.col-sm-6.col-xs-12
+              div.panel.panel-default
+                div.panel-heading
+                  h4.panel-title= `${developer.name}`
+                div.panel-body
+                  span GitHub: 
+                  a(href=`https://github.com/${developer.github}` target='_blank')= `@${developer.github}`
     include /footer

@@ -12,7 +12,7 @@
     "deploy": "forever restart code/server.js",
     "stop": "forever stop code/server.js",
     "test": "standard && ava code/tests && nsp check --output checkstyle && retire",
-    "dev": "nodemon -e js,json,pug code/server.js"
+    "dev": "nodemon -e js,json,pug,css code/server.js"
   },
   "dependencies": {
     "async": "^2.4.1",

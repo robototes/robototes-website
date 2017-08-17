@@ -3,7 +3,7 @@ html
   head
     include /head
     include /seo
-  body
+  body.container
     include /header
     section#main
       h1 About
@@ -40,7 +40,7 @@ html
       // Robots
       h2 Our robots
       each robot in robots
-        div.well.robot-display
+        div.well
           div.text
             h5.robotname= `Name: ${robot.name}`
             if robot.dismantled

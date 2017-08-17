@@ -3,7 +3,7 @@ html
   head
     include /head
     include /seo
-  body
+  body.container
     include /header
     section#main
       // Image carousel
@@ -20,8 +20,8 @@ html
           span.sr-only Next
 
       // News
-      div.row#news
-        div.new-col.col-md-6.col-sm-6.col-xs-12
+      div.row
+        div.col-md-6.col-sm-6.col-xs-12
           div.panel.panel-default
             div.panel-heading
               h2 Help support our team!
@@ -37,7 +37,7 @@ html
                 li Enter the amount you wish to donate, then checkout
                 li Accept the sincere thanks from Team 2412!
               p All donations are tax deductible.
-        div.new-col.col-md-6.col-sm-6.col-xs-12
+        div.col-md-6.col-sm-6.col-xs-12
           div.panel.panel-default
             div.panel-heading
               h2 Celebrating another great season!

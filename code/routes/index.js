@@ -30,12 +30,12 @@ router.get('/', async ctx => {
     sponsors: sponsors
   })
 })
-.get('/resources', async ctx => {
-  await ctx.render('resources', {
+.get('/contact', async ctx => {
+  await ctx.render('contact', {
     teamMembers: members.teamMembers,
     developers: members.developers,
     seo: {
-      title: 'Resources | Team 2412 - The Robototes'
+      title: 'Contact Us | Team 2412 - The Robototes'
     }
   })
 })

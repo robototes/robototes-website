@@ -32,11 +32,10 @@ html
             a(href='http://www.usfirst.org/') FIRST
           li
             a(href='http://firstwa.org/') FIRST of Washington
-      a(href='#privacyPolicy' data-toggle='modal' data-target='#privacyPolicy') Our Privacy Policy
       div#contactUs
         h2 Contact us
         h4 Robotics Leadership
-        div.container-fluid#membersAccordian
+        div.row
           each member in teamMembers
             div.col-md-4.col-sm-6.col-xs-12
               div.panel.panel-default
@@ -45,7 +44,7 @@ html
                 div.panel-body
                   img(src=`//cdn.${process.env.DOMAIN}/media/email_images/${member.alias}@${member.domain}.${member.tld}.png` alt=`${member.alias} at ${member.domain} dot ${member.tld}`)
         h4 Website developers
-        div.container-fluid#developersAccordian
+        div.row
           each developer in developers
             div.col-md-4.col-sm-6.col-xs-12
               div.panel.panel-default
@@ -54,4 +53,5 @@ html
                 div.panel-body
                   span GitHub: 
                   a(href=`https://github.com/${developer.github}` target='_blank')= `@${developer.github}`
+      a.btn.btn-default.btn-lg.btn-block(href='#privacyPolicy' data-toggle='modal' data-target='#privacyPolicy') Read our Privacy Policy
     include /footer

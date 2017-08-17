@@ -18,5 +18,15 @@ module.exports = [
     service: 'Google Plus',
     url: 'https://plus.google.com/117011933295301976527',
     icon: 'google-plus'
+  },
+  {
+    service: 'GitHub',
+    url: 'https://github.com/robototes',
+    icon: 'github'
+  },
+  {
+    service: 'YouTube',
+    url: 'https://www.youtube.com/channel/UCGPcRxxZuqsReqQDWMfKrVw',
+    icon: 'youtube'
   }
 ]

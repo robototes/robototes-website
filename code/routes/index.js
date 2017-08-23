@@ -30,6 +30,10 @@ router.get('/', async ctx => {
     sponsors: sponsors
   })
 })
+.get('/resources', ctx => {
+  ctx.status = 301
+  ctx.redirect('/contact')
+})
 .get('/contact', async ctx => {
   await ctx.render('contact', {
     teamMembers: members.teamMembers,

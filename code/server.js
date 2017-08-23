@@ -13,6 +13,7 @@ const path = require('path')
 const dotenv = require('dotenv-extended')
 const Koa = require('koa')
 const Pug = require('koa-pug')
+const favicon = require('koa-favicon')
 const helmet = require('koa-helmet')
 const cors = require('kcors')
 const bodyparser = require('koa-bodyparser')
@@ -117,6 +118,7 @@ app.use(async (ctx, next) => {
   noCache: process.env.DEBUG != null,
   maxAge: 2678400
 }))
+.use(favicon(path.resolve(__dirname, '..', 'views', 'cdn', 'media', 'robotote.ico')))
 .use(compress()) // Compresses responses
 .use(router.routes())
 .use(router.allowedMethods())

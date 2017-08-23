@@ -35,7 +35,7 @@ module.exports = [
     }
   },
   {
-    website: 'http://www.intellectualventures.com/',
+    website: 'https://www.intellectualventures.com/',
     image: {
       filename: 'intellectualventures.png',
       alt: 'Intellectual Ventures'

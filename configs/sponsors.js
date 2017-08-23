@@ -14,7 +14,7 @@ module.exports = [
     }
   },
   {
-    website: 'http://www.speea.org/',
+    website: 'https://www.speea.org/',
     image: {
       filename: 'speea.png',
       alt: 'SPEEA'

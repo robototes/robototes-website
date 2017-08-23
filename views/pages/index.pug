@@ -10,8 +10,12 @@ html
       div.carousel.slide#welcome-carousel(data-ride='carousel')
         div.carousel-inner(role='listbox')
           each image, index in slideshowImages
-            div(class=`item ${index === 0 ? 'active' : ''}`)
-              img(src=`//cdn.${process.env.DOMAIN}/media/slideshow/${image}` alt=image)
+            if index === 0
+              div.item.active
+                img(src=`//cdn.${process.env.DOMAIN}/media/slideshow/${image}` alt=image)
+            else
+              div.item
+                img.lazy(data-original=`//cdn.${process.env.DOMAIN}/media/slideshow/${image}` alt=image)
         a.left.carousel-control(href='#welcome-carousel' role='button' data-slide='prev')
           span.glyphicon.glyphicon-chevron-left(aria-hidden='true')
           span.sr-only Previous

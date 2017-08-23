@@ -1,18 +1,10 @@
-const fs = require('fs')
-const path = require('path')
-
 const router = require('koa-router')()
 
 const members = require('../../configs/members')
 const robots = require('../../configs/robots')
+const slideshow = require('../../configs/slideshow')
 const sponsors = require('../../configs/sponsors')
 const seo = require('../../configs/seo')
-
-let slideshow
-fs.readdir(path.resolve(__dirname, '..', '..', 'views', 'cdn', 'media', 'slideshow'), (err, items) => {
-  if (err) throw err
-  slideshow = items
-})
 
 router.get('/', async ctx => {
   await ctx.render('index', {

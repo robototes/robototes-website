@@ -12,10 +12,10 @@ html
           each image, index in slideshowImages
             if index === 0
               div.item.active
-                img(src=`//cdn.${process.env.DOMAIN}/media/slideshow/${image}` alt=image)
+                img(src=`//cdn.${process.env.DOMAIN}/media/slideshow/${image.filename}` alt=image.title title=image.title)
             else
               div.item
-                img(src=`//cdn.${process.env.DOMAIN}/media/slideshow/${image}` alt=image)
+                img(src=`//cdn.${process.env.DOMAIN}/media/slideshow/${image.filename}` alt=image.title title=image.title)
         a.left.carousel-control(href='#welcome-carousel' role='button' data-slide='prev')
           span.glyphicon.glyphicon-chevron-left(aria-hidden='true')
           span.sr-only Previous

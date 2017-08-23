@@ -15,7 +15,7 @@ html
                 img(src=`//cdn.${process.env.DOMAIN}/media/slideshow/${image}` alt=image)
             else
               div.item
-                img.lazy(data-original=`//cdn.${process.env.DOMAIN}/media/slideshow/${image}` alt=image)
+                img(src=`//cdn.${process.env.DOMAIN}/media/slideshow/${image}` alt=image)
         a.left.carousel-control(href='#welcome-carousel' role='button' data-slide='prev')
           span.glyphicon.glyphicon-chevron-left(aria-hidden='true')
           span.sr-only Previous

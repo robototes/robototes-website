@@ -2,7 +2,7 @@ module.exports = {
   robots: {
     debug: [
       { key: 'User-Agent', value: '*' },
-      { key: 'Disallow', value: '*' }
+      { key: 'Disallow', value: '/' }
     ],
     production: [
       { key: 'User-Agent', value: '*' },

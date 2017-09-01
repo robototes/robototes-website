@@ -49,17 +49,18 @@ test.cb('Correct Content-Type for robots.txt', t => {
 //   request.get('/sitemap.xml')
 //     .expect('Content-Type', 'application/xml; charset=utf-8', t.end)
 // })
-// test.cb('Responses are compressed', t => {
-//   request.get('/')
-//     .expect('Content-Encoding', 'gzip')
-//     .expect('Transfer-Encoding', 'chunked')
-//     .expect('Vary', /Accept-Encoding/)
-//     .end((err, res) => {
-//       if (err) return t.fail(err)
-//       if (res.header['Content-Length'] === undefined) t.pass()
-//       else t.fail(new Error('Content-Length is set on compressed response'))
-//     })
-// })
+test.cb('Responses are compressed', t => {
+  request.get('/')
+    .expect('Content-Encoding', 'gzip')
+    .expect('Transfer-Encoding', 'chunked')
+    .expect('Vary', /Accept-Encoding/)
+    .expect(res => {
+      if (res.header['Content-Length'] !== undefined) {
+        throw new Error('Content-Length is defined on compressed response')
+      }
+    })
+    .end(t.end)
+})
 
 // Response headers
 test.cb('Content-Security-Policy is set', t => {
@@ -78,14 +79,15 @@ test.cb('Frameguard is set and valid', t => {
   request.get('/')
     .expect('X-Frame-Options', 'DENY', t.end)
 })
-// test.cb('X-Powered-By is not set', t => {
-//   request.get('/')
-//     .end((err, res) => {
-//       if (err) return t.fail(err)
-//       if (res.header['X-Powered-By'] === undefined) return t.pass()
-//       else return t.fail(new Error('X-Powered-By is still set'))
-//     })
-// })
+test.cb('X-Powered-By is not set', t => {
+  request.get('/')
+    .expect(res => {
+      if (res.header['X-Powered-By'] !== undefined) {
+        throw new Error('X-Powered-By is still set')
+      }
+    })
+    .end(t.end)
+})
 test.cb('IE No Open is set', t => {
   request.get('/')
     .expect('X-Download-Options', 'noopen', t.end)

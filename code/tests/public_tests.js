@@ -27,9 +27,9 @@ test.cb('Server redirects from old /resources to contact page (301)', t => {
     .expect('Location', '/contact')
     .expect(301, t.end)
 })
-test.cb('Sitemap returns Not Implemented (501)', t => {
+test.cb('Sitemap exists (200)', t => {
   request.get('/sitemap.xml')
-    .expect(501, t.end)
+    .expect(200, t.end)
 })
 
 // Content attributes
@@ -45,10 +45,10 @@ test.cb('Correct Content-Type for robots.txt (text/plain)', t => {
   request.get('/robots.txt')
     .expect('Content-Type', 'text/plain; charset=utf-8', t.end)
 })
-// test.cb('Correct Content-Type for sitemap.xml (application/xml)', t => {
-//   request.get('/sitemap.xml')
-//     .expect('Content-Type', 'application/xml; charset=utf-8', t.end)
-// })
+test.cb('Correct Content-Type for sitemap.xml (application/xml)', t => {
+  request.get('/sitemap.xml')
+    .expect('Content-Type', 'application/xml; charset=utf-8', t.end)
+})
 test.cb('Responses are compressed', t => {
   request.get('/')
     .expect('Content-Encoding', 'gzip')

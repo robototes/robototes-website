@@ -42,7 +42,10 @@ router.get('/', async ctx => {
 })
 .get('/robots.txt', ctx => {
   ctx.body = ''
-  seo.robots[ process.env.DEBUG != null ? 'debug' : 'production' ].forEach(function (current) {
+  let robotstxt = []
+  if (process.env.DEBUG != null) robotstxt = seo.robots.debug
+  else robotstxt = seo.robots.production
+  robotstxt.forEach(function (current) {
     ctx.body += current.key + ': ' + current.value + '\n'
   })
 })

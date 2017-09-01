@@ -40,13 +40,12 @@ router.get('/', async ctx => {
   ctx.status = 301
   ctx.redirect(`https://blog.${process.env.DOMAIN}`)
 })
-.get('/forms/feedback', ctx => {
-  ctx.status = 301
-  ctx.redirect('https://docs.google.com/forms/d/e/1FAIpQLSc5SdCkTTWJXQYXTO-TGej9yAiyfsk34U6BhhKprdTtGLWPhg/viewform?usp=sf_link')
-})
 .get('/robots.txt', ctx => {
   ctx.body = ''
-  seo.robots[ process.env.DEBUG != null ? 'debug' : 'production' ].forEach(function (current) {
+  let robotstxt = []
+  if (process.env.DEBUG != null) robotstxt = seo.robots.debug
+  else robotstxt = seo.robots.production
+  robotstxt.forEach(function (current) {
     ctx.body += current.key + ': ' + current.value + '\n'
   })
 })

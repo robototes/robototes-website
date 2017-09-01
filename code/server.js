@@ -10,6 +10,7 @@ via any medium without the express permission of Robotics Leadership is strictly
 const path = require('path')
 
 // External modules
+const debug = require('debug')
 const dotenv = require('dotenv-extended')
 const Koa = require('koa')
 const Pug = require('koa-pug')
@@ -23,11 +24,16 @@ const cacheControl = require('koa-cache-control')
 // Local code
 const router = require('./routes/')
 
+// Logging
+const log = debug('robototes-website:server')
+const logHTTP = debug('http')
+
 // Load configuration
 dotenv.load({
   errorOnMissing: true,
   overrideProcessEnv: true
 })
+log('Loaded configuration')
 
 // Create a new app
 const app = new Koa()
@@ -43,13 +49,17 @@ let pug = new Pug({
   }
 })
 pug.use(app)
+log('Initialized pug')
 
 // Middleware
 app.use(async (ctx, next) => {
+  logHTTP(`<-- ${ctx.path}`)
   try {
     await next()
     ctx.status = ctx.status || 404
     if (ctx.status === 404) ctx.throw(404)
+    else if (ctx.status >= 400) logHTTP(`\t--> ${ctx.status} NOT OK`)
+    else logHTTP(`\t--> ${ctx.status} OK`)
   } catch (err) {
     ctx.status = err.status || 500
     ctx.render('error', {
@@ -57,6 +67,7 @@ app.use(async (ctx, next) => {
       error: err
     })
     ctx.app.emit('err', err, ctx)
+    logHTTP(`\t--> ${ctx.status} ${err.message}`)
   }
 })
 .use(helmet.contentSecurityPolicy({ // CSP
@@ -122,6 +133,9 @@ app.use(async (ctx, next) => {
 .use(compress()) // Compresses responses
 .use(router.routes())
 .use(router.allowedMethods())
+log('Configured routing')
 
 // Start the server
-module.exports = app.listen(process.env.PORT, process.env.IP)
+module.exports = app.listen(process.env.PORT, process.env.IP, () => {
+  log(`Server listening on port ${process.env.PORT}`)
+})

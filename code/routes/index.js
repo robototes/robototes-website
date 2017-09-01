@@ -1,3 +1,4 @@
+const js2xml = require('js2xmlparser')
 const router = require('koa-router')()
 
 const members = require('../../configs/members')
@@ -45,12 +46,13 @@ router.get('/', async ctx => {
   let robotstxt = []
   if (process.env.DEBUG != null) robotstxt = seo.robots.debug
   else robotstxt = seo.robots.production
-  robotstxt.forEach(function (current) {
+  robotstxt.forEach(current => {
     ctx.body += current.key + ': ' + current.value + '\n'
   })
 })
 .get('/sitemap.xml', ctx => {
-  ctx.status = 501
+  ctx.type = 'application/xml; charset=utf-8'
+  ctx.body = js2xml.parse('urlset', seo.sitemap)
 })
 
 module.exports = router

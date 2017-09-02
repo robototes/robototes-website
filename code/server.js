@@ -57,9 +57,10 @@ app.use(async (ctx, next) => {
   try {
     await next()
     ctx.status = ctx.status || 404
-    if (ctx.status === 404) ctx.throw(404)
-    if (ctx.status >= 400) logHTTP(`\t--> ${ctx.status} NOT OK`)
-    else logHTTP(`\t--> ${ctx.status} OK`)
+    if (ctx.status >= 400) {
+      logHTTP(`\t--> ${ctx.status} NOT OK`)
+      ctx.throw(ctx.status)
+    } else logHTTP(`\t--> ${ctx.status} OK`)
   } catch (err) {
     ctx.status = err.status || 500
     ctx.render('error', {

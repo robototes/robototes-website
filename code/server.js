@@ -62,7 +62,6 @@ app.use(async (ctx, next) => {
       ctx.throw(ctx.status)
     } else logHTTP(`\t--> ${ctx.status} OK`)
   } catch (err) {
-    ctx.status = err.status || 500
     ctx.render('error', {
       errorCode: ctx.status,
       error: err

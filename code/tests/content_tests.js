@@ -21,11 +21,9 @@ module.exports = function (test) {
       .expect('Content-Encoding', 'gzip')
       .expect('Transfer-Encoding', 'chunked')
       .expect('Vary', /Accept-Encoding/)
-      .expect(res => {
-        if (res.header['Content-Length'] !== undefined) {
-          throw new Error('Content-Length is defined on compressed response')
-        }
+      .end((err, res) => {
+        t.is(res.header['Content-Length'], undefined)
+        t.end(err)
       })
-      .end(t.end)
   })
 }

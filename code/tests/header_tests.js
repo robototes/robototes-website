@@ -18,12 +18,10 @@ module.exports = function (test) {
   })
   test.cb('X-Powered-By is not set', t => {
     test.request.get('/')
-      .expect(res => {
-        if (res.header['X-Powered-By'] !== undefined) {
-          throw new Error('X-Powered-By is still set')
-        }
+      .end((err, res) => {
+        t.is(res.header['X-Powered-By'], undefined)
+        t.end(err)
       })
-      .end(t.end)
   })
   test.cb('IE No Open is set and valid (noopen)', t => {
     test.request.get('/')

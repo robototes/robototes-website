@@ -11,11 +11,11 @@
     "status": "forever list",
     "deploy": "forever restart code/server.js",
     "stop": "forever stop code/server.js",
-    "test": "standard && ava code/tests && nsp check --output checkstyle && retire",
+    "test": "standard && nyc ava code/tests && nsp check --output checkstyle && retire",
+    "coverage": "nyc report --reporter=lcov > coverage.lcov && codecov",
     "dev": "DEBUG=robototes-website:*,http nodemon -e js,json,pug,css code/server.js"
   },
   "dependencies": {
-    "async": "^2.4.1",
     "debug": "^3.0.1",
     "dotenv-extended": "^2.0.1",
     "ejs": "^2.5.6",
@@ -30,14 +30,15 @@
     "koa-helmet": "^3.2.0",
     "koa-minify": "^2.0.0",
     "koa-pug": "^3.0.0-2",
-    "koa-router": "^7.2.1",
-    "serve-favicon": "^2.4.3"
+    "koa-router": "^7.2.1"
   },
   "devDependencies": {
     "ava": "^0.19.1",
+    "codecov": "^2.3.0",
     "mongo-express": "^0.40.0",
     "nodemon": "^1.11.0",
     "nsp": "^2.6.3",
+    "nyc": "^11.1.0",
     "retire": "^1.3.3",
     "standard": "^10.0.2",
     "supertest": "^3.0.0"

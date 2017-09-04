@@ -57,17 +57,15 @@ app.use(async (ctx, next) => {
   try {
     await next()
     ctx.status = ctx.status || 404
-    if (ctx.status === 404) ctx.throw(404)
-    else if (ctx.status >= 400) logHTTP(`\t--> ${ctx.status} NOT OK`)
+    if (ctx.status >= 400) ctx.throw(ctx.status)
     else logHTTP(`\t--> ${ctx.status} OK`)
   } catch (err) {
-    ctx.status = err.status || 500
     ctx.render('error', {
       errorCode: ctx.status,
       error: err
     })
     ctx.app.emit('err', err, ctx)
-    logHTTP(`\t--> ${ctx.status} ${err.message}`)
+    logHTTP(`\t--> ${ctx.status} NOT OK: ${err.message}`)
   }
 })
 .use(helmet.contentSecurityPolicy({ // CSP

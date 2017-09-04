@@ -8,6 +8,10 @@
 .retire-cache/
 node_modules/
 
+# Coverage reports
+.nyc_output/
+coverage/
+
 # Server-specific data stores
 mongo-data/
 

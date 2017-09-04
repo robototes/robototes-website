@@ -15,6 +15,10 @@
     "coverage": "nyc report --reporter=lcov > coverage.lcov && codecov",
     "dev": "DEBUG=robototes-website:*,http nodemon -e js,json,pug,css code/server.js"
   },
+  "nyc": {
+    "include": "code/",
+    "exclude": "code/tests/*.js"
+  },
   "dependencies": {
     "debug": "^3.0.1",
     "dotenv-extended": "^2.0.1",

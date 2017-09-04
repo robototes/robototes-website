@@ -17,7 +17,6 @@ const Pug = require('koa-pug')
 const favicon = require('koa-favicon')
 const helmet = require('koa-helmet')
 const cors = require('kcors')
-const bodyparser = require('koa-bodyparser')
 const compress = require('koa-compress')
 const cacheControl = require('koa-cache-control')
 
@@ -118,11 +117,6 @@ app.use(async (ctx, next) => {
 .use(helmet.ieNoOpen())
 .use(helmet.noSniff()) // Prevents MIME type sniffing
 .use(cors({ origin: [ `cdn.${process.env.DOMAIN}` ] })) // Enables CORS
-.use(bodyparser({
-  onerror: (err, ctx) => {
-    ctx.throw(400, 'Bad Request', { error: err })
-  }
-}))
 .use(cacheControl({
   noCache: process.env.DEBUG != null,
   maxAge: 2678400

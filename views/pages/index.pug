@@ -2,26 +2,18 @@ doctype html
 html(lang='en')
   head
     include /head
+    link(rel="stylesheet" href='//cdnjs.cloudflare.com/ajax/libs/flickity/2.0.9/flickity.min.css' integrity='sha256-y1P8WxaELbBdWi1eAH2q5+KCzvsvsQnorvnhs9PTryw=' crossorigin='anonymous')
     include /seo
   body.container
     include /header
     section#main
       // Image carousel
-      div.carousel.slide#welcome-carousel(data-ride='carousel')
-        div.carousel-inner(role='listbox')
-          each image, index in slideshowImages
-            if index === 0
-              div.item.active
+      div.row
+        div.col-sm-12
+          div.main-carousel
+            each image, index in slideshowImages
+              div.carousel-cell
                 img(src=`//cdn.${process.env.DOMAIN}/media/slideshow/${image.filename}` alt=image.title title=image.title)
-            else
-              div.item
-                img(src=`//cdn.${process.env.DOMAIN}/media/slideshow/${image.filename}` alt=image.title title=image.title)
-        a.left.carousel-control(href='#welcome-carousel' role='button' data-slide='prev')
-          span.glyphicon.glyphicon-chevron-left(aria-hidden='true')
-          span.sr-only Previous
-        a.right.carousel-control(href='#welcome-carousel' role='button' data-slide='next')
-          span.glyphicon.glyphicon-chevron-right(aria-hidden='true')
-          span.sr-only Next
 
       // News
       div.row
@@ -54,3 +46,5 @@ html(lang='en')
 
         //- TODO Add custom feed
     include /footer
+    script(type='text/javascript' src='//cdnjs.cloudflare.com/ajax/libs/flickity/2.0.9/flickity.pkgd.min.js' integrity='sha256-elkrhekQZJea19VD3RcIIMKwl+j/Z15ZChaRftHMAgw=' crossorigin='anonymous')
+    script(type='text/javascript' src=`//cdn.${process.env.DOMAIN}/js/index.js`)

@@ -2,6 +2,7 @@
 
 [![Build Status](https://semaphoreci.com/api/v1/robototes/robototes-website/branches/v2/shields_badge.svg)](https://semaphoreci.com/robototes/robototes-website)
 [![David](https://img.shields.io/david/robototes/robototes-website.svg)](https://david-dm.org/robototes/robototes-website#info=dependencies)
+[![Codecov branch](https://img.shields.io/codecov/c/github/robototes/robototes-website/v2.svg)](https://codecov.io/gh/robototes/robototes-website/branches/v2)
 [![Greenkeeper badge](https://img.shields.io/badge/greenkeeper-enabled-brightgreen.svg)](https://greenkeeper.io/)
 [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
 

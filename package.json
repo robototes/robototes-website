@@ -11,7 +11,7 @@
     "status": "forever list",
     "deploy": "forever restart code/server.js",
     "stop": "forever stop code/server.js",
-    "test": "standard && ava code/tests && nsp check --output checkstyle && retire",
+    "test": "standard && nyc ava code/tests && nsp check --output checkstyle && retire",
     "dev": "DEBUG=robototes-website:*,http nodemon -e js,json,pug,css code/server.js"
   },
   "dependencies": {
@@ -36,6 +36,7 @@
     "mongo-express": "^0.40.0",
     "nodemon": "^1.11.0",
     "nsp": "^2.6.3",
+    "nyc": "^11.1.0",
     "retire": "^1.3.3",
     "standard": "^10.0.2",
     "supertest": "^3.0.0"

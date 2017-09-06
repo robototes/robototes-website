@@ -1,51 +1,58 @@
 module.exports = {
   teamMembers: [
     {
-      name: 'Keian Freshwater',
-      role: 'Team Captian',
-      alias: 'freshwaterk',
-      domain: 'bsd405',
-      tld: 'org'
-    },
-    {
-      name: 'Conor Miles',
-      role: 'Outreach/Human Resources',
-      alias: 'milesc',
-      domain: 'bsd405',
-      tld: 'org'
-    },
-    {
       name: 'Jacob Brouwer',
-      role: 'Robot Lead',
-      alias: 'brouwerj',
+      role: 'Team Captian',
+      alias: 's-brouwerj',
+      domain: 'bsd405',
+      tld: 'org'
+    },
+    {
+      name: 'Brielle Chenier',
+      role: 'Outreach Lead',
+      alias: 's-chenierb',
+      domain: 'bsd405',
+      tld: 'org'
+    },
+    {
+      name: 'Jonathan Schladetzky',
+      role: 'Mechanical Lead',
+      alias: 's-schladetzkyj',
       domain: 'bsd405',
       tld: 'org'
     },
     {
       name: 'Eric Kline',
       role: 'Business',
-      alias: 'klineer',
+      alias: 's-klineer',
       domain: 'bsd405',
       tld: 'org'
     },
     {
-      name: 'Jonathan Schladetzky',
+      name: 'Alexander Bowman',
       role: 'Logistics',
-      alias: 'schladetzkyj',
+      alias: 's-bowmana',
       domain: 'bsd405',
       tld: 'org'
     },
     {
       name: 'Amanda Manea',
       role: 'Scouting',
-      alias: 'maneaa',
+      alias: 's-maneaa',
       domain: 'bsd405',
       tld: 'org'
     },
     {
       name: 'Timothy Eng',
-      role: 'Digital Outreach/Programming',
-      alias: 'engt',
+      role: 'FIRST Lead',
+      alias: 's-engt',
+      domain: 'bsd405',
+      tld: 'org'
+    },
+    {
+      name: 'Anna Trohimovich',
+      role: 'Spirit Lead',
+      alias: 's-trohimovicha',
       domain: 'bsd405',
       tld: 'org'
     }

@@ -30,4 +30,4 @@ meta(name='twitter:image:alt' content=seo.image.alt)
 
 // Google Analytics
 script window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)},ga.l=+new Date,ga('create',{trackingId:'#{process.env.G_TRACKING_ID}',cookieDomain:'#{process.env.DOMAIN}'}),ga('send',{hitType:'pageview'});
-script(type='text/javascript' async='true' src=`https://www.google-analytics.com/analytics${process.env.DEBUG != null ? '_debug' : ''}.js`)
+script(type='text/javascript' src=`https://www.google-analytics.com/analytics${process.env.DEBUG != null ? '_debug' : ''}.js` async)

@@ -78,7 +78,7 @@ html(lang='en')
               if robot.image_alt
                 img.robot-image.lazy(data-original=`//cdn.${process.env.DOMAIN}/media/robot_imgs/${robot.image_filename}` alt=robot.image_alt)
               else if robot.name && robot.year
-                img.robot-image.lazy(data-original=`//cdn.${process.env.DOMAIN}/media/robot_imgs/${robot.image_filename}`)&attributes({ alt: `${robot.name}, our ${robot.year} robot.` })
+                img.robot-image.lazy(data-original=`//cdn.${process.env.DOMAIN}/media/robot_imgs/${robot.image_filename}` alt=`${robot.name}, our ${robot.year} robot.`)
 
       // Sponsors
       h2 Sponsors

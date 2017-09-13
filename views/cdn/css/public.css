@@ -16,13 +16,6 @@ body {
     color: red;
     font-size: 25px;
 }
-.carousel-inner > .item > img {
-    margin: 0 auto;
-}
-.robot-image {
-    max-width: 30em;
-    margin-left: 10em;
-}
 .red {
     color: red;
 }

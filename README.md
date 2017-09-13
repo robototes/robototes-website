@@ -5,6 +5,7 @@
 [![Codecov branch](https://img.shields.io/codecov/c/github/robototes/robototes-website/v2.svg)](https://codecov.io/gh/robototes/robototes-website/branches/v2)
 [![Greenkeeper badge](https://img.shields.io/badge/greenkeeper-enabled-brightgreen.svg)](https://greenkeeper.io/)
 [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
+[![GO ROBOTOTES!](https://img.shields.io/badge/GO-ROBOTOTES!-brightred.svg)](https://www.robototes.com)
 
 The official Node.js website for the Robototes 2412 team.
 

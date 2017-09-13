@@ -1,3 +1,5 @@
+const validator = require('html-validator')
+
 module.exports = function (test) {
   // Content attributes
   test.cb('Correct Content-Type for webpages (text/html)', t => {
@@ -24,6 +26,54 @@ module.exports = function (test) {
       .end((err, res) => {
         t.is(res.header['Content-Length'], undefined)
         t.end(err)
+      })
+  })
+
+  // W3C Validation
+  test.cb('Homepage is W3C compliant', t => {
+    test.request.get('/')
+      .end((err, res) => {
+        t.ifError(err) // Checks if supertest had a problem
+        validator({
+          data: res.text,
+          format: 'json'
+        }, (err, data) => {
+          t.ifError(err)
+          t.true(data.messages.length === 0)
+          t.end()
+        })
+      })
+  })
+  test.cb('About page is W3C compliant', t => {
+    test.request.get('/about')
+      .end((err, res) => {
+        t.ifError(err) // Checks if supertest had a problem
+        validator({
+          data: res.text,
+          format: 'json'
+        }, (err, data) => {
+          t.ifError(err)
+          // Filter out expected messages
+          let messages = data.messages.filter(current => {
+            return current.message !== 'Element “img” is missing required attribute “src”.'
+          })
+          t.true(messages.length === 0)
+          t.end()
+        })
+      })
+  })
+  test.cb('Contact page is W3C compliant', t => {
+    test.request.get('/contact')
+      .end((err, res) => {
+        t.ifError(err) // Checks if supertest had a problem
+        validator({
+          data: res.text,
+          format: 'json'
+        }, (err, data) => {
+          t.ifError(err)
+          t.true(data.messages.length === 0)
+          t.end()
+        })
       })
   })
 }

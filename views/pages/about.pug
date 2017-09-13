@@ -42,8 +42,8 @@ html(lang='en')
       // Robots
       h2 Our robots
       each robot in robots
-        div.well
-          div.text
+        div.well.row
+          div.text.col-sm-6.col-xs-12
             h5.robotname= `Name: ${robot.name}`
             if robot.dismantled
               span.red DISMANTLED
@@ -74,11 +74,12 @@ html(lang='en')
               ul
                 each feature in robot.features
                   li= feature
+          div.col-sm-6.col-xs-12
             if robot.image_filename
               if robot.image_alt
-                img.robot-image.lazy(data-original=`//cdn.${process.env.DOMAIN}/media/robot_imgs/${robot.image_filename}` alt=robot.image_alt)
+                img.img-responsive.lazy(data-original=`//cdn.${process.env.DOMAIN}/media/robot_imgs/${robot.image_filename}` alt=robot.image_alt)
               else if robot.name && robot.year
-                img.robot-image.lazy(data-original=`//cdn.${process.env.DOMAIN}/media/robot_imgs/${robot.image_filename}` alt=`${robot.name}, our ${robot.year} robot.`)
+                img.img-responsive.lazy(data-original=`//cdn.${process.env.DOMAIN}/media/robot_imgs/${robot.image_filename}` alt=`${robot.name}, our ${robot.year} robot.`)
 
       // Sponsors
       h2 Sponsors

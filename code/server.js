@@ -20,9 +20,6 @@ const cors = require('kcors')
 const compress = require('koa-compress')
 const cacheControl = require('koa-cache-control')
 
-// Local code
-const router = require('./routes/')
-
 // Logging
 const log = debug('robototes-website:server')
 const logHTTP = debug('http')
@@ -33,6 +30,9 @@ dotenv.load({
   overrideProcessEnv: true
 })
 log('Loaded configuration')
+
+// Local code
+const router = require('./routes/')
 
 // Create a new app
 const app = new Koa()

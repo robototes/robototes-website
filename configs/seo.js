@@ -7,7 +7,7 @@ module.exports = {
     production: [
       { key: 'User-Agent', value: '*' },
       { key: 'Allow', value: '/' },
-      { key: 'Sitemap', value: '/sitemap.xml' }
+      { key: 'Sitemap', value: `https://www.${process.env.DOMAIN}/sitemap.xml` }
     ]
   },
   sitemap: {

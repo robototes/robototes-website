@@ -40,8 +40,9 @@ configuration can be set
 ### <a id="testing">Testing</a>
 
 We use [ava](https://www.npmjs.com/package/ava) and [supertest](https://www.npmjs.com/package/supertest)
-to test the server, including our routing and middleware. The tests can be found in the `code/tests`
-folder, and can be run using the following:
+to test the server, including our routing and middleware. When writing new tests, make sure to follow
+the documentation of the libraries mentioned above. The tests can be found in the `code/tests` folder,
+and can be run using the following:
 
 ```shell
 npm test
@@ -50,7 +51,10 @@ npm test
 This will run the tests and create code coverage files using [nyc](https://www.npmjs.com/package/nyc)
 that can be submitted from a CI test to [Codecov](https://codecov.io) using the Codecov CLI.
 
-When writing new tests
+We use [Semaphore CI](https://semaphoreci.com/robototes/robototes-website) as our CI/CD service. Once
+tested, our code is deployed automatically to a staging site, and can be manually deployed to our
+production server.
+
 
 ### <a id="debugmode">Debug mode</a>
 

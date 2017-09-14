@@ -8,6 +8,15 @@ html(lang='en')
     section#main
       div#contactUs
         h2 Contact us
+        h4 Team emails
+        div.row
+          each teamEmail in teamEmails
+            div.col-md-4.col-sm-6.col-xs-12
+              div.panel.panel-default
+                div.panel-heading
+                  h4.panel-title= `${teamEmail.name}`
+                div.panel-body
+                  img(src=`//cdn.${process.env.DOMAIN}/media/email_images/${teamEmail.alias}@${teamEmail.domain}.${teamEmail.tld}.png` alt=`${teamEmail.alias} at ${teamEmail.domain} dot ${teamEmail.tld}`)
         h4 Robotics Leadership
         div.row
           each member in teamMembers

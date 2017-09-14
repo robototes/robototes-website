@@ -30,6 +30,7 @@ router.get('/', async ctx => {
 })
 .get('/contact', async ctx => {
   await ctx.render('contact', {
+    teamEmails: members.teamEmails,
     teamMembers: members.teamMembers,
     developers: members.developers,
     seo: {

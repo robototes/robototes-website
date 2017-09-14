@@ -1,4 +1,18 @@
 module.exports = {
+  teamEmails: [
+    {
+      name: 'The Team',
+      alias: 'team',
+      domain: 'robototes',
+      tld: 'com'
+    },
+    {
+      name: 'Website Developers',
+      alias: 'webmaster',
+      domain: 'robototes',
+      tld: 'com'
+    }
+  ],
   teamMembers: [
     {
       name: 'Jacob Brouwer',

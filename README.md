@@ -9,118 +9,101 @@
 
 The official Node.js website for the Robototes 2412 team.
 
-### <a id="setup">Setting up the server</a>
+### Software requirements
 
-#### Installing the environment
+* `node.js` version 8 or greater is recommended
+* `npm` version 5 or greater is recommended
 
-Before downloading the server code, ensure your server environment is prepared by installing the following:
+### Configuring the server
 
-* `node.js` version 8.1.2 or latest recommended
-* `npm` version 5.0.3 or latest recommended (installed with node)
+A `.env` configuration file in the root of the project is required, the server will not start without it. The following
+configuration can be set
 
-#### Preparing the server
+* `DOMAIN` (*required*)
+* `IP` (*optional, default `0.0.0.0`*)
+* `PORT` (*optional, default `3000`*)
+* `DEBUG` (*optional*) see [Debug mode](#debugmode)
+* `G_TRACKING_ID` (*required, default `UA-84502206-1`*)
+* `HPKP_HASHES` (*required, default can be found in [HPKP Hashes](#hpkphashes)*)
+* `TBA_SECRET_KEY` (*optional, not implemented yet*)
 
-After the above dependencies are installed, download the server code and test it:
+##### <a id="hpkphashes">HPKP Hashes</a>
 
-* `git clone -b production git@github.com:robototes/robototes-website.git --branch v2 --depth 1` to clone the latest production release
-* `cd robototes-website` to enter the server code
-* `npm install` to install all dependencies as described in `package.json`
-* [`npm run tests`](#runningtests) to ensure the server is able to run
-* Create a new file in the root directory called `.env` and add the following settings, or `export` them in bash (`.env` takes priority over
-environment variables):
-    - `DOMAIN` (the domain the server serves on, default robototes.com)
-    - `PORT` (the port for the server to run on, default 8080)
-    - `DEBUG` (whether to run in debug mode: true|false)
-    - `G_TRACKING_ID` (optional, the Google Analytics tracking ID)
-    - `HPKP_HASHES` (a comma separated list of HPKP hashes for CAs, Intermediates, and the site certificate)
+* `lCppFqbkrlJ3EcVFAkeip0+44VaoJUymbnOaEUk7tEU=` (AddTrust External CA Root)
+* `58qRu/uxh4gFezqAcERupSkRYBlBAvfcw7mEjGPLnNU=` (Comodo ECC CA)
+* `grX4Ta9HpZx6tSHkmCrvpApTQGo67CYDnvprLg5yRME=` (Comodo RSA CA)
+* `klO23nT2ehFDXCfx3eHTDRESMz3asj1muO+4aIdjiuY=` (Comodo RSA Domain Validation Secure Server CA)
+* `x9SZw6TwIqfmvrLZ/kz1o0Ossjmn728BnBKpUFqGNVM=` (Comodo ECC Domain Validation Secure Server CA)
+* `8nlrI65ePaHAJMVLL9DCWEGL13FhoPiFPTbeQ53ATV4=` (*.c9users.io)
+* `tey1EE7fk3hATntrqvJd0pRDLpjqawZ7YSlOiA/staQ=` (sni32250.cloudflaressl.com)
 
-### <a id="startserver">Starting the server</a>
+### <a id="testing">Testing</a>
 
-To start the server, simply run either of the following:
+We use [ava](https://www.npmjs.com/package/ava) and [supertest](https://www.npmjs.com/package/supertest)
+to test the server, including our routing and middleware. The tests can be found in the `code/tests`
+folder, and can be run using the following:
 
 ```shell
-npm run start-server // Runs the server
-npm run start-server-notest // Runs the server, ignoring all tests
+npm test
 ```
 
-#### <a id="prodmode">Production mode</a>
+This will run the tests and create code coverage files using [nyc](https://www.npmjs.com/package/nyc)
+that can be submitted from a CI test to [Codecov](https://codecov.io) using the Codecov CLI.
 
-Change `DEBUG` in the `configs.json` file/environment variables to false or set the `NODE_ENV` environment variable to "production".
+When writing new tests
 
-This mode will run several automated tests, and start the server if they succeed. The server uses [naught](https://www.npmjs.com/package/naught) for zero-downtime
-deployment, and as such the server runs on a daemon and logs are not printed to the console. Instead, you can find `stdout.log` and `stderr.log` files inside
-the `server` folder.
+### <a id="debugmode">Debug mode</a>
 
-#### <a id="debugmode">Debug mode</a>
+If the `DEBUG` environment variable is set, debug mode will be activated. This changes the following:
 
-Change `DEBUG` in the `configs.json` file/environment variables to true or set the `NODE_ENV` environment variable to "development".
+* Sets `/robots.txt` to the debug version set in the `seo.js` config
+* Disables page caching
+* Enables the experimental The Blue Alliance webhook
+* Enables extra information on error pages
+* Enables Pug debug mode
+* Enables the Google Analytics debug mode
 
-It is recommended that you run the server in developer mode before running it in production, to ensure the code is stable. It is also recommended that
-if you have made any changes to any client files, you run client-side unit tests in all major browsers
-([Internet Explorer](https://www.microsoft.com/en-us/download/internet-explorer.aspx), [Edge](https://www.microsoft.com/en-us/windows/microsoft-edge),
-[Google Chrome](https://www.google.com/chrome/browser/desktop/), [Opera](https://www.opera.com/), and [Firefox](https://mozilla.org)) before deploying to production.
+The `DEBUG` environment variable is shared with the [debug](https://www.npmjs.com/package/debug)
+module for logging. The recommended filter value is `robototes-website:*,http`, which will show
+setup information, and log HTTP requests. These are enabled by default when the server is run
+in development mode using the following command:
 
-#### Best practices
-
-When running the server, consider a few best practices:
-
-* DO NOT run the server as `root`, this is a serious security risk that could allow for attacks with root privileges
-* DO follow this procedure for starting the server:
-    * Run [`npm run tests`](#runningtests) and ensure ALL tests pass
-    * Run the server in [debug mode](#debugmode)
-    * Run client side tests and ensure ALL tests pass
-    * [Shut down](#specialcommands) the development server
-    * Run the server in [production mode](#prodmode)
-
-### <a id="runningtests">Running tests</a>
-
-#### Server side
-
-```javascript
-npm run tests
+```shell
+npm run dev
 ```
 
-We use [ava](https://www.npmjs.com/package/ava) to test on the server, and [mocha](https://www.npmjs.com/package/mocha) and [chai](https://www.npmjs.com/package/chai) to unit test
-on the client. At the moment, the above code runs all server tests in `code/tests` and prints the results. This command is also run by [`npm run start-server`](#startserver) and
-`npm run deploy` and will only start/deploy to the server if all tests pass.
+### Running in production
 
-The following tests are available (to run them by themselves, use `mocha code/tests/{test}`):
+To run the server in production, make sure [debug mode](#debugmode) is disabled and the `DOMAIN`
+environment variable is set correctly. Test the server, then run it using the following command:
 
-* `module_tests` Makes sure all modules are installed and up to date (may take a while to finish)
-* `server_tests` Ensures the server responds correctly to predictable input
-
-#### Client side
-
-As long as the server is run in [debug mode](#debugmode), our unit testing suite will be included in the client. The tests are automatically fetched from
-`views/js/tests/client_tests.js` and can be run by clicking the `Run tests` button fixed to the bottom of the page or the `Run again` button on the shown modal.
-
-### <a id="specialcommands">Special commands</a>
-
-While the server is running, the following commands can be run:
-
-```javascript
-npm run deploy // Initiates a zero downtime deploy
-npm run abort-deploy // Aborts hanging deployments (when a deployment is unable to start or stop workers)
-npm run status // Displays the current server status
-npm run stop // Shuts all workers down
+```shell
+npm start
 ```
 
-Both the [`start-server`](#startserver) and `deploy` commands have a simpler counterpart, which skips all tests, and can be run by adding `-notest` to the end of the
-command.
+The server is run using [forever](https://www.npmjs.com/package/forever) so it can be run in the
+background. The following commands might also be useful:
+
+```shell
+npm run status // Will display the currently running forever threads
+npm run stop // Stops the running server
+```
 
 ### Best practices
 
-We follow some rules to make code consistent, future proofed, and easy to debug.
+We follow some rules to make code consistent, future proofed, and easy to debug, as well as keeping the
+server safe
 
-#### Keeping the server updated
+#### Server best practices
 
-It is recommended to regularly maintain the server, following this checklist:
-
-* Keep `node` and `npm` updated. After updating to the latest stable version (DO NOT use unstable versions in production), [run all tests](#runningtests), and then
-redeploy
-* Keep all node modules updated. As modules are deprecated, update to their latest stable release and [run tests](#runningtests), modifying code as necessary
-* Run [`npm run tests`](#runningtests) even if no changes are made, simply to ensure the server is stable
+* DO NOT run the server as `root`, this is a serious security risk that could allow for attacks with root privileges
+* Keep `node` and `npm` updated. After updating to the latest stable version (DO NOT use unstable versions in production),
+[run all tests](#testing), and then redeploy
+* Keep all node modules updated. In general, [Greenkeeper](https://greenkeeper.io) should automatically
+keep all modules updated and tested
+* [Test](#testing) regularly, even if no changes are made, simply to ensure the code is stable
 * Review server logs for errors
+* For information about updating the production server, contact one of our website developers at [webmaster@robototes.com](mailto:webmaster@robototes.com)
 
 #### Development best practices
 
@@ -130,7 +113,7 @@ redeploy
 * Follow the Test-Driven-Development workflow:
     * Create a git branch with a descriptive name for what you are planning on creating:
     `git checkout -b branch-name-goes-here`
-        The branch name should be be named like this: reason/descriptor
+        The branch name should be be named like this: `reason/descriptor`
         There are 4 reasons that you can use:
         * `wip` Work in progress. This is generally a large feature and is likely to take a long time, so name it appropriately, like
             `wip/loginsystem`
@@ -140,7 +123,7 @@ redeploy
         * `junk` An experimental branch. These should generally not be merged, and are for experimentation that can be implemented
             correctly later on a `feat`, `bug`, or `wip` branch
     * Write tests for the results you want from your code (as many as needed, for as many situations as possible, no matter how unlikely)
-    We use [mochajs](https://mochajs.org/) and [chaijs](http://chaijs.com/), so follow their documentation for how to write tests
+    See [testing](#testing) for a description of our testing system and references on how to use it
     * Write the actual code (with comments, lots of comments)
     * Make sure the code passes the tests
     * Optimize the code (make code gooder)

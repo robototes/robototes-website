@@ -4,7 +4,7 @@ const supertest = require('supertest') // Routing testing
 // Set up our requesting object
 test.request = supertest(require('../server')) // Routing
 
-// Tests in debug mode
+// Request/response tests
 require('./page_tests')(test)
 require('./content_tests')(test)
 require('./header_tests')(test)

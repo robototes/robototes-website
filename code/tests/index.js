@@ -8,3 +8,6 @@ test.request = supertest(require('../server')) // Routing
 require('./page_tests.js')(test)
 require('./content_tests.js')(test)
 require('./header_tests.js')(test)
+
+// Webhook tests
+require('./webhooks/tba_tests.js')(test)

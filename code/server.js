@@ -19,6 +19,7 @@ const helmet = require('koa-helmet')
 const cors = require('kcors')
 const compress = require('koa-compress')
 const cacheControl = require('koa-cache-control')
+const bodyParser = require('koa-bodyparser')
 
 // Logging
 const log = debug('robototes-website:server')
@@ -33,6 +34,7 @@ log('Loaded configuration')
 
 // Local code
 const router = require('./routes/')
+const webhookRouter = require('./routes/webhooks.js')
 
 // Create a new app
 const app = new Koa()
@@ -64,9 +66,11 @@ app.use(async (ctx, next) => {
       error: err
     })
     ctx.app.emit('err', err, ctx)
+    logHTTP(err)
     logHTTP(`\t--> ${ctx.status} NOT OK: ${err.message}`)
   }
 })
+.use(bodyParser())
 .use(helmet.contentSecurityPolicy({ // CSP
   directives: {
     defaultSrc: [ "'self'" ],
@@ -125,6 +129,8 @@ app.use(async (ctx, next) => {
 .use(compress()) // Compresses responses
 .use(router.routes())
 .use(router.allowedMethods())
+.use(webhookRouter.routes())
+.use(webhookRouter.allowedMethods())
 log('Configured routing')
 
 // Start the server

@@ -39,4 +39,3 @@ module.exports = function (test) {
       .expect(200, t.end)
   })
 }
-// TODO Webhook tests

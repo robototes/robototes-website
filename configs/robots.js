@@ -3,7 +3,7 @@ module.exports = [
     name: 'Tomo^2',
     features: [
       'Shoots T-Shirts :)',
-      'Mecanum drive (forward/back, turning, and left/right movement)',
+      'Mecanum drive (forward/back, turning, and strafing movement)',
       'Front headlights'
     ],
     image_filename: 'tomo.jpg',
@@ -72,10 +72,10 @@ module.exports = [
       }
     ],
     features: [
-      'Can cross all category B, C, and D defenses in Autonomous (except Drawbridge)',
+      'Can cross any category B and D defense (as well as low bar) in Autonomous',
       'Crosses all defenses in Teleoperated period (except Drawbridge)',
-      'Intake arm can be raised and lowered',
-      'Low bar scoring'
+      'Intake arm can be raised and lowered for help crossing defenses',
+      'Low goal scoring'
     ],
     image_filename: 'sir_costalot.jpg'
   },

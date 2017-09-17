@@ -16,16 +16,18 @@ The official Node.js website for the Robototes 2412 team.
 
 ### Configuring the server
 
-A `.env` configuration file in the root of the project is required, the server will not start without it. The following
-configuration can be set
+A `.env` configuration file in the root of the project is required, the server will not start without
+it. The following configuration can be set
 
-* `DOMAIN` (*required*)
-* `IP` (*optional, default `0.0.0.0`*)
-* `PORT` (*optional, default `3000`*)
+* `DOMAIN` (*required*) The domain at which this site is hosted
+* `IP` (*optional, default `0.0.0.0`*) The IP to run the server on
+* `PORT` (*optional, default `3000`*) The port to listen for requests on
 * `DEBUG` (*optional*) see [Debug mode](#debugmode)
-* `G_TRACKING_ID` (*required, default `UA-84502206-1`*)
-* `HPKP_HASHES` (*required, default can be found in [HPKP Hashes](#hpkphashes)*)
-* `TBA_SECRET_KEY` (*optional, not implemented yet*)
+* `G_TRACKING_ID` (*required, default `UA-84502206-1`*) The Google Analytics Id, default is the
+  Id used in development
+* `HPKP_HASHES` (*required, default can be found in [HPKP Hashes](#hpkphashes)*) The HPKP hashes to
+  serve in the Public-Key-Pins header
+* `TBA_SECRET_KEY` (*optional, not implemented yet*) See [The Blue Alliance](#tba)
 
 ##### <a id="hpkphashes">HPKP Hashes</a>
 
@@ -85,13 +87,22 @@ environment variable is set correctly. Test the server, then run it using the fo
 npm start
 ```
 
-The server is run using [forever](https://www.npmjs.com/package/forever) so it can be run in the
+The server is run using [forever](https://www.npmjs.com/package/forever/) so it can be run in the
 background. The following commands might also be useful:
 
 ```shell
 npm run status // Will display the currently running forever threads
 npm run stop // Stops the running server
 ```
+
+### <a id="tba">The Blue Alliance</a>
+
+THIS FEATURE IS STILL IN DEVELOPMENT
+
+[The Blue Alliance](https://www.thebluealliance.com/) is a service provided free of charge to FRC
+teams for scouting, watching, and reliving the FIRST Robotics Competition. One such feature in
+particular that we use is a subscription to webhooks that provide us with realtime event updates.
+We use these webhooks to build a customized feed for our users with all events regarding our team.
 
 ### Best practices
 
@@ -100,34 +111,39 @@ server safe
 
 #### Server best practices
 
-* DO NOT run the server as `root`, this is a serious security risk that could allow for attacks with root privileges
-* Keep `node` and `npm` updated. After updating to the latest stable version (DO NOT use unstable versions in production),
-[run all tests](#testing), and then redeploy
-* Keep all node modules updated. In general, [Greenkeeper](https://greenkeeper.io) should automatically
-keep all modules updated and tested
+* DO NOT run the server as `root`, this is a serious security risk that could allow for attacks with
+root privileges
+* Keep `node` and `npm` updated. After updating to the latest stable version (DO NOT use unstable
+versions in production), [run all tests](#testing), and then redeploy
+* Keep all node modules updated. In most cases, [Greenkeeper](https://greenkeeper.io) should
+automatically keep all modules updated and tested
 * [Test](#testing) regularly, even if no changes are made, simply to ensure the code is stable
 * Review server logs for errors
-* For information about updating the production server, contact one of our website developers at [webmaster@robototes.com](mailto:webmaster@robototes.com)
+* For information about updating the production server, contact one of our website developers at
+[webmaster@robototes.com](mailto:webmaster@robototes.com)
 
 #### Development best practices
 
 * Comment your code so that future programmers know what your code is supposed to do
-* Update this README as necessary so that programmers that come after you can easily start developing (speaking from experience, they will hate you if you don't)
+* Update this README as necessary so that programmers that come after you can easily start
+  developing (speaking from experience, they will hate you if you don't)
 * Triage and assign bugs
 * Follow the Test-Driven-Development workflow:
-    * Create a git branch with a descriptive name for what you are planning on creating:
-    `git checkout -b branch-name-goes-here`
-        The branch name should be be named like this: `reason/descriptor`
-        There are 4 reasons that you can use:
-        * `wip` Work in progress. This is generally a large feature and is likely to take a long time, so name it appropriately, like
-            `wip/loginsystem`
-        * `bug` Bug fix. Generally this is a small feature with an issue open on Github, so use `bug/issue_id_number_here`
-        * `feat` A minor feature. Often times this is also a feature request on Github, so use `feat/issue_id_number_here`.
-            Alernatively, if it is not filed as a feature request, just use a descriptor like `feat/reallyawesomefeature`
-        * `junk` An experimental branch. These should generally not be merged, and are for experimentation that can be implemented
-            correctly later on a `feat`, `bug`, or `wip` branch
-    * Write tests for the results you want from your code (as many as needed, for as many situations as possible, no matter how unlikely)
-    See [testing](#testing) for a description of our testing system and references on how to use it
+  * Create a git branch with a descriptive name for what you are planning on creating:
+    `git checkout -b branch-name-goes-here`. The branch name should be be named like this:
+    `reason/descriptor`. There are 4 reasons that you can use:
+      * `wip` Work in progress. This is generally a large feature and is likely to take
+        a long time, so name it appropriately, like `wip/loginsystem`
+      * `bug` Bug fix. Generally this is a small feature with an issue open on Github,
+        so use `bug/issue_id_number_here`
+      * `feat` A minor feature. Often times this is also a feature request on Github, so use
+        `feat/issue_id_number_here`. Alernatively, if it is not filed as a feature request, just use
+        a descriptor like `feat/reallyawesomefeature`
+      * `junk` An experimental branch. These should generally not be merged, and are for experimentation
+        that can be implemented correctly later on a `feat`, `bug`, or `wip` branch
+    * Write tests for the results you want from your code (as many as needed, for as many situations as
+      possible, no matter how unlikely). See [testing](#testing) for a description of our testing system
+      and references on how to use it
     * Write the actual code (with comments, lots of comments)
     * Make sure the code passes the tests
     * Optimize the code (make code gooder)
@@ -137,10 +153,33 @@ keep all modules updated and tested
         git push origin <branch-name>
     ```
     * Once a feature is stable and production-ready, triage it and submit a pull request to `master`
-    * Our [Travis CI](https://travis-ci.org/robototes/robototes-website/) will build and test the project based off the settings in .travis.yml
-    * If all tests pass, have at least one experienced programmer review your changes, and accept the pull request
+    * Our [Semaphore CI](https://semaphoreci.com/robototes/robototes-website/) will build and test the
+      project
+    * If all tests pass, have at least one experienced programmer review your changes, and accept the pull
+      request
     * Now setup the server with the updates by pulling from the repository or using a code deployment tool
     * And last of all, [reward yourself](http://www.rinkworks.com/stupid/)
+
+### Maintainers
+
+[@dannytech](https://github.com/dannytech) and
+[@TAKBS2412](https://github.com/TAKBS2412)
+
+### Contributing
+
+While we do accept and encourage contributions, this site is designed and built
+exclusively for The Robototes. As such, most content comes from within the
+organization and code is written by a subteam. If you find any bugs, please feel
+free to open an issue or write a pull request.
+
+##### Vulnerability disclosure
+
+If you find a vulnerability in our site, please,
+[report it](mailto:webmaster@robototes.com). We won't sue or anything as long as
+you don't exploit any bugs and you disclose responsibly (give us time to respond
+and fix it before you tell the world). If you would like to test our security,
+please contact us at [webmaster@robototes.com](mailto:webmaster@robototes.com)
+and we can work something out
 
 ### License
 

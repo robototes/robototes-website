@@ -100,6 +100,7 @@ app.use(async (ctx, next) => {
     ],
     imgSrc: [
       '\'self\'',
+      'data:',
       `cdn.${process.env.DOMAIN}`,
       'www.google-analytics.com',
       'cdnjs.cloudflare.com',

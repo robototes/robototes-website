@@ -61,10 +61,12 @@ app.use(async (ctx, next) => {
     if (ctx.status >= 400) ctx.throw(ctx.status)
     else logHTTP(`\t--> ${ctx.status} OK`)
   } catch (err) {
+    let status = err.status
     ctx.render('error', {
-      errorCode: ctx.status,
+      errorCode: status,
       error: err
     })
+    ctx.status = status
     ctx.app.emit('err', err, ctx)
     logHTTP(err)
     logHTTP(`\t--> ${ctx.status} NOT OK: ${err.message}`)

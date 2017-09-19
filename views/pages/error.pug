@@ -6,12 +6,12 @@ html(lang='en')
   body.container
     include /header
     section#main
-      h1= `${errorCode} error!`
+      h1= `${error.status} error!`
 
       //- Custom error messages based on the status
-      if errorCode === 404
+      if error.status === 404
         h3 Uh oh! We lost the robot!
-      else if errorCode === 500
+      else if error.status === 500
         h3 When your robot stops working right before the competition :O
       else
         h3 Ummmmmmm, why isn't the robot working?

@@ -37,7 +37,6 @@
     "ava": "^0.19.1",
     "codecov": "^2.3.0",
     "mongo-express": "^0.40.0",
-    "node-horseman": "^3.3.0",
     "nodemon": "^1.11.0",
     "nsp": "^2.6.3",
     "nyc": "^11.1.0",

@@ -31,7 +31,8 @@
     "koa-helmet": "^3.2.0",
     "koa-minify": "^2.0.0",
     "koa-pug": "^3.0.0-2",
-    "koa-router": "^7.2.1"
+    "koa-router": "^7.2.1",
+    "request": "^2.82.0"
   },
   "devDependencies": {
     "ava": "^0.19.1",

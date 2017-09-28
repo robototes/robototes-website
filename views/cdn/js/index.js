@@ -1,4 +1,4 @@
-var $ = window.$
+let $ = window.$
 
 $(document).ready(() => {
   $('.main-carousel').flickity({

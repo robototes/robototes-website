@@ -37,7 +37,7 @@
     "request": "^2.82.0"
   },
   "devDependencies": {
-    "ava": "^0.19.1",
+    "ava": "^0.22.0",
     "codecov": "^2.3.0",
     "mongo-express": "^0.40.0",
     "nodemon": "^1.11.0",

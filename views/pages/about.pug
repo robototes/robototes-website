@@ -88,6 +88,6 @@ block main
               img.img-responsive(src=`//cdn.${process.env.DOMAIN}/media/sponsors/${sponsor.image.filename}` alt=sponsor.image.alt title=sponsor.image.alt)
               span.sr-only= sponsor.image.alt
 
-block scripts
+append scripts
   script(type='text/javascript' src='//cdnjs.cloudflare.com/ajax/libs/jquery.matchHeight/0.7.2/jquery.matchHeight-min.js' integrity='sha256-+oeQRyZyY2StGafEsvKyDuEGNzJWAbWqiO2L/ctxF6c=' crossorigin='anonymous')
   script(type='text/javascript' src=`//cdn.${process.env.DOMAIN}/js/about.js`)

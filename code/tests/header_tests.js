@@ -31,10 +31,6 @@ module.exports = function (test) {
     test.request.get('/')
       .expect('X-Content-Type-Options', 'nosniff', t.end)
   })
-  test.skip('CORS headers are properly set', t => {
-    test.request.get('/')
-      .expect('Access-Control-Allow-Origin', `cdn.${process.env.DOMAIN}`, t.end)
-  })
   test.cb('Cache is set and valid (no-cache or max-age=2678400)', t => {
     test.request.get('/')
       .expect('Cache-Control', /(no-cache,max-age=0|max-age=2678400)/, t.end)

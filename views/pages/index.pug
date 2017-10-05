@@ -1,50 +1,48 @@
-doctype html
-html(lang='en')
-  head
-    include /head
-    link(rel="stylesheet" href='//cdnjs.cloudflare.com/ajax/libs/flickity/2.0.9/flickity.min.css' integrity='sha256-y1P8WxaELbBdWi1eAH2q5+KCzvsvsQnorvnhs9PTryw=' crossorigin='anonymous')
-    include /seo
-  body.container
-    include /header
-    section#main
-      // Image carousel
-      div.row
-        div.col-sm-12
-          div.main-carousel
-            each image, index in slideshowImages
-              div.carousel-cell
-                img(src=`//cdn.${process.env.DOMAIN}/media/slideshow/${image.filename}` alt=image.title title=image.title)
+extends layout.pug
 
-      // News
-      div.row
-        div.col-md-6.col-sm-6.col-xs-12
-          div.panel.panel-default
-            div.panel-heading
-              h2 Help support our team!
-            div.panel-body
-              p We are asking for donations to go directly to the Team by following these steps:
-              ol
-                li.
-                  If you do not have a student in the Bellevue School District you may create a guest login here:
-                  #[a(href='https://touchbase.bsd405.org/signup.aspx') https://touchbase.bsd405.org/signup.aspx]
-                li Once you have an account, log in at #[a(href='https://touchbase.bsd405.org/') https://touchbase.bsd405.org/]
-                li Click on "Items At All Schools"
-                li Choose "High School", then "Sammamish High School", then "Donations"
-                li Enter the amount you wish to donate, then checkout
-                li Accept the sincere thanks from Team 2412!
-              p All donations are tax deductible.
-        div.col-md-6.col-sm-6.col-xs-12
-          div.panel.panel-default
-            div.panel-heading
-              h2 Celebrating another great season!
-            div.panel-body
-              p.
-                Although many people are disappointed that our season is already over, we are still happy to celebrate what has been one of the more successful seasons in team history. This year,
-                we won the Innovation in Control award for our pneumatic gripper and vision tracking, and made it to the semifinals at
-                #[a(href='https://www.thebluealliance.com/event/2017waahs') Auburn].
-              p More information can be found on our #[a(href=`//blog.${process.env.DOMAIN}`) blog].
+block css
+  link(rel="stylesheet" href='//cdnjs.cloudflare.com/ajax/libs/flickity/2.0.9/flickity.min.css' integrity='sha256-y1P8WxaELbBdWi1eAH2q5+KCzvsvsQnorvnhs9PTryw=' crossorigin='anonymous')
 
-        //- TODO Add custom feed
-    include /footer
-    script(type='text/javascript' src='//cdnjs.cloudflare.com/ajax/libs/flickity/2.0.9/flickity.pkgd.min.js' integrity='sha256-elkrhekQZJea19VD3RcIIMKwl+j/Z15ZChaRftHMAgw=' crossorigin='anonymous')
-    script(type='text/javascript' src=`//cdn.${process.env.DOMAIN}/js/index.js`)
+block scripts
+  script(type='text/javascript' src='//cdnjs.cloudflare.com/ajax/libs/flickity/2.0.9/flickity.pkgd.min.js' integrity='sha256-elkrhekQZJea19VD3RcIIMKwl+j/Z15ZChaRftHMAgw=' crossorigin='anonymous')
+  script(type='text/javascript' src=`//cdn.${process.env.DOMAIN}/js/index.js`)
+
+block main
+  // Image carousel
+  div.row
+    div.col-sm-12
+      div.main-carousel
+        each image, index in slideshowImages
+          div.carousel-cell
+            img(src=`//cdn.${process.env.DOMAIN}/media/slideshow/${image.filename}` alt=image.title title=image.title)
+
+  // News
+  div.row
+    div.col-md-6.col-sm-6.col-xs-12
+      div.panel.panel-default
+        div.panel-heading
+          h2 Help support our team!
+        div.panel-body
+          p We are asking for donations to go directly to the Team by following these steps:
+          ol
+            li.
+              If you do not have a student in the Bellevue School District you may create a guest login here:
+              #[a(href='https://touchbase.bsd405.org/signup.aspx') https://touchbase.bsd405.org/signup.aspx]
+            li Once you have an account, log in at #[a(href='https://touchbase.bsd405.org/') https://touchbase.bsd405.org/]
+            li Click on "Items At All Schools"
+            li Choose "High School", then "Sammamish High School", then "Donations"
+            li Enter the amount you wish to donate, then checkout
+            li Accept the sincere thanks from Team 2412!
+          p All donations are tax deductible.
+    div.col-md-6.col-sm-6.col-xs-12
+      div.panel.panel-default
+        div.panel-heading
+          h2 Celebrating another great season!
+        div.panel-body
+          p.
+            Although many people are disappointed that our season is already over, we are still happy to celebrate what has been one of the more successful seasons in team history. This year,
+            we won the Innovation in Control award for our pneumatic gripper and vision tracking, and made it to the semifinals at
+            #[a(href='https://www.thebluealliance.com/event/2017waahs') Auburn].
+          p More information can be found on our #[a(href=`//blog.${process.env.DOMAIN}`) blog].
+
+    //- TODO Add custom feed

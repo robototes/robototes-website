@@ -11,9 +11,10 @@ node_modules/
 # Coverage reports
 .nyc_output/
 coverage/
+coverage.lcov
 
 # Server-specific data stores
 mongo-data/
 
 # Logs
-npm-debug.log
+yarn-error.log

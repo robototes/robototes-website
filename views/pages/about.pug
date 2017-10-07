@@ -39,7 +39,7 @@ block main
   each robot in robots
     div.well.row
       div.text.col-sm-6.col-xs-12
-        h5.robotname= `Name: ${robot.name}`
+        h3= robot.name
         if robot.dismantled
           span.red DISMANTLED
         if robot.year && robot.game && robot.competitions

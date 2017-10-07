@@ -43,15 +43,15 @@ block main
         if robot.dismantled
           span.red DISMANTLED
         if robot.year && robot.game && robot.competitions
-          p= `Year: ${robot.year} (${robot.game})`
+          h4= `Game: ${robot.game} (${robot.year})`
           // Competitions
-          h6 Competed at:
+          h4 Competed at:
           ul
             each competition in robot.competitions
               li
                 a(href=competition.url)= competition.name
           // Awards
-          h6 Awards received:
+          h4 Awards received:
           ul
             each award in robot.awards
               -
@@ -65,7 +65,7 @@ block main
               li!= awardTitle
         if robot.features
           // Features
-          h6 Features:
+          h4 Features:
           ul
             each feature in robot.features
               li= feature

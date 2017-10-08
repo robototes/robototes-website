@@ -13,13 +13,10 @@ const path = require('path')
 const debug = require('debug')
 const dotenv = require('dotenv-extended')
 const Koa = require('koa')
-const Pug = require('koa-pug')
-const favicon = require('koa-favicon')
-const helmet = require('koa-helmet')
-const cors = require('kcors')
-const compress = require('koa-compress')
-const cacheControl = require('koa-cache-control')
-const bodyParser = require('koa-bodyparser')
+
+// Load middleware
+let middlewares = require('koa-load-middlewares')()
+middlewares.cors = require('kcors')
 
 // Logging
 const log = debug('robototes-website:server')
@@ -40,7 +37,7 @@ const webhookRouter = require('./routes/webhooks')
 const app = new Koa()
 
 // Initializes and attaches pug
-let pug = new Pug({
+let pug = new middlewares.pug({
   viewPath: path.resolve(__dirname, '..', 'views', 'pages'),
   basedir: path.resolve(__dirname, '..', 'views', 'partials'),
   debug: process.env.DEBUG != null,
@@ -71,8 +68,8 @@ app.use(async (ctx, next) => {
     logHTTP(`\t--> ${ctx.status} NOT OK: ${err.message}`)
   }
 })
-.use(bodyParser())
-.use(helmet.contentSecurityPolicy({ // CSP
+.use(middlewares.bodyparser())
+.use(middlewares.helmet.contentSecurityPolicy({ // CSP
   directives: {
     defaultSrc: [ "'self'" ],
     scriptSrc: [
@@ -113,23 +110,23 @@ app.use(async (ctx, next) => {
     objectSrc: [ "'none'" ]
   }
 }))
-.use(helmet.hpkp({ // HTTP Public Key Pinning
+.use(middlewares.helmet.hpkp({ // HTTP Public Key Pinning
   maxAge: 60 * 60 * 24 * 90,
   sha256s: process.env.HPKP_HASHES.split(','),
   includeSubdomains: true
 }))
-.use(helmet.xssFilter())
-.use(helmet.frameguard({ action: 'deny' })) // Prevents framing
-.use(helmet.hidePoweredBy()) // Removes X-Powered-By header
-.use(helmet.ieNoOpen())
-.use(helmet.noSniff()) // Prevents MIME type sniffing
-.use(cors({ origin: [ `cdn.${process.env.DOMAIN}` ] })) // Enables CORS
-.use(cacheControl({
+.use(middlewares.helmet.xssFilter())
+.use(middlewares.helmet.frameguard({ action: 'deny' })) // Prevents framing
+.use(middlewares.helmet.hidePoweredBy()) // Removes X-Powered-By header
+.use(middlewares.helmet.ieNoOpen())
+.use(middlewares.helmet.noSniff()) // Prevents MIME type sniffing
+.use(middlewares.cors({ origin: [ `cdn.${process.env.DOMAIN}` ] })) // Enables CORS
+.use(middlewares.cacheControl({
   noCache: process.env.DEBUG != null,
   maxAge: 2678400
 }))
-.use(favicon(path.resolve(__dirname, '..', 'views', 'cdn', 'media', 'robotote.ico')))
-.use(compress()) // Compresses responses
+.use(middlewares.favicon(path.resolve(__dirname, '..', 'views', 'cdn', 'media', 'robotote.ico')))
+.use(middlewares.compress()) // Compresses responses
 .use(router.routes())
 .use(router.allowedMethods())
 .use(webhookRouter.routes())

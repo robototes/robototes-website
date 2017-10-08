@@ -28,6 +28,7 @@
     "koa-compress": "^2.0.0",
     "koa-favicon": "^2.0.0",
     "koa-helmet": "^3.2.0",
+    "koa-load-middlewares": "^1.0.0",
     "koa-minify": "^2.0.0",
     "koa-passport": "^4.0.0",
     "koa-pug": "^3.0.0-2",

@@ -14,10 +14,6 @@ const debug = require('debug')
 const dotenv = require('dotenv-extended')
 const Koa = require('koa')
 
-// Load middleware
-let middlewares = require('koa-load-middlewares')()
-middlewares.cors = require('kcors')
-
 // Logging
 const log = debug('robototes-website:server')
 const logHTTP = debug('http')
@@ -29,6 +25,12 @@ dotenv.load({
 })
 log('Loaded configuration')
 
+// Load middleware and middleware configuration
+let middlewares = require('koa-load-middlewares')()
+middlewares.cors = require('kcors')
+middlewares.config = require('../configs/middleware')
+const Pug = middlewares.pug
+
 // Local code
 const router = require('./routes/')
 const webhookRouter = require('./routes/webhooks')
@@ -37,7 +39,7 @@ const webhookRouter = require('./routes/webhooks')
 const app = new Koa()
 
 // Initializes and attaches pug
-let pug = new middlewares.pug({
+let pug = new Pug({
   viewPath: path.resolve(__dirname, '..', 'views', 'pages'),
   basedir: path.resolve(__dirname, '..', 'views', 'partials'),
   debug: process.env.DEBUG != null,
@@ -54,78 +56,42 @@ app.use(async (ctx, next) => {
   logHTTP(`<-- ${ctx.path}`)
   try {
     await next()
+
+    // Get the status of any responses or assume the request wasn't handled
     ctx.status = ctx.status || 404
+
+    // Throw any error codes, or just report and continue
     if (ctx.status >= 400) ctx.throw(ctx.status)
     else logHTTP(`\t--> ${ctx.status} OK`)
   } catch (err) {
+    // Make sure we have an error code
     err.status = err.status || ctx.status
+
+    // Render the error page
     ctx.render('error', {
       error: err
     })
-    ctx.status = err.status
+    ctx.status = err.status // Correct the response back to an error response (since ctx.render changes it to 200)
+
+    // Tell Koa that we've handled an error
     ctx.app.emit('err', err, ctx)
+
+    // Log the error and our response
     logHTTP(err)
     logHTTP(`\t--> ${ctx.status} NOT OK: ${err.message}`)
   }
 })
 .use(middlewares.bodyparser())
-.use(middlewares.helmet.contentSecurityPolicy({ // CSP
-  directives: {
-    defaultSrc: [ "'self'" ],
-    scriptSrc: [
-      '\'self\'',
-      `cdn.${process.env.DOMAIN}`,
-      'cdnjs.cloudflare.com',
-      'ajax.cloudflare.com',
-      'www.google-analytics.com',
-      'analytics.google.com',
-      'www.google.com',
-      "'unsafe-eval'",
-      "'unsafe-inline'"
-    ],
-    styleSrc: [
-      '\'self\'',
-      `cdn.${process.env.DOMAIN}`,
-      'cdnjs.cloudflare.com',
-      'fonts.googleapis.com',
-      "'unsafe-inline'"
-    ],
-    fontSrc: [
-      '\'self\'',
-      `cdn.${process.env.DOMAIN}`,
-      'cdnjs.cloudflare.com',
-      'fonts.gstatic.com'
-    ],
-    imgSrc: [
-      '\'self\'',
-      'data:',
-      `cdn.${process.env.DOMAIN}`,
-      'www.google-analytics.com',
-      'stats.g.doubleclick.net',
-      'cdnjs.cloudflare.com',
-      'ssl.gstatic.com'
-    ],
-    childSrc: [ 'docs.google.com' ],
-    sandbox: [ 'allow-forms', 'allow-scripts', 'allow-same-origin', 'allow-popups' ],
-    objectSrc: [ "'none'" ]
-  }
-}))
-.use(middlewares.helmet.hpkp({ // HTTP Public Key Pinning
-  maxAge: 60 * 60 * 24 * 90,
-  sha256s: process.env.HPKP_HASHES.split(','),
-  includeSubdomains: true
-}))
+.use(middlewares.helmet.contentSecurityPolicy(middlewares.config.helmet.contentSecurityPolicy)) // CSP
+.use(middlewares.helmet.hpkp(middlewares.config.helmet.hpkp)) // HTTP Public Key Pinning
 .use(middlewares.helmet.xssFilter())
-.use(middlewares.helmet.frameguard({ action: 'deny' })) // Prevents framing
+.use(middlewares.helmet.frameguard(middlewares.config.helmet.frameguard)) // Prevents framing
 .use(middlewares.helmet.hidePoweredBy()) // Removes X-Powered-By header
 .use(middlewares.helmet.ieNoOpen())
 .use(middlewares.helmet.noSniff()) // Prevents MIME type sniffing
-.use(middlewares.cors({ origin: [ `cdn.${process.env.DOMAIN}` ] })) // Enables CORS
-.use(middlewares.cacheControl({
-  noCache: process.env.DEBUG != null,
-  maxAge: 2678400
-}))
-.use(middlewares.favicon(path.resolve(__dirname, '..', 'views', 'cdn', 'media', 'robotote.ico')))
+.use(middlewares.cors(middlewares.config.cors)) // Enables CORS
+.use(middlewares.cacheControl(middlewares.config.cacheControl))
+.use(middlewares.favicon(middlewares.config.favicon))
 .use(middlewares.compress()) // Compresses responses
 .use(router.routes())
 .use(router.allowedMethods())

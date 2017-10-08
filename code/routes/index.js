@@ -36,6 +36,13 @@ router.get('/', async ctx => {
     members: members
   })
 })
+.get('/events', async ctx => {
+  await ctx.render('events', {
+    seo: {
+      title: 'Upcoming Events | Team 2412 - The Robototes'
+    }
+  })
+})
 .get('/blog', ctx => {
   ctx.status = 301
   ctx.redirect(`https://blog.${process.env.DOMAIN}`)

@@ -38,7 +38,10 @@ module.exports = {
           'cdnjs.cloudflare.com',
           'ssl.gstatic.com'
         ],
-        childSrc: [ 'docs.google.com' ],
+        childSrc: [
+          'docs.google.com',
+          'calendar.google.com'
+        ],
         sandbox: [ 'allow-forms', 'allow-scripts', 'allow-same-origin', 'allow-popups' ],
         objectSrc: [ "'none'" ]
       }

@@ -12,6 +12,10 @@ module.exports = function (test) {
     test.request.get('/contact')
       .expect(200, t.end)
   })
+  test.cb('Server responds to request for events page (200)', t => {
+    test.request.get('/events')
+      .expect(200, t.end)
+  })
   test.cb('Server responds to request for favicon (200)', t => {
     test.request.get('/favicon.ico')
       .expect(200, t.end)

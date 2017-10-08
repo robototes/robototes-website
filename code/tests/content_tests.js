@@ -76,4 +76,18 @@ module.exports = function (test) {
         })
       })
   })
+  test.cb('Events page is W3C compliant', t => {
+    test.request.get('/events')
+      .end((err, res) => {
+        t.ifError(err) // Checks if supertest had a problem
+        validator({
+          data: res.text,
+          format: 'json'
+        }, (err, data) => {
+          t.ifError(err)
+          t.true(data.messages.length === 0)
+          t.end()
+        })
+      })
+  })
 }

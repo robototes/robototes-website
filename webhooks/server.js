@@ -60,7 +60,7 @@ app.use(async (ctx, next) => {
 log('Configured middleware')
 
 // Link all webhooks to the router
-router.post('/tba', require('./webhooks/thebluealliance'))
+router.post('/tba', require('./routes/thebluealliance'))
 
 // Add the routes
 app.use(router.routes())

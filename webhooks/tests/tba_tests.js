@@ -1,17 +1,22 @@
 const crypto = require('crypto')
 
-const messages = require('./tba_notifications')
+// Testing libraries
+const messages = require('./tba_notifications') // Templates for example payloads
 
-let getHash = function (message) {
-  let hash = crypto.createHash('sha1')
-  hash.update(process.env.TBA_SECRET_KEY)
-  hash.update(JSON.stringify(message))
-  return hash.digest('hex')
+function hash (message) {
+  return crypto.createHash('sha1')
+    .update(process.env.TBA_SECRET_KEY)
+    .update(JSON.stringify(message))
+    .digest('hex')
 }
 
-module.exports = function (test) {
+module.exports = test => {
   // Response statuses
-  test.cb('Denies empty requests', t => {
+  test.cb('Ignores GET requests (405)', t => {
+    test.request.get('/webhook/tba')
+      .expect(405, t.end)
+  })
+  test.cb('Denies empty requests (400)', t => {
     test.request.post('/webhook/tba')
       .expect(400, t.end)
   })
@@ -33,7 +38,7 @@ module.exports = function (test) {
     }
 
     test.request.post('/webhook/tba')
-      .set('X-TBA-Checksum', getHash(message))
+      .set('X-TBA-Checksum', hash(message))
       .send(message)
       .expect(400, t.end)
   })
@@ -43,7 +48,7 @@ module.exports = function (test) {
     }
 
     test.request.post('/webhook/tba')
-      .set('X-TBA-Checksum', getHash(message))
+      .set('X-TBA-Checksum', hash(message))
       .send(message)
       .expect(400, t.end)
   })
@@ -53,7 +58,7 @@ module.exports = function (test) {
     }
 
     test.request.post('/webhook/tba')
-      .set('X-TBA-Checksum', getHash(message))
+      .set('X-TBA-Checksum', hash(message))
       .send(message)
       .expect(400, t.end)
   })
@@ -61,79 +66,79 @@ module.exports = function (test) {
     let message = {}
 
     test.request.post('/webhook/tba')
-      .set('X-TBA-Checksum', getHash(message))
+      .set('X-TBA-Checksum', hash(message))
       .send(message)
       .expect(400, t.end)
   })
   test.cb('Acknowledges upcoming match notifications (200)', t => {
     test.request.post('/webhook/tba')
-      .set('X-TBA-Checksum', getHash(messages.upcoming_match))
+      .set('X-TBA-Checksum', hash(messages.upcoming_match))
       .send(messages.upcoming_match)
       .expect(200, t.end)
   })
   test.cb('Acknowledges match score notifications (200)', t => {
     test.request.post('/webhook/tba')
-      .set('X-TBA-Checksum', getHash(messages.match_score))
+      .set('X-TBA-Checksum', hash(messages.match_score))
       .send(messages.match_score)
       .expect(200, t.end)
   })
   test.cb('Acknowledges competition level notifications (200)', t => {
     test.request.post('/webhook/tba')
-      .set('X-TBA-Checksum', getHash(messages.starting_comp_level))
+      .set('X-TBA-Checksum', hash(messages.starting_comp_level))
       .send(messages.starting_comp_level)
       .expect(200, t.end)
   })
   test.cb('Acknowledges alliance selection notifications (200)', t => {
     test.request.post('/webhook/tba')
-      .set('X-TBA-Checksum', getHash(messages.alliance_selection))
+      .set('X-TBA-Checksum', hash(messages.alliance_selection))
       .send(messages.alliance_selection)
       .expect(200, t.end)
   })
   test.cb('Acknowledges award notifications (200)', t => {
     test.request.post('/webhook/tba')
-      .set('X-TBA-Checksum', getHash(messages.awards_posted))
+      .set('X-TBA-Checksum', hash(messages.awards_posted))
       .send(messages.awards_posted)
       .expect(200, t.end)
   })
   test.cb('Acknowledges new media (501)', t => {
     test.request.post('/webhook/tba')
-      .set('X-TBA-Checksum', getHash(messages.media_posted))
+      .set('X-TBA-Checksum', hash(messages.media_posted))
       .send(messages.media_posted)
       .expect(501, t.end) // Not implemented by TBA yet
   })
   test.cb('Acknowledges district point notifications (501)', t => {
     test.request.post('/webhook/tba')
-      .set('X-TBA-Checksum', getHash(messages.district_points_updated))
+      .set('X-TBA-Checksum', hash(messages.district_points_updated))
       .send(messages.district_points_updated)
       .expect(501, t.end) // Not implemented by TBA yet
   })
   test.cb('Acknowledges event schedule updates (200)', t => {
     test.request.post('/webhook/tba')
-      .set('X-TBA-Checksum', getHash(messages.schedule_updated))
+      .set('X-TBA-Checksum', hash(messages.schedule_updated))
       .send(messages.schedule_updated)
       .expect(200, t.end)
   })
   test.cb('Acknowledges results (501)', t => {
     test.request.post('/webhook/tba')
-      .set('X-TBA-Checksum', getHash(messages.final_results))
+      .set('X-TBA-Checksum', hash(messages.final_results))
       .send(messages.final_results)
       .expect(501, t.end) // Not implemented by TBA yet
   })
   test.cb('Acknowledges pings (200)', t => {
     test.request.post('/webhook/tba')
-      .set('X-TBA-Checksum', getHash(messages.ping))
+      .set('X-TBA-Checksum', hash(messages.ping))
       .send(messages.ping)
       .expect(200, t.end)
   })
   test.cb('Acknowledges broadcasts (200)', t => {
     test.request.post('/webhook/tba')
-      .set('X-TBA-Checksum', getHash(messages.broadcast))
+      .set('X-TBA-Checksum', hash(messages.broadcast))
       .send(messages.broadcast)
       .expect(200, t.end)
   })
   test.cb('Acknowledges verification codes (200)', t => {
     test.request.post('/webhook/tba')
-      .set('X-TBA-Checksum', getHash(messages.verification))
+      .set('X-TBA-Checksum', hash(messages.verification))
       .send(messages.verification)
       .expect(200, t.end)
   })

@@ -12,10 +12,6 @@ const logHTTP = debug('http')
 
 // Load configuration
 nconf.env()
-  .defaults({
-    'PORT': 3000,
-    'IP': '0.0.0.0'
-  })
   .required([
     'PORT',
     'IP',

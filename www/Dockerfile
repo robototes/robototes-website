@@ -12,7 +12,7 @@ ARG analyticsId='UA-84502206-1'
 RUN [ 'yarn', 'install', '--production', '--non-interactive' ]
 
 # Copy the server files
-COPY server.js package.json yarn.lock views/ code/ configs/ ./
+COPY server.js package.json yarn.lock views/ routes/ configs/ ./
 
 # Basic configuration
 ENV PORT=3000 IP='0.0.0.0' DATABASE_HOST=$databaseHost DATABASE_PORT=$databasePort DOMAIN=$domain HPKP_HASHES=$hpkpHashes G_TRACKING_ID=$analyticsId

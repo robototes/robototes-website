@@ -1,11 +1,13 @@
 const crypto = require('crypto')
 
+const nconf = require('nconf')
+
 // Testing libraries
 const messages = require('./tba_notifications') // Templates for example payloads
 
 function hash (message) {
   return crypto.createHash('sha1')
-    .update(process.env.TBA_SECRET_KEY)
+    .update(nconf.get('TBA_SECRET_KEY'))
     .update(JSON.stringify(message))
     .digest('hex')
 }

@@ -16,7 +16,7 @@ block header
             li
               a(href='/about') About
             li
-              a(href=`//blog.${process.env.DOMAIN}`) Blog
+              a(href=`//blog.${nconf.get('DOMAIN')}/`) Blog
             li
               a(href='/contact') Contact Us
             li

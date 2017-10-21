@@ -72,9 +72,9 @@ block main
       div.col-sm-6.col-xs-12
         if robot.image_filename
           if robot.image_alt
-            img.img-responsive.lazy(data-original=`//cdn.${process.env.DOMAIN}/media/robot_imgs/${robot.image_filename}` alt=robot.image_alt)
+            img.img-responsive.lazy(data-original=`//cdn.${nconf.get('DOMAIN')}/media/robot_imgs/${robot.image_filename}` alt=robot.image_alt)
           else if robot.name && robot.year
-            img.img-responsive.lazy(data-original=`//cdn.${process.env.DOMAIN}/media/robot_imgs/${robot.image_filename}` alt=`${robot.name}, our ${robot.year} robot.`)
+            img.img-responsive.lazy(data-original=`//cdn.${nconf.get('DOMAIN')}/media/robot_imgs/${robot.image_filename}` alt=`${robot.name}, our ${robot.year} robot.`)
 
   // Sponsors
   h2 Sponsors
@@ -85,9 +85,9 @@ block main
         div.panel.panel-default
           div.panel-body
             a(href=sponsor.website)
-              img.img-responsive(src=`//cdn.${process.env.DOMAIN}/media/sponsors/${sponsor.image.filename}` alt=sponsor.image.alt title=sponsor.image.alt)
+              img.img-responsive(src=`//cdn.${nconf.get('DOMAIN')}/media/sponsors/${sponsor.image.filename}` alt=sponsor.image.alt title=sponsor.image.alt)
               span.sr-only= sponsor.image.alt
 
 append scripts
   script(type='text/javascript' src='//cdnjs.cloudflare.com/ajax/libs/jquery.matchHeight/0.7.2/jquery.matchHeight-min.js' integrity='sha256-+oeQRyZyY2StGafEsvKyDuEGNzJWAbWqiO2L/ctxF6c=' crossorigin='anonymous')
-  script(type='text/javascript' src=`//cdn.${process.env.DOMAIN}/js/about.js`)
+  script(type='text/javascript' src=`//cdn.${nconf.get('DOMAIN')}/js/about.js`)

@@ -1,3 +1,5 @@
+const nconf = require('nconf')
+
 module.exports = {
   robots: {
     debug: [
@@ -7,7 +9,7 @@ module.exports = {
     production: [
       { key: 'User-Agent', value: '*' },
       { key: 'Allow', value: '/' },
-      { key: 'Sitemap', value: `https://www.${process.env.DOMAIN}/sitemap.xml` }
+      { key: 'Sitemap', value: `https://www.${nconf.get('DOMAIN')}/sitemap.xml` }
     ]
   },
   sitemap: {
@@ -16,17 +18,17 @@ module.exports = {
     },
     'url': [
       {
-        loc: 'https://www.robototes.com/',
+        loc: `https://${nconf.get('DOMAIN')}/`,
         priority: 1,
         changefreq: 'weekly'
       },
       {
-        loc: 'https://www.robototes.com/about',
+        loc: `https://${nconf.get('DOMAIN')}/about`,
         priority: 0.7,
         changefreq: 'weekly'
       },
       {
-        loc: 'https://www.robototes.com/contact',
+        loc: `https://${nconf.get('DOMAIN')}/contact`,
         priority: 0.5,
         changefreq: 'weekly'
       }

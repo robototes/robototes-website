@@ -14,9 +14,9 @@ block main
 
   //- Actions for the user
   h4 You might try #[a(href='#' onclick='window.location.reload()') refreshing the page]
-  h4 Or, if you ended up in the wrong place, #[a(href=`https://www.${process.env.DOMAIN}`) here's our homepage]
+  h4 Or, if you ended up in the wrong place, #[a(href=`https://www.${nconf.get('DOMAIN')}/`) here's our homepage]
 
-  if process.env.DEBUG != null
+  if nconf.get('DOMAIN') != null
     // Debug info
     div.well
       h2 Debug info

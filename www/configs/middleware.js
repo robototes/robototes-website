@@ -1,5 +1,7 @@
 const path = require('path')
 
+const nconf = require('nconf')
+
 module.exports = {
   helmet: {
     contentSecurityPolicy: {
@@ -7,7 +9,7 @@ module.exports = {
         defaultSrc: [ "'self'" ],
         scriptSrc: [
           '\'self\'',
-          `cdn.${process.env.DOMAIN}`,
+          `cdn.${nconf.get('DOMAIN')}`,
           'cdnjs.cloudflare.com',
           'ajax.cloudflare.com',
           'www.google-analytics.com',
@@ -18,21 +20,21 @@ module.exports = {
         ],
         styleSrc: [
           '\'self\'',
-          `cdn.${process.env.DOMAIN}`,
+          `cdn.${nconf.get('DOMAIN')}`,
           'cdnjs.cloudflare.com',
           'fonts.googleapis.com',
           "'unsafe-inline'"
         ],
         fontSrc: [
           '\'self\'',
-          `cdn.${process.env.DOMAIN}`,
+          `cdn.${nconf.get('DOMAIN')}`,
           'cdnjs.cloudflare.com',
           'fonts.gstatic.com'
         ],
         imgSrc: [
           '\'self\'',
           'data:',
-          `cdn.${process.env.DOMAIN}`,
+          `cdn.${nconf.get('DOMAIN')}`,
           'www.google-analytics.com',
           'stats.g.doubleclick.net',
           'cdnjs.cloudflare.com',
@@ -48,14 +50,14 @@ module.exports = {
     },
     hpkp: {
       maxAge: 60 * 60 * 24 * 90,
-      sha256s: process.env.HPKP_HASHES.split(','),
+      sha256s: nconf.get('HPKP_HASHES').split(','),
       includeSubdomains: true
     },
     frameguard: { action: 'deny' }
   },
-  cors: { origin: [ `cdn.${process.env.DOMAIN}` ] },
+  cors: { origin: [ `cdn.${nconf.get('DOMAIN')}` ] },
   cacheControl: {
-    noCache: process.env.DEBUG != null,
+    noCache: nconf.get('DEBUG') != null,
     maxAge: 2678400
   },
   favicon: path.resolve(__dirname, '..', 'views', 'cdn', 'media', 'robotote.ico')

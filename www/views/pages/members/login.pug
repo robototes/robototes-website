@@ -1,0 +1,10 @@
+extends layout.pug
+
+block scripts
+  script(type='text/javascript' src='https://cdn.auth0.com/js/lock/10.21.1/lock.min.js')
+  script(type='text/javascript' src=`//cdn.${nconf.get('DOMAIN')}/js/login.js`)
+
+block main
+  h1 Log in to view team member resources
+  btn.btn.btn-default#logIn Log in
+  div(id='root' data-auth0-client-id=`${nconf.get('AUTH0_CLIENT_ID')}` data-auth0-domain=`${nconf.get('AUTH0_DOMAIN')}` data-auth0-redirect-url=`https://www.${nconf.get('DOMAIN')}/members/login`)

@@ -10,7 +10,7 @@ block main
       div.main-carousel
         each image, index in slideshowImages
           div.carousel-cell
-            img(src=`//cdn.${process.env.DOMAIN}/media/slideshow/${image.filename}` alt=image.title title=image.title)
+            img(src=`//cdn.${nconf.get('DOMAIN')}/media/slideshow/${image.filename}` alt=image.title title=image.title)
 
   // News
   div.row
@@ -39,10 +39,10 @@ block main
             Although many people are disappointed that our season is already over, we are still happy to celebrate what has been one of the more successful seasons in team history. This year,
             we won the Innovation in Control award for our pneumatic gripper and vision tracking, and made it to the semifinals at
             #[a(href='https://www.thebluealliance.com/event/2017waahs') Auburn].
-          p More information can be found on our #[a(href=`//blog.${process.env.DOMAIN}`) blog].
+          p More information can be found on our #[a(href=`//blog.${nconf.get('DOMAIN')}/`) blog].
 
     //- TODO Add custom feed
 
 append scripts
   script(type='text/javascript' src='//cdnjs.cloudflare.com/ajax/libs/flickity/2.0.9/flickity.pkgd.min.js' integrity='sha256-elkrhekQZJea19VD3RcIIMKwl+j/Z15ZChaRftHMAgw=' crossorigin='anonymous')
-  script(type='text/javascript' src=`//cdn.${process.env.DOMAIN}/js/index.js`)
+  script(type='text/javascript' src=`//cdn.${nconf.get('DOMAIN')}/js/index.js`)

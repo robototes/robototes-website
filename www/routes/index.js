@@ -1,11 +1,12 @@
 const js2xml = require('js2xmlparser')
+const nconf = require('nconf')
 const router = require('koa-router')()
 
-const members = require('../../configs/members')
-const robots = require('../../configs/robots')
-const slideshow = require('../../configs/slideshow')
-const sponsors = require('../../configs/sponsors')
-const seo = require('../../configs/seo')
+const members = require('../configs/members')
+const robots = require('../configs/robots')
+const slideshow = require('../configs/slideshow')
+const sponsors = require('../configs/sponsors')
+const seo = require('../configs/seo')
 
 router.get('/', async ctx => {
   await ctx.render('index', {
@@ -45,12 +46,12 @@ router.get('/', async ctx => {
 })
 .get('/blog', ctx => {
   ctx.status = 301
-  ctx.redirect(`https://blog.${process.env.DOMAIN}`)
+  ctx.redirect(`https://blog.${nconf.get('DOMAIN')}`)
 })
 .get('/robots.txt', ctx => {
   ctx.body = ''
   let robotstxt = []
-  if (process.env.DEBUG != null) robotstxt = seo.robots.debug
+  if (nconf.get('DEBUG') != null) robotstxt = seo.robots.debug
   else robotstxt = seo.robots.production
   robotstxt.forEach(current => {
     ctx.body += current.key + ': ' + current.value + '\n'

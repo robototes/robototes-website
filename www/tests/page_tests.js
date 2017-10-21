@@ -1,3 +1,5 @@
+const nconf = require('nconf')
+
 module.exports = function (test) {
   // Response statuses
   test.cb('Server responds to request for homepage (200)', t => {
@@ -26,7 +28,7 @@ module.exports = function (test) {
   })
   test.cb('Server redirects from /blog to blog subdomain (301)', t => {
     test.request.get('/blog')
-      .expect('Location', `https://blog.${process.env.DOMAIN}`)
+      .expect('Location', `https://blog.${nconf.get('DOMAIN')}`)
       .expect(301, t.end)
   })
   test.cb('Server redirects from old /resources to contact page (301)', t => {

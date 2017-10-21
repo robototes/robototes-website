@@ -10,7 +10,7 @@ block main
           div.panel-heading
             h4.panel-title= `${teamEmail.name}`
           div.panel-body
-            img(src=`//cdn.${process.env.DOMAIN}/media/email_images/${teamEmail.alias}@${teamEmail.domain}.${teamEmail.tld}.png` alt=`${teamEmail.alias} at ${teamEmail.domain} dot ${teamEmail.tld}`)
+            img(src=`//cdn.${nconf.get('DOMAIN')}/media/email_images/${teamEmail.alias}@${teamEmail.domain}.${teamEmail.tld}.png` alt=`${teamEmail.alias} at ${teamEmail.domain} dot ${teamEmail.tld}`)
   h3 Robotics Leadership
   div.row
     each member in members.teamMembers
@@ -19,7 +19,7 @@ block main
           div.panel-heading
             h4.panel-title= `${member.name} (${member.role})`
           div.panel-body
-            img(src=`//cdn.${process.env.DOMAIN}/media/email_images/${member.alias}@${member.domain}.${member.tld}.png` alt=`${member.alias} at ${member.domain} dot ${member.tld}`)
+            img(src=`//cdn.${nconf.get('DOMAIN')}/media/email_images/${member.alias}@${member.domain}.${member.tld}.png` alt=`${member.alias} at ${member.domain} dot ${member.tld}`)
   h3 Website developers
   div.row
     each developer in members.developers

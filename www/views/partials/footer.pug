@@ -13,4 +13,4 @@ block footer
     script(type='text/javascript' src='//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js' integrity='sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=' crossorigin='anonymous')
     
     // Common JS
-    script(type='text/javascript' src=`//cdn.${process.env.DOMAIN}/js/common.js`)
+    script(type='text/javascript' src=`//cdn.${nconf.get('DOMAIN')}/js/common.js`)

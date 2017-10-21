@@ -1,0 +1,40 @@
+{
+  "name": "robototes-website",
+  "version": "2.0.0-alpha",
+  "description": "Official Robototes team website",
+  "main": "server.js",
+  "repository": "https://github.com/robototes/robototes-website.git",
+  "license": "SEE LICENSE IN LICENSE",
+  "author": "robototes2412 <webmaster@robototes.com>",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "DEBUG=robototes-website:*,http nodemon -e js,json,pug,css server.js",
+    "test": "standard && nyc --exclude tests/ ava tests/index.js",
+    "coverage": "nyc report --reporter=lcov > coverage.lcov && codecov"
+  },
+  "dependencies": {
+    "debug": "^3.1.0",
+    "js2xmlparser": "^3.0.0",
+    "kcors": "^2.2.1",
+    "koa": "^2.3.0",
+    "koa-bodyparser": "^4.2.0",
+    "koa-cache-control": "^2.0.0",
+    "koa-compress": "^2.0.0",
+    "koa-favicon": "^2.0.0",
+    "koa-helmet": "^3.2.0",
+    "koa-load-middlewares": "^1.0.0",
+    "koa-minify": "^2.0.1",
+    "koa-pug": "^3.0.0-2",
+    "koa-router": "^7.2.1",
+    "nconf": "^0.8.5"
+  },
+  "devDependencies": {
+    "ava": "^0.22.0",
+    "codecov": "^2.3.1",
+    "html-validator": "^2.2.3",
+    "nodemon": "^1.12.1",
+    "nyc": "^11.2.1",
+    "standard": "^10.0.3",
+    "supertest": "^3.0.0"
+  }
+}

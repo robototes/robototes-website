@@ -20,4 +20,4 @@ ENV PORT=3000 IP='0.0.0.0' DATABASE_HOST=$databaseHost DATABASE_PORT=$databasePo
 # Tell the user what ports to expose
 EXPOSE 3000/tcp
 
-CMD [ 'node', 'server.js' ]
+CMD [ 'yarn', 'start' ]

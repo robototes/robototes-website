@@ -5,7 +5,7 @@
   "main": "server.js",
   "repository": "https://github.com/robototes/robototes-website.git",
   "license": "SEE LICENSE IN LICENSE",
-  "author": "dannytech <dannytech@users.noreply.github.com>",
+  "author": "robototes2412 <webmaster@robototes.com>",
   "scripts": {
     "start": "node server.js",
     "dev": "DEBUG=robototes-website:*,http nodemon -e js,json,pug,css server.js",

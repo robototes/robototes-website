@@ -35,7 +35,7 @@ const router = require('./routes/')
 // Create a new app
 const app = new Koa()
 
-// Initializes and attaches pug
+// Initializes and attaches Pug
 let pug = new Pug({
   viewPath: path.resolve(__dirname, 'views', 'pages'),
   basedir: path.resolve(__dirname, 'views', 'partials'),
@@ -47,7 +47,7 @@ let pug = new Pug({
   }
 })
 pug.use(app)
-log('Initialized pug')
+log('Initialized Pug')
 
 // Middleware
 app.use(async (ctx, next) => {

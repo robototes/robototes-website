@@ -1,0 +1,29 @@
+block header
+  header
+    nav.navbar.navbar-default.navbar-fixed-top
+      div.container-fluid
+        div.navbar-header
+          a.navbar-toggle.collapsed(data-toggle='collapse' data-target='#navlinks')
+            span.sr-only Toggle Navigation
+            span.icon-bar
+            span.icon-bar
+            span.icon-bar
+          a.navbar-brand#headerTitle(href='/') //ROBOTOTES
+        div.collapse.navbar-collapse#navlinks
+          // Pages
+          //- TODO Add active page detection
+          ul.nav.navbar-nav
+            li
+              a(href='/about') About
+            li
+              a(href=`//blog.${nconf.get('DOMAIN')}/`) Blog
+            li
+              a(href='/contact') Contact Us
+            li
+              a(href='/events') Events
+          // Social media
+          ul.nav.navbar-nav.navbar-right.nav-pills
+            each account in socialMedia
+              li
+                a(class=`fa fa-${account.icon}` href=account.url target='_blank')
+                  span.sr-only= account.service

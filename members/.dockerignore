@@ -1,0 +1,7 @@
+**
+!package.json
+!yarn.lock
+!server.js
+!routes/
+!views/
+!configs/

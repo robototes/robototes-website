@@ -1,0 +1,23 @@
+extends layout.pug
+
+block main
+  h1= `${error.status} error!`
+
+  //- Custom error messages based on the status
+  if error.status === 404
+    h3 Uh oh! We lost the robot!
+  else if error.status === 500
+    h3 When your robot stops working right before the competition :O
+  else
+    h3 Ummmmmmm, why isn't the robot working?
+    h3.faded Something happened, we're not sure what, but hopefully it doesn't happen again
+
+  //- Actions for the user
+  h4 You might try #[a(href='#' onclick='window.location.reload()') refreshing the page]
+  h4 Or, if you ended up in the wrong place, #[a(href=`https://www.${nconf.get('DOMAIN')}/`) here's our homepage]
+
+  if nconf.get('DOMAIN') != null
+    // Debug info
+    div.well
+      h2 Debug info
+      p= JSON.stringify(error)

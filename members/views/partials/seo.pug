@@ -1,0 +1,34 @@
+-
+  var seo = seo || {}
+  seo.title = seo.title || 'Team 2412 - The Robototes',
+  seo.description = seo.description || 'The official website for FRC Team 2412 - The Robototes, with coverage of current events and future competitions',
+  seo.image = seo.image || {}
+  seo.image.url = seo.image.url || `cdn.${nconf.get('DOMAIN')}/media/rt.png`
+  seo.image.alt = seo.image.alt || 'Robototes'
+
+block seo
+  title= seo.title
+  
+  meta(name='description' content=seo.description)
+  
+  // Open Graph
+  meta(property='og:title' content=seo.title)
+  meta(property='og:description' content=seo.description)
+  meta(property='og:image' content=seo.image.url)
+  meta(property='og:locale' content='en-US')
+  meta(property='og:type' content='website')
+  meta(property='og:url' content=`www.${nconf.get('DOMAIN')}`)
+  meta(property='og:site_name' content='Team 2412 - The Robototes')
+  link(rel='publisher' href='https://plus.google.com/117011933295301976527')
+  
+  // Twitter Cards
+  meta(name='twitter:card' content='summary_large_image')
+  meta(name='twitter:site' content='@robotics_2412')
+  meta(name='twitter:title' content=seo.title)
+  meta(name='twitter:description' content=seo.description)
+  meta(name='twitter:image' content=seo.image.url)
+  meta(name='twitter:image:alt' content=seo.image.alt)
+  
+  // Google Analytics
+  script window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)},ga.l=+new Date,ga('create',{trackingId:'#{nconf.get('G_TRACKING_ID')}',cookieDomain:'#{nconf.get('DOMAIN')}'}),ga('send',{hitType:'pageview'});
+  script(type='text/javascript' src=`https://www.google-analytics.com/analytics${nconf.get('DOMAIN') != null ? '_debug' : ''}.js` async)

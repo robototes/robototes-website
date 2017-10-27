@@ -1,0 +1,19 @@
+block css
+  // Viewport compatibility
+  meta(name='viewport' content='width=device-width, initial-scale=1')
+  
+  // Google site verification
+  meta(name='google-site-verification' content='2xQI9R54QYu5CHIGySzv2uwr-m1ZCu5ShhEoNk86Qks')
+  
+  // Font Awesome
+  link(rel='stylesheet' href='//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css' integrity='sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=' crossorigin='anonymous')
+  
+  // Orbitron font
+  link(rel='stylesheet' href='//fonts.googleapis.com/css?family=Orbitron:700')
+  
+  // Bootstrap
+  link(rel='stylesheet' href='//cdnjs.cloudflare.com/ajax/libs/bootswatch/3.3.7/cosmo/bootstrap.min.css' integrity='sha256-GamwdmSkzX/X39UCQREOQHmmuU2ewsnrft1flUimjxA=' crossorigin='anonymous')
+  
+  // CDN-hosted CSS
+  link(rel='stylesheet' href=`//cdn.${nconf.get('DOMAIN')}/css/spacing.min.css`)
+  link(rel='stylesheet' href=`//cdn.${nconf.get('DOMAIN')}/css/public.css`)

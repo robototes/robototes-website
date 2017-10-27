@@ -7,7 +7,7 @@ const router = require('koa-router')({
 })
 
 // Logging
-const log = debug('robototes-website:webhooks:server')
+const log = debug('robototes-website-api:server')
 const logHTTP = debug('http')
 
 // Load configuration

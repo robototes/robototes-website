@@ -1,4 +1,4 @@
-const logTBA = require('debug')('robototes-website:webhooks:thebluealliance')
+const logTBA = require('debug')('robototes-website-api:webhooks:thebluealliance')
 const nconf = require('nconf')
 const crypto = require('crypto')
 

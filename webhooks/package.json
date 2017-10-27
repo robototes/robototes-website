@@ -8,7 +8,7 @@
   "author": "robototes2412 <webmaster@robototes.com>",
   "scripts": {
     "start": "node server.js",
-    "dev": "DEBUG=robototes-website:*,http nodemon -e js,json,pug,css server.js",
+    "dev": "DEBUG=robototes-website-api:*,http nodemon -e js,json,pug,css server.js",
     "test": "standard && nyc --exclude tests/ ava tests/index.js && dockerlint Dockerfile",
     "coverage": "nyc report --reporter=lcov > coverage.lcov && codecov"
   },

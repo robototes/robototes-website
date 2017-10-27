@@ -1,8 +1,0 @@
-# NPM/Yarn files
-node_modules/
-yarn-error.log
-
-# Coverage
-.nyc_output/
-coverage/
-coverage.lcov

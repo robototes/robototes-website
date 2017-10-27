@@ -1,3 +1,11 @@
+## DEPRECATED
+This repository and the code within is deprecated. The code here has been split into multiple
+microservices, and further development will continue on each of the following repositories:
+
+[![robototes/robototes-website-web](https://img.shields.io/badge/service-web-green.svg)](https://github.com/robototes/robototes-website-web)
+[![robototes/robototes-website-api](https://img.shields.io/badge/service-api-green.svg)](https://github.com/robototes/robototes-website-api)
+[![robototes/robototes-website-team](https://img.shields.io/badge/service-team-green.svg)](https://github.com/robototes/robototes-website-team)
+
 # robototes-website v2
 
 [![Build Status](https://semaphoreci.com/api/v1/robototes/robototes-website/branches/v2/shields_badge.svg)](https://semaphoreci.com/robototes/robototes-website)

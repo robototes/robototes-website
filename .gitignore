@@ -1,9 +1,0 @@
-.eslintrc
-.retire-cache/
-server/*.*
-server/dev/*.*
-mongo-data/
-node_modules
-npm-debug.log
-configs.js
-.env

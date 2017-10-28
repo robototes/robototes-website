@@ -105,7 +105,8 @@ yarn coverage
 
 We use [Semaphore CI](https://semaphoreci.com/robototes/robototes-website-api) as our CI/CD service. Once tested, our code is
 deployed automatically to [Docker Hub](https://hub.docker.com/u/robototes/), and can be manually deployed to our production
-server from this repository's Semaphore CI.
+server from this repository's Semaphore CI. The commands used on Semaphore are available in
+[semaphore_commands.sh](https://github.com/robototes/robototes-website/blob/master/semaphore_commands.sh)
 
 ### Contributing/Vulnerability disclosure
 

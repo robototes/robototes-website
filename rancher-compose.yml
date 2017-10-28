@@ -1,0 +1,38 @@
+version: '3.4'
+services:
+  web:
+    scale: 1
+  api:
+    scale: 1
+  team:
+    scale: 1
+  mongo:
+    scale: 1
+  lb:
+    scale: 1
+    lb_config:
+      port_rules:
+      - protocol: https
+        hostname: robototes.com
+        source_port: 443
+        source_path: /api
+        target_port: 3000
+        service: api
+      - protocol: https
+        hostname: www.robototes.com
+        source_port: 443
+        source_path: /members
+        target_port: 3000
+        service: team
+      - protocol: https
+        hostname: www.robototes.com
+        source_port: 443
+        source_path: /
+        target_port: 3000
+        service: web
+    health_check:
+      port: 42
+      interval: 2000
+      unhealthy_threshold: 3
+      healthy_threshold: 2
+      response_timeout: 2000

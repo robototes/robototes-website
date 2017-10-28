@@ -1,0 +1,22 @@
+version: '3.4'
+services:
+  web:
+    image: robototes/robototes-website-web:latest
+    links:
+    - mongo
+  api:
+    image: robototes/robototes-website-api:latest
+    links:
+    - mongo
+  team:
+    image: robototes/robototes-website-team:latest
+    links:
+    - mongo
+  mongo:
+    image: mongo
+  lb:
+    image: rancher/lb-service-haproxy:latest
+    certs:
+    - <certName>
+    ports:
+    - 443

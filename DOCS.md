@@ -83,7 +83,7 @@ safe.
     * Our [Semaphore CI](https://semaphoreci.com/robototes/) will build and [test](#testing) the project
     * If all tests pass, have at least one experienced programmer review your changes, and accept the pull request
     * Make modifications to the site as necessary on this repo, then trigger a deployment to the server either automatically
-      by pushing from this repo, or manually using Manual Deployments on [Semaphore CI](https://semaphoreci.com/robototes/).
+      by pushing from this repo, or manually using Manual Deployments on [Semaphore CI](https://semaphoreci.com/robototes/)
     * And last of all, [reward yourself](http://www.rinkworks.com/stupid/)
 
 ### <a id="testing">Testing</a>
@@ -106,6 +106,11 @@ yarn coverage
 We use [Semaphore CI](https://semaphoreci.com/robototes/robototes-website-api) as our CI/CD service. Once tested, our code is
 deployed automatically to [Docker Hub](https://hub.docker.com/u/robototes/), and can be manually deployed to our production
 server from this repository's Semaphore CI.
+
+### Contributing/Vulnerability disclosure
+
+Please review our [CONTRIBUTING.md](https://github.com/robototes/robototes-website/blob/master/CONTRIBUTING.md) before
+submitting pull requests or reporting vulnerabilities.
 
 ### Maintainers
 

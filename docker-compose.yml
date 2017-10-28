@@ -16,7 +16,5 @@ services:
     image: mongo
   lb:
     image: rancher/lb-service-haproxy:latest
-    certs:
-    - <certName>
     ports:
-    - 443
+    - 443:443

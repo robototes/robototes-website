@@ -30,6 +30,9 @@ services:
         source_path: /
         target_port: 3000
         service: web
+      certs:
+      - <certName>
+      default_cert: <defaultCertName>
     health_check:
       port: 42
       interval: 2000

@@ -1,11 +1,65 @@
-version: '3.4'
+version: 2
+catalog:
+  name: robototes-website
+  version: 2.0.0-alpha
+  questions:
+  - variable: DOMAIN
+    label: The second-level domain that the server resides on
+    required: true
+    type: string
+  - variable: G_TRACKING_ID
+    label: The Google analyics tracking ID to report to
+    required: false
+    type: string
+  - variable: HPKP_HASHES
+    label: Comma-delimited list of hashes for HTTPS Public Key Pinning
+    required: true
+    type: string
+  - variable: TBA_SECRET_KEY
+    label: The secret key used to verify the source and integrity of payloads from The Blue Alliance
+    required: true
+    type: string
+  - variable: AUTH0_CLIENT_ID
+    label: Auth0 API Client ID
+    required: true
+    type: string
+  - variable: AUTH0_DOMAIN
+    label: Auth0 API Domain
+    required: true
+    type: string
+  - variable: AUTH0_CLIENT_SECRET
+    label: Auth0 API Client Secret
+    required: true
+    type: string
+  - variable: CERTIFICATE
+    label: Origin certificate for load balancer
+    required: true
+    type: certificate
 services:
   web:
     scale: 1
+    environment:
+      DOMAIN: $DOMAIN
+      G_TRACKING_ID: $G_TRACKING_ID
+      HPKP_HASHES: $HPKP_HASHES
+      DATABASE_HOST: mongo
+      DATABASE_PORT: 27017
   api:
     scale: 1
+    environment:
+      TBA_SECRET_KEY: $TBA_SECRET_KEY
+      DATABASE_HOST: mongo
+      DATABASE_PORT: 27017
   team:
     scale: 1
+    environment:
+      DOMAIN: $DOMAIN
+      HPKP_HASHES: $HPKP_HASHES
+      AUTH0_CLIENT_ID: $AUTH0_CLIENT_ID
+      AUTH0_DOMAIN: $AUTH0_DOMAIN
+      AUTH0_CLIENT_SECRET: $AUTH0_CLIENT_SECRET
+      DATABASE_HOST: mongo
+      DATABASE_PORT: 27017
   mongo:
     scale: 1
   lb:
@@ -31,8 +85,8 @@ services:
         target_port: 3000
         service: web
       certs:
-      - <certName>
-      default_cert: <defaultCertName>
+      - $CERTIFICATE
+      default_cert: $CERTIFICATE
     health_check:
       port: 42
       interval: 2000

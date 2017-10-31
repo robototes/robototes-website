@@ -1,20 +1,30 @@
-version: '3.4'
+version: 2
 services:
   web:
     image: robototes/robototes-website-web:latest
     links:
     - mongo
+    labels:
+      io.rancher.scheduler.affinity:host_label: type=private
   api:
     image: robototes/robototes-website-api:latest
     links:
     - mongo
+    labels:
+      io.rancher.scheduler.affinity:host_label: type=private
   team:
     image: robototes/robototes-website-team:latest
     links:
     - mongo
+    labels:
+      io.rancher.scheduler.affinity:host_label: type=private
   mongo:
     image: mongo
+    labels:
+      io.rancher.scheduler.affinity:host_label: type=private
   lb:
     image: rancher/lb-service-haproxy:latest
+    labels:
+      io.rancher.scheduler.affinity:host_label: type=public
     ports:
     - 443:443

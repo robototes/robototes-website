@@ -7,6 +7,9 @@ the following microservices:
 [![robototes/robototes-website-api](https://img.shields.io/badge/service-api-green.svg)](https://github.com/robototes/robototes-website-api)
 [![robototes/robototes-website-team](https://img.shields.io/badge/service-team-green.svg)](https://github.com/robototes/robototes-website-team)
 
+The code on the v2 branch is deprecated, and was split up into the above microservices. The much older v1 code is available from
+the master branch at commit [3b18b9f](https://github.com/robototes/robototes-website/tree/3b18b9f).
+
 ### What's a control repository and why do we use it?
 
 This repository is used to manage our site, from configuring our DNS to managing our server. We use git because it allows us the

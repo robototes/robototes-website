@@ -38,28 +38,10 @@ catalog:
 services:
   web:
     scale: 1
-    environment:
-      DOMAIN: $DOMAIN
-      G_TRACKING_ID: $G_TRACKING_ID
-      HPKP_HASHES: $HPKP_HASHES
-      DATABASE_HOST: mongo
-      DATABASE_PORT: 27017
   api:
     scale: 1
-    environment:
-      TBA_SECRET_KEY: $TBA_SECRET_KEY
-      DATABASE_HOST: mongo
-      DATABASE_PORT: 27017
   team:
     scale: 1
-    environment:
-      DOMAIN: $DOMAIN
-      HPKP_HASHES: $HPKP_HASHES
-      AUTH0_CLIENT_ID: $AUTH0_CLIENT_ID
-      AUTH0_DOMAIN: $AUTH0_DOMAIN
-      AUTH0_CLIENT_SECRET: $AUTH0_CLIENT_SECRET
-      DATABASE_HOST: mongo
-      DATABASE_PORT: 27017
   mongo:
     scale: 1
   lb:
@@ -67,19 +49,19 @@ services:
     lb_config:
       port_rules:
       - protocol: https
-        hostname: robototes.com
+        hostname: www.$DOMAIN
         source_port: 443
         source_path: /api
         target_port: 3000
         service: api
       - protocol: https
-        hostname: www.robototes.com
+        hostname: www.$DOMAIN
         source_port: 443
         source_path: /members
         target_port: 3000
         service: team
       - protocol: https
-        hostname: www.robototes.com
+        hostname: www.$DOMAIN
         source_port: 443
         source_path: /
         target_port: 3000

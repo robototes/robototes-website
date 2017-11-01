@@ -4,27 +4,53 @@ services:
     image: robototes/robototes-website-web:latest
     links:
     - mongo
+    expose:
+    - 3000
     labels:
       io.rancher.scheduler.affinity:host_label: type=private
+    environment:
+    - DOMAIN=$DOMAIN
+    - G_TRACKING_ID=$G_TRACKING_ID
+    - HPKP_HASHES=$HPKP_HASHES
+    - DATABASE_HOST=mongo
+    - DATABASE_PORT=27017
   api:
     image: robototes/robototes-website-api:latest
     links:
     - mongo
+    expose:
+    - 3000
     labels:
       io.rancher.scheduler.affinity:host_label: type=private
+    environment:
+    - TBA_SECRET_KEY=$TBA_SECRET_KEY
+    - DATABASE_HOST=mongo
+    - DATABASE_PORT=27017
   team:
     image: robototes/robototes-website-team:latest
     links:
     - mongo
+    expose:
+    - 3000
     labels:
       io.rancher.scheduler.affinity:host_label: type=private
+    environment:
+    - DOMAIN=$DOMAIN
+    - HPKP_HASHES=$HPKP_HASHES
+    - AUTH0_CLIENT_ID=$AUTH0_CLIENT_ID
+    - AUTH0_DOMAIN=$AUTH0_DOMAIN
+    - AUTH0_CLIENT_SECRET=$AUTH0_CLIENT_SECRET
+    - DATABASE_HOST=mongo
+    - DATABASE_PORT=27017
   mongo:
     image: mongo
+    expose:
+    - 27017
     labels:
       io.rancher.scheduler.affinity:host_label: type=private
   lb:
-    image: rancher/lb-service-haproxy:latest
-    labels:
-      io.rancher.scheduler.affinity:host_label: type=public
+    image: rancher/lb-service-haproxy:v0.7.9
     ports:
     - 443:443
+    labels:
+      io.rancher.scheduler.affinity:host_label: type=public

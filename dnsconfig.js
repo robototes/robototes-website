@@ -35,6 +35,7 @@ D('robototes.com', REG_NONE, DnsProvider(CLOUDFLARE),
   CNAME('first', 'robototes.com.'),
   CNAME('blog', 'ghs.google.com.'),
   CNAME('cdn', 'cdn.robototes.com.s3.amazonaws.com.'),
+  CNAME('report', 'robototes.report-uri.io'),
   CNAME('status', 'stats.uptimerobot.com.', CF_PROXY.OFF),
 
   // Zoho Mail

@@ -29,15 +29,20 @@ docker push robototes/robototes-website-$NAME
 ## Deployments
 
 # Production
-aws s3 sync ./views/cdn s3://cdn.robototes.com/ # Upload CDN files to S3
+# Upload CDN files to S3
+git clone https://github.com/robototes/robototes-website-web.git web/
+docker run --rm -e "AWS_ACCESS_KEY_ID=$AWS_ACCESS_KEY_ID" \
+  -e "AWS_SECRET_ACCESS_KEY=$AWS_SECRET_ACCESS_KEY " \
+  -v $(pwd)/web/views/cdn/:/workspace/ \
+  robototes/awscli s3 sync / s3://cdn.robototes.com/
 # Purge the Cloudflare cache of our CDN files
 docker run --rm -e "CF_ZONE_ID=$CF_ZONE_ID" \
   -e "CF_API_USER=$CF_API_USER" \
   -e "CF_API_KEY=$CF_API_KEY" \
   robototes/cloudflare-cli purge cdn.robototes.com
 # Upgrade our server containers/configuration
-docker run --rm -v $(pwd)/docker-compose.yml:/docker-compose.yml \
-  -v $(pwd)/rancher-compose.yml:/rancher-compose.yml \
+docker run --rm -v $(pwd)/docker-compose.yml:/workspace/docker-compose.yml \
+  -v $(pwd)/rancher-compose.yml:/workspace/rancher-compose.yml \
   -e "RANCHER_URL=$RANCHER_URL" \
   -e "RANCHER_ACCESS_KEY=$RANCHER_ACCESS_KEY" \
   -e "RANCHER_SECRET_KEY=$RANCHER_SECRET_KEY" \

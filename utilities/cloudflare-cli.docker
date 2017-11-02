@@ -1,0 +1,10 @@
+FROM node:8
+LABEL name="cloudflare-cli" version="2.2.0" maintainer="webmaster@robototes.com"
+
+ENV VERSION='2.2.0'
+
+# Install cloudflare-cli
+RUN [ "yarn", "global", "add", "awscli@$VERSION" ]
+WORKDIR /workspace
+
+CMD [ "cfcli" ]

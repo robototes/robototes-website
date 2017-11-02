@@ -1,0 +1,10 @@
+FROM alpine:3.6
+LABEL name="rancher-compose" version="v0.12.5" maintainer="webmaster@robototes.com"
+
+ENV VERSION='v0.12.5'
+
+# Install rancher-compose
+RUN [ "wget", "-o", "/bin/rancher-compose", "https://github.com/rancher/rancher-compose/releases/download/$VERSION/rancher-compose-linux-amd64-$VERSION.tar.gz" ]
+WORKDIR /workspace
+
+CMD [ "rancher-compose" ]

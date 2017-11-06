@@ -34,19 +34,19 @@ git clone https://github.com/robototes/robototes-website-web.git web/
 docker run --rm -e "AWS_ACCESS_KEY_ID=$AWS_ACCESS_KEY_ID" \
   -e "AWS_SECRET_ACCESS_KEY=$AWS_SECRET_ACCESS_KEY " \
   -v $(pwd)/web/views/cdn/:/workspace/ \
-  robototes/awscli s3 sync / s3://cdn.robototes.com/
+  xueshanf/awscli s3 sync / s3://cdn.robototes.com/
 # Purge the Cloudflare cache of our CDN files
 docker run --rm -e "CF_ZONE_ID=$CF_ZONE_ID" \
   -e "CF_API_USER=$CF_API_USER" \
   -e "CF_API_KEY=$CF_API_KEY" \
-  robototes/cloudflare-cli purge cdn.robototes.com
+  anjuna/cfcli purge cdn.robototes.com
 # Upgrade our server containers/configuration
 docker run --rm -v $(pwd)/docker-compose.yml:/workspace/docker-compose.yml \
   -v $(pwd)/rancher-compose.yml:/workspace/rancher-compose.yml \
   -e "RANCHER_URL=$RANCHER_URL" \
   -e "RANCHER_ACCESS_KEY=$RANCHER_ACCESS_KEY" \
   -e "RANCHER_SECRET_KEY=$RANCHER_SECRET_KEY" \
-  robototes/rancher-compose up --upgrade --pull --confirm-upgrade
+  monostream/rancher-compose up --upgrade --pull --confirm-upgrade
 sed -i "s/{ SERVER_IP }/$SERVER_IP/g" dnsconfig.js # Fill in server IP and CDN URL
 # Update our DNS
 docker run --rm -v $(pwd)/dnsconfig.js:/dns/dnsconfig.js \

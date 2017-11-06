@@ -25,6 +25,12 @@ docker push robototes/robototes-website-$NAME
 #### For this repository
 
 ## Build stages
+# Preview DNS changes
+docker run --rm -v $(pwd)/dnsconfig.js:/dns/dnsconfig.js \
+  -v $(pwd)/creds.json.env:/dns/creds.json.env \
+  -e "CF_API_USER=$CF_API_USER" \
+  -e "CF_API_KEY=$CF_API_KEY" \
+  stackexchange/dnscontrol preview
 
 ## Deployments
 
@@ -53,4 +59,4 @@ docker run --rm -v $(pwd)/dnsconfig.js:/dns/dnsconfig.js \
   -v $(pwd)/creds.json.env:/dns/creds.json.env \
   -e "CF_API_USER=$CF_API_USER" \
   -e "CF_API_KEY=$CF_API_KEY" \
-  stackexchange/dnscontrol dnscontrol push
+  stackexchange/dnscontrol push

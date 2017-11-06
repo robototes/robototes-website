@@ -1,10 +1,13 @@
 FROM node:8
-LABEL name="cloudflare-cli" version="2.2.0" maintainer="webmaster@robototes.com"
 
-ENV VERSION="2.2.0"
+# The version to install
+ARG version="2.2.0"
 
 # Install cloudflare-cli
-RUN [ "sh", "-c", "yarn", "global", "add", "cloudflare-cli@$VERSION" ]
+RUN yarn global add cloudflare-cli@$version
 WORKDIR /workspace
 
-CMD [ "cfcli" ]
+# Image metadata
+LABEL name="cloudflare-cli" version=$version maintainer="webmaster@robototes.com"
+
+ENTRYPOINT [ "cfcli" ]

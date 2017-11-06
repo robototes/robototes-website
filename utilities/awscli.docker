@@ -1,10 +1,13 @@
 FROM python:3.7.0a2-alpine
-LABEL name="awscli" version="1.11.178" maintainer="webmaster@robototes.com"
 
-ENV VERSION="1.11.178"
+# The version to install
+ARG version="1.11.178"
 
 # Install awscli
-RUN [ "sh", "-c", "pip", "install", "awscli==$VERSION" ]
+RUN pip install awscli==$version
 WORKDIR /workspace
 
-CMD [ "aws" ]
+# Image metadata
+LABEL name="awscli" version=$version maintainer="webmaster@robototes.com"
+
+ENTRYPOINT [ "aws" ]

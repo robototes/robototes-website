@@ -23,6 +23,7 @@ services:
     labels:
       io.rancher.scheduler.affinity:host_label: type=private
     environment:
+    - DOMAIN=$DOMAIN
     - TBA_SECRET_KEY=$TBA_SECRET_KEY
     - DATABASE_HOST=mongo
     - DATABASE_PORT=27017

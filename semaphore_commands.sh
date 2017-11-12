@@ -30,7 +30,7 @@ docker run --rm -v $(pwd)/dnsconfig.js:/dns/dnsconfig.js \
   -v $(pwd)/creds.json.env:/dns/creds.json.env \
   -e "CF_API_USER=$CF_API_USER" \
   -e "CF_API_KEY=$CF_API_KEY" \
-  stackexchange/dnscontrol preview
+  stackexchange/dnscontrol dnscontrol preview
 
 ## Deployments
 
@@ -59,4 +59,4 @@ docker run --rm -v $(pwd)/dnsconfig.js:/dns/dnsconfig.js \
   -v $(pwd)/creds.json.env:/dns/creds.json.env \
   -e "CF_API_USER=$CF_API_USER" \
   -e "CF_API_KEY=$CF_API_KEY" \
-  stackexchange/dnscontrol push
+  stackexchange/dnscontrol dnscontrol push

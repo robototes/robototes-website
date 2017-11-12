@@ -37,7 +37,7 @@ ls -l $(pwd)/cdn/
 docker run --rm -e "AWS_ACCESS_KEY_ID=$AWS_ACCESS_KEY_ID" \
   -e "AWS_SECRET_ACCESS_KEY=$AWS_SECRET_ACCESS_KEY " \
   -v $(pwd)/cdn/:/workspace/ \
-  xueshanf/awscli s3 sync / s3://cdn.robototes.com/
+  xueshanf/awscli aws s3 sync / s3://cdn.robototes.com/
 # Purge the Cloudflare cache of our CDN files
 docker run --rm -e "CF_ZONE_ID=$CF_ZONE_ID" \
   -e "CF_API_USER=$CF_API_USER" \
@@ -49,4 +49,4 @@ docker run --rm -v $(pwd)/docker-compose.yml:/workspace/docker-compose.yml \
   -e "RANCHER_URL=$RANCHER_URL" \
   -e "RANCHER_ACCESS_KEY=$RANCHER_ACCESS_KEY" \
   -e "RANCHER_SECRET_KEY=$RANCHER_SECRET_KEY" \
-  monostream/rancher-compose up --upgrade --pull --confirm-upgrade
+  monostream/rancher-compose rancher-compose up --upgrade --pull --confirm-upgrade

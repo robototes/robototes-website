@@ -35,7 +35,7 @@ D('robototes.com', REG_NONE, DnsProvider(CLOUDFLARE),
   CNAME('first', 'robototes.com.'),
   CNAME('blog', 'ghs.google.com.'),
   CNAME('cdn', 'cdn.robototes.com.s3.amazonaws.com.'),
-  CNAME('report', 'robototes.report-uri.com'),
+  CNAME('report', 'robototes.report-uri.com.'),
   CNAME('status', 'stats.uptimerobot.com.', CF_PROXY.OFF),
 
   // Zoho Mail
@@ -48,18 +48,4 @@ D('robototes.com', REG_NONE, DnsProvider(CLOUDFLARE),
   // Page Rules
   CF_REDIRECT('first.robototes.com/*', 'https://www.robototes.com/$1'),
   CF_REDIRECT('robototes.com/*', 'https://www.robototes.com/$1')
-)
-
-D('robototes.net', REG_NONE, DnsProvider(CLOUDFLARE),
-  CNAME('@', 'www.robototes.com.'),
-
-  // Page rules
-  CF_REDIRECT('*robototes.net/*', 'https://www.robototes.com/$2') // Redirect to primary zone
-)
-
-D('robototes.org', REG_NONE, DnsProvider(CLOUDFLARE),
-  CNAME('@', 'www.robototes.com.'),
-
-  // Page rules
-  CF_REDIRECT('*robototes.org/*', 'https://www.robototes.com/$2') // Redirect to primary zone
 )

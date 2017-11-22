@@ -11,7 +11,6 @@ services:
     environment:
     - DOMAIN=$DOMAIN
     - G_TRACKING_ID=$G_TRACKING_ID
-    - HPKP_HASHES=$HPKP_HASHES
     - DATABASE_HOST=mongo
     - DATABASE_PORT=27017
   api:
@@ -37,7 +36,6 @@ services:
       io.rancher.scheduler.affinity:host_label: type=private
     environment:
     - DOMAIN=$DOMAIN
-    - HPKP_HASHES=$HPKP_HASHES
     - AUTH0_CLIENT_ID=$AUTH0_CLIENT_ID
     - AUTH0_DOMAIN=$AUTH0_DOMAIN
     - AUTH0_CLIENT_SECRET=$AUTH0_CLIENT_SECRET

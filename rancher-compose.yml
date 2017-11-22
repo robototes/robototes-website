@@ -11,10 +11,6 @@ catalog:
     label: The Google analyics tracking ID to report to
     required: false
     type: string
-  - variable: HPKP_HASHES
-    label: Comma-delimited list of hashes for HTTPS Public Key Pinning
-    required: true
-    type: string
   - variable: TBA_SECRET_KEY
     label: The secret key used to verify the source and integrity of payloads from The Blue Alliance
     required: true

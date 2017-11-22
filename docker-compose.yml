@@ -8,6 +8,7 @@ services:
     - 3000
     labels:
       io.rancher.scheduler.affinity:host_label: type=private
+      io.rancher.container.pull_image: always
     environment:
     - DOMAIN=$DOMAIN
     - G_TRACKING_ID=$G_TRACKING_ID
@@ -21,6 +22,7 @@ services:
     - 3000
     labels:
       io.rancher.scheduler.affinity:host_label: type=private
+      io.rancher.container.pull_image: always
     environment:
     - DOMAIN=$DOMAIN
     - TBA_SECRET_KEY=$TBA_SECRET_KEY
@@ -34,6 +36,7 @@ services:
     - 3000
     labels:
       io.rancher.scheduler.affinity:host_label: type=private
+      io.rancher.container.pull_image: always
     environment:
     - DOMAIN=$DOMAIN
     - AUTH0_CLIENT_ID=$AUTH0_CLIENT_ID
@@ -42,7 +45,7 @@ services:
     - DATABASE_HOST=mongo
     - DATABASE_PORT=27017
   mongo:
-    image: mongo
+    image: mongo:3.5-jessie
     expose:
     - 27017
     labels:

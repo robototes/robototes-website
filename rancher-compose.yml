@@ -34,10 +34,40 @@ catalog:
 services:
   web:
     scale: 1
+    health_check:
+      port: 3000
+      request_line: GET / HTTP/1.0
+      interval: 2000
+      initializing_timeout: 60000
+      reinitializing_timeout: 60000
+      unhealthy_threshold: 3
+      healthy_threshold: 2
+      response_timeout: 2000
+      strategy: recreate
   api:
     scale: 1
+    # health_check:
+    #   port: 3000
+    #   request_line: GET /api/email?alias=test&domain=$DOMAIN HTTP/1.0
+    #   interval: 2000
+    #   initializing_timeout: 60000
+    #   reinitializing_timeout: 60000
+    #   unhealthy_threshold: 3
+    #   healthy_threshold: 2
+    #   response_timeout: 2000
+    #   strategy: recreate
   team:
     scale: 1
+    health_check:
+      port: 3000
+      request_line: GET /members HTTP/1.0
+      interval: 2000
+      initializing_timeout: 60000
+      reinitializing_timeout: 60000
+      unhealthy_threshold: 3
+      healthy_threshold: 2
+      response_timeout: 2000
+      strategy: recreate
   mongo:
     scale: 1
   lb:
@@ -47,21 +77,21 @@ services:
       - protocol: https
         hostname: www.$DOMAIN
         source_port: 443
-        source_path: /api
+        path: /
+        target_port: 3000
+        service: web
+      - protocol: https
+        hostname: www.$DOMAIN
+        source_port: 443
+        path: /api
         target_port: 3000
         service: api
       - protocol: https
         hostname: www.$DOMAIN
         source_port: 443
-        source_path: /members
+        path: /members
         target_port: 3000
         service: team
-      - protocol: https
-        hostname: www.$DOMAIN
-        source_port: 443
-        source_path: /
-        target_port: 3000
-        service: web
       certs:
       - $CERTIFICATE
       default_cert: $CERTIFICATE

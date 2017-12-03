@@ -35,7 +35,7 @@ ls -l $(pwd)/cdn/
 # Production
 # Upload CDN files to S3
 docker run --rm -e "AWS_ACCESS_KEY_ID=$AWS_ACCESS_KEY_ID" \
-  -e "AWS_SECRET_ACCESS_KEY=$AWS_SECRET_ACCESS_KEY " \
+  -e "AWS_SECRET_ACCESS_KEY=$AWS_SECRET_ACCESS_KEY" \
   -v $(pwd)/cdn/:/workspace/ \
   xueshanf/awscli aws s3 sync / s3://cdn.robototes.com/
 # Purge the Cloudflare cache of our CDN files

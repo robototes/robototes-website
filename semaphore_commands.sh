@@ -39,10 +39,11 @@ docker run --rm -e "AWS_ACCESS_KEY_ID=$AWS_ACCESS_KEY_ID" \
   -v $(pwd)/cdn/:/workspace/ \
   xueshanf/awscli aws s3 sync /workspace/ s3://cdn.robototes.com/ --delete
 # Purge the Cloudflare cache of our CDN files
-docker run --rm -e "CF_ZONE_ID=$CF_ZONE_ID" \
-  -e "CF_API_USER=$CF_API_USER" \
-  -e "CF_API_KEY=$CF_API_KEY" \
-  anjuna/cfcli purge cdn.robototes.com
+curl -X DELETE "https://api.cloudflare.com/client/v4/zones/$CF_ZONE_ID/purge_cache" \
+    -H "X-Auth-Email: $CF_API_USER" \
+    -H "X-Auth-Key: $CF_API_KEY" \
+    -H "Content-Type: application/json" \
+    --data '{"files":["https://cdn.robototes.com/"]}'
 # Upgrade our server containers/configuration
 docker run --rm -v $(pwd)/docker-compose.yml:/workspace/docker-compose.yml \
   -v $(pwd)/rancher-compose.yml:/workspace/rancher-compose.yml \

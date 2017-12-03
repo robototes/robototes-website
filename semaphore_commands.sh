@@ -37,7 +37,7 @@ ls -l $(pwd)/cdn/
 docker run --rm -e "AWS_ACCESS_KEY_ID=$AWS_ACCESS_KEY_ID" \
   -e "AWS_SECRET_ACCESS_KEY=$AWS_SECRET_ACCESS_KEY" \
   -v $(pwd)/cdn/:/workspace/ \
-  xueshanf/awscli aws s3 sync / s3://cdn.robototes.com/
+  xueshanf/awscli aws s3 sync /workspace/ s3://cdn.robototes.com/
 # Purge the Cloudflare cache of our CDN files
 docker run --rm -e "CF_ZONE_ID=$CF_ZONE_ID" \
   -e "CF_API_USER=$CF_API_USER" \

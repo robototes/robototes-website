@@ -30,9 +30,10 @@ yarn --version
 node --version
 git submodule init
 git submodule update
-for wd in {web,api,team}; do yarn install --cwd $wd; done
-# Testing
-for wd in {web,api,team}; do cd $wd && yarn test && cd ..; done
+# Testing (3 parallel jobs)
+cd {api,web,team} # Choose one
+yarn install
+PORT=3000 yarn test # Make each use a different port
 # After
 git submodule deinit --force --all
 

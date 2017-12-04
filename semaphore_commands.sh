@@ -39,14 +39,10 @@ git submodule deinit --force --all
 ## Deployments
 
 # Production
-# Download the CDN files
-svn export https://github.com/robototes/robototes-website-web/trunk/views/cdn/
-# List CDN files
-ls -l $(pwd)/cdn/
 # Upload CDN files to S3
 docker run --rm -e AWS_ACCESS_KEY_ID \
   -e AWS_SECRET_ACCESS_KEY \
-  -v $(pwd)/cdn/:/workspace/ \
+  -v $(pwd)/web/views/cdn/:/workspace/ \
   xueshanf/awscli aws s3 sync /workspace/ s3://cdn.robototes.com/ --delete
 # Purge the Cloudflare cache of our CDN files
 curl -X DELETE "https://api.cloudflare.com/client/v4/zones/$CF_ZONE_ID/purge_cache" \

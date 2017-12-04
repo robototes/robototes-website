@@ -25,14 +25,24 @@ docker push robototes/robototes-website-$NAME
 #### For this repository
 
 ## Build stages
-# Download CDN files
-svn export https://github.com/robototes/robototes-website-web/trunk/views/cdn/
-# List CDN files
-ls -l $(pwd)/cdn/
+# Setup
+yarn --version
+node --version
+git submodule initialize
+git submodule update
+for wd in {web,api,team}; do yarn install --cwd $wd; done
+# Testing
+for wd in {web,api,team}; do cd $wd && yarn test && cd ..; done
+# After
+git submodule deinit --force
 
 ## Deployments
 
 # Production
+# Download the CDN files
+svn export https://github.com/robototes/robototes-website-web/trunk/views/cdn/
+# List CDN files
+ls -l $(pwd)/cdn/
 # Upload CDN files to S3
 docker run --rm -e AWS_ACCESS_KEY_ID \
   -e AWS_SECRET_ACCESS_KEY \

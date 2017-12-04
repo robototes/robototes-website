@@ -35,7 +35,7 @@ cd {api,web,team} # Choose one
 yarn install
 PORT=3000 yarn test # Make each use a different port
 # After
-git submodule deinit --force --all
+git submodule deinit --force . # Deinit the current submodule, specified by "cd" above
 
 ## Deployments
 

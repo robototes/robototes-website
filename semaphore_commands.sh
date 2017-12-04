@@ -28,13 +28,13 @@ docker push robototes/robototes-website-$NAME
 # Setup
 yarn --version
 node --version
-git submodule initialize
+git submodule init
 git submodule update
 for wd in {web,api,team}; do yarn install --cwd $wd; done
 # Testing
 for wd in {web,api,team}; do cd $wd && yarn test && cd ..; done
 # After
-git submodule deinit --force
+git submodule deinit --force --all
 
 ## Deployments
 

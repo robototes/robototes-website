@@ -34,8 +34,8 @@ ls -l $(pwd)/cdn/
 
 # Production
 # Upload CDN files to S3
-docker run --rm -e "AWS_ACCESS_KEY_ID=$AWS_ACCESS_KEY_ID" \
-  -e "AWS_SECRET_ACCESS_KEY=$AWS_SECRET_ACCESS_KEY" \
+docker run --rm -e AWS_ACCESS_KEY_ID \
+  -e AWS_SECRET_ACCESS_KEY \
   -v $(pwd)/cdn/:/workspace/ \
   xueshanf/awscli aws s3 sync /workspace/ s3://cdn.robototes.com/ --delete
 # Purge the Cloudflare cache of our CDN files
@@ -47,7 +47,14 @@ curl -X DELETE "https://api.cloudflare.com/client/v4/zones/$CF_ZONE_ID/purge_cac
 # Upgrade our server containers/configuration
 docker run --rm -v $(pwd)/docker-compose.yml:/workspace/docker-compose.yml \
   -v $(pwd)/rancher-compose.yml:/workspace/rancher-compose.yml \
-  -e "RANCHER_URL=$RANCHER_URL" \
-  -e "RANCHER_ACCESS_KEY=$RANCHER_ACCESS_KEY" \
-  -e "RANCHER_SECRET_KEY=$RANCHER_SECRET_KEY" \
+  -e RANCHER_URL \
+  -e RANCHER_ACCESS_KEY \
+  -e RANCHER_SECRET_KEY \
+  -e DOMAIN \
+  -e G_TRACKING_ID \
+  -e TBA_SECRET_KEY \
+  -e AUTH0_CLIENT_ID \
+  -e AUTH0_CLIENT_SECRET \
+  -e AUTH0_DOMAIN \
+  -e CERTIFICATE \
   monostream/rancher-compose rancher-compose up --upgrade --pull --confirm-upgrade

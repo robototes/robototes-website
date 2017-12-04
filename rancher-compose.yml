@@ -80,18 +80,18 @@ services:
         path: /
         target_port: 3000
         service: web
-      - protocol: https
-        hostname: www.$DOMAIN
-        source_port: 443
-        path: /api
-        target_port: 3000
-        service: api
-      - protocol: https
-        hostname: www.$DOMAIN
-        source_port: 443
-        path: /members
-        target_port: 3000
-        service: team
+      # - protocol: https
+      #   hostname: www.$DOMAIN
+      #   source_port: 443
+      #   path: /api
+      #   target_port: 3000
+      #   service: api
+      # - protocol: https
+      #   hostname: www.$DOMAIN
+      #   source_port: 443
+      #   path: /members
+      #   target_port: 3000
+      #   service: team
       certs:
       - $CERTIFICATE
       default_cert: $CERTIFICATE

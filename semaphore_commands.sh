@@ -57,6 +57,7 @@ docker run --rm -v $(pwd)/docker-compose.yml:/workspace/docker-compose.yml \
   -e RANCHER_URL \
   -e RANCHER_ACCESS_KEY \
   -e RANCHER_SECRET_KEY \
+  -e COMPOSE_PROJECT_NAME \
   -e DOMAIN \
   -e G_TRACKING_ID \
   -e TBA_SECRET_KEY \

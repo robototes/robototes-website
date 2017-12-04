@@ -57,4 +57,4 @@ docker run --rm -v $(pwd)/docker-compose.yml:/workspace/docker-compose.yml \
   -e AUTH0_CLIENT_SECRET \
   -e AUTH0_DOMAIN \
   -e CERTIFICATE \
-  monostream/rancher-compose rancher-compose up --upgrade --pull --confirm-upgrade
+  monostream/rancher-compose rancher-compose up -d --upgrade --pull --confirm-upgrade

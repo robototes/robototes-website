@@ -32,7 +32,7 @@ Once pushed to this repository, any changes will be deployed to our server by
 
 When updating CI or DNS settings, make sure to update the relevant files in this repository
 ([CI.md](https://github.com/robototes/robototes-website/blob/master/CI.md) and
-[DNS.md](https://github.com/robototes/robototes-website/blob/master/DNS.md).
+[DNS.md](https://github.com/robototes/robototes-website/blob/master/DNS.md)).
 
 When microservice updates are truly ready for production, fetch and checkout the stable commit in the relevant submodule. Then,
 update the image entries in the [docker-compose.yml](https://github.com/robototes/robototes-website/blob/master/docker-compose.yml).

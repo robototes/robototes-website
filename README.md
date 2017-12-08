@@ -24,10 +24,17 @@ We control our [Rancher](https://rancher.com) server and the Docker-based micros
 `docker-compose.yml` file for basic Docker container configuration, and a `rancher-compose.yml` file to configure Rancher-specific
 settings for each stack.
 
-We also control our DNS using [dnscontrol](https://github.com/StackExchange/dnscontrol), a DNS-provider-agnostic Node CLI to
-control DNS using JavaScript.
 
 Once pushed to this repository, any changes will be deployed to our server by
 [Semaphore CI](https://semaphoreci.com/robototes).
+
+#### Using this repository
+
+When updating CI or DNS settings, make sure to update the relevant files in this repository
+([CI.md](https://github.com/robototes/robototes-website/blob/master/CI.md) and
+[DNS.md](https://github.com/robototes/robototes-website/blob/master/DNS.md).
+
+When microservice updates are truly ready for production, fetch and checkout the stable commit in the relevant submodule. Then,
+update the image entries in the [docker-compose.yml](https://github.com/robototes/robototes-website/blob/master/docker-compose.yml).
 
 ### For programmer documentation, see [DOCS.md](https://github.com/robototes/robototes-website/blob/master/DOCS.md)

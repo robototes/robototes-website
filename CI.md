@@ -26,7 +26,7 @@ commands to test
 
 #### Deployments
 
-We deploy each microservice to Docker Hub, where it is pulled from by our production server.
+We deploy each microservice's `master` branch to Docker Hub, where it is pulled from by our production server.
 
 ##### Docker Hub
 

@@ -58,6 +58,7 @@ safe.
 * DO update this and all other READMEs as necessary so that programmers that come after you can easily start developing
   (speaking from experience, they will hate you if you don't)
 * DO triage and assign bugs, even when not working in a team, for organization and accountability
+* DO use our [Trello](https://trello.com/b/GCo1iLBr/robototes-website) to keep track of features, fixes, decisions, and in-progress work
 * DO follow the Test-Driven-Development workflow:
   * Create a git branch with a descriptive name for what you are planning on creating:
     `git checkout -b branch-name-goes-here`. The branch name should be be named like this:

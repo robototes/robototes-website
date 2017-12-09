@@ -1,5 +1,7 @@
 ## robototes-website
 
+[![trello](https://img.shields.io/badge/trello-robototes--website-red.svg)](https://trello.com/b/GCo1iLBr/robototes-website)
+
 This repository is the control repository for our [microservice-based site](https://www.robototes.com). Our site is comprised of
 the following microservices:
 

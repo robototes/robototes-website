@@ -46,16 +46,16 @@ services:
       strategy: recreate
   api:
     scale: 1
-    # health_check:
-    #   port: 3000
-    #   request_line: GET /api/email?alias=test&domain=$DOMAIN HTTP/1.0
-    #   interval: 2000
-    #   initializing_timeout: 60000
-    #   reinitializing_timeout: 60000
-    #   unhealthy_threshold: 3
-    #   healthy_threshold: 2
-    #   response_timeout: 2000
-    #   strategy: recreate
+    health_check:
+      port: 3000
+      request_line: GET /api/email?alias=test&domain=$DOMAIN HTTP/1.0
+      interval: 2000
+      initializing_timeout: 60000
+      reinitializing_timeout: 60000
+      unhealthy_threshold: 3
+      healthy_threshold: 2
+      response_timeout: 2000
+      strategy: recreate
   team:
     scale: 1
     health_check:

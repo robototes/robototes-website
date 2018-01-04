@@ -15,7 +15,7 @@ services:
     - DATABASE_HOST=mongo
     - DATABASE_PORT=27017
   api:
-    image: robototes/robototes-website-api:364d6d2
+    image: robototes/robototes-website-api:0469eb1
     links:
     - mongo
     expose:

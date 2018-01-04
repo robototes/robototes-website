@@ -1,7 +1,7 @@
 version: 2
 services:
   web:
-    image: robototes/robototes-website-web:49950d7
+    image: robototes/robototes-website-web:bedb8b6
     links:
     - mongo
     expose:
@@ -15,7 +15,7 @@ services:
     - DATABASE_HOST=mongo
     - DATABASE_PORT=27017
   api:
-    image: robototes/robototes-website-api:22ccec9
+    image: robototes/robototes-website-api:364d6d2
     links:
     - mongo
     expose:
@@ -29,7 +29,7 @@ services:
     - DATABASE_HOST=mongo
     - DATABASE_PORT=27017
   team:
-    image: robototes/robototes-website-team:c04c624
+    image: robototes/robototes-website-team:6ae6589
     links:
     - mongo
     expose:

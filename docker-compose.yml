@@ -1,7 +1,7 @@
 version: 2
 services:
   web:
-    image: robototes/robototes-website-web:bedb8b6
+    image: robototes/robototes-website-web:6bd56df
     links:
     - mongo
     expose:
@@ -48,6 +48,8 @@ services:
     image: mongo:3.5-jessie
     expose:
     - 27017
+    volumes:
+    - mongo:/data/db
     labels:
       io.rancher.scheduler.affinity:host_label: type=private
   lb:
@@ -56,3 +58,11 @@ services:
     - 443:443
     labels:
       io.rancher.scheduler.affinity:host_label: type=public
+
+volumes:
+  mongo:
+    driver: rancher-ebs
+    driver_opts:
+      size: 10
+      volumeID: <VOLUME_ID>
+      ec2_az: us-west-2a

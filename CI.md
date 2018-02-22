@@ -84,6 +84,11 @@ We deploy client-side files to the CDN, and pull and update containers on our pr
 The production server is running Rancher, and the necessary API keys for each deployment tool is stored in their respective environment variables. We use
 Docker containers for `awscli` and `rancher-compose` so we don't have to install those tools, and pass in the credentials using the `-e` flag in Docker.
 
+* Download all submodule code
+```
+git submodule init
+git submodule update
+```
 * Deploy our CDN files to the S3 bucket
 ```
 docker run --rm -e AWS_ACCESS_KEY_ID \
@@ -115,4 +120,8 @@ docker run --rm -v $(pwd)/docker-compose.yml:/workspace/docker-compose.yml \
   -e AUTH0_DOMAIN \
   -e CERTIFICATE \
   monostream/rancher-compose rancher-compose up -d --upgrade --pull --confirm-upgrade
+```
+* Clean up
+```
+git submodule deinit --force .
 ```

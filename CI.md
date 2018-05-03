@@ -106,8 +106,8 @@ curl -X DELETE "https://api.cloudflare.com/client/v4/zones/$CF_ZONE_ID/purge_cac
 ```
 * Deploy our new containers to our Rancher using `rancher-compose`
 ```
-docker run --rm -v $(pwd)/docker-compose.yml:/workspace/docker-compose.yml \
-  -v $(pwd)/rancher-compose.yml:/workspace/rancher-compose.yml \
+docker run --rm -v $(pwd)/docker-compose.yml:/docker-compose.yml \
+  -v $(pwd)/rancher-compose.yml:/rancher-compose.yml \
   -e RANCHER_URL \
   -e RANCHER_ACCESS_KEY \
   -e RANCHER_SECRET_KEY \
@@ -119,7 +119,7 @@ docker run --rm -v $(pwd)/docker-compose.yml:/workspace/docker-compose.yml \
   -e AUTH0_CLIENT_SECRET \
   -e AUTH0_DOMAIN \
   -e CERTIFICATE \
-  monostream/rancher-compose rancher-compose up -d --upgrade --pull --confirm-upgrade
+  mpfmedical/rancher-compose rancher-compose up -d --upgrade --pull --confirm-upgrade
 ```
 * Clean up
 ```

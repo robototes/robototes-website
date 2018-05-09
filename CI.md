@@ -119,7 +119,7 @@ docker run --rm -v $(pwd)/docker-compose.yml:/docker-compose.yml \
   -e AUTH0_CLIENT_SECRET \
   -e AUTH0_DOMAIN \
   -e CERTIFICATE \
-  mpfmedical/rancher-compose rancher-compose up -d --upgrade --pull --confirm-upgrade
+  mpfmedical/rancher-compose rancher-compose up -d --force-upgrade --confirm-upgrade --pull
 ```
 * Clean up
 ```

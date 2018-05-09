@@ -64,5 +64,3 @@ volumes:
     driver: rancher-ebs
     driver_opts:
       size: 10
-      volumeID: <VOLUME_ID>
-      ec2_az: us-west-2a

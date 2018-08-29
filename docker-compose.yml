@@ -1,7 +1,7 @@
 version: 2
 services:
   web:
-    image: robototes/robototes-website-web:cad633e
+    image: robototes/robototes-website-web:fa2c08c
     links:
     - mongo
     expose:
